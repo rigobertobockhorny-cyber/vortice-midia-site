@@ -9,6 +9,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <title>VÓRTICE MÍDIA — __MODEL_TITLE__</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="./assets/tornado/tornado_dunes_8k.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/ui/vortice_midia_official_logo.png" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Chakra+Petch:wght@600;700&family=Cinzel:wght@700;800;900&family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -50,7 +52,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       height: 100vh;
       overflow: hidden;
       z-index: 1;
-      background: #000000;
+      background: #000000 url('./assets/tornado/tornado_dunes_8k.jpg') center center / cover no-repeat;
       pointer-events: none;
     }
 
@@ -1807,7 +1809,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       position: relative;
       width: 100%;
       height: 100vh;
-      min-height: 620px;
+      min-height: 100vh;
       max-height: 100vh;
       margin-top: 0;
       padding: 84px 48px 46px;
@@ -1815,8 +1817,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       flex-direction: column;
       justify-content: flex-end;
       overflow: hidden;
-      background: #04070f;
-      border-bottom: 1px solid rgba(0, 245, 212, 0.24);
+      background: rgba(4, 5, 8, 0.22);
+      border: none;
     }
 
     .ch-hero-fullbleed-art {
@@ -1836,22 +1838,22 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       transform: scale(1.01);
     }
 
-    /* Degradê suave nas bordas superior, laterais e inferior fundindo no preto profundo */
+    /* Degradê suave nas bordas superior, laterais e inferior fundindo na transparência do vórtice */
     .ch-hero-fullbleed-art::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
         linear-gradient(180deg,
-          rgba(4, 7, 15, 0.72) 0%,
-          rgba(4, 7, 15, 0.14) 22%,
-          rgba(4, 7, 15, 0.10) 54%,
-          rgba(4, 7, 15, 0.82) 82%,
-          #04070f 100%),
+          rgba(4, 5, 8, 0.68) 0%,
+          rgba(4, 5, 8, 0.14) 22%,
+          rgba(4, 5, 8, 0.10) 54%,
+          rgba(4, 5, 8, 0.78) 84%,
+          rgba(4, 5, 8, 0.92) 100%),
         radial-gradient(ellipse at 50% 42%,
           transparent 52%,
-          rgba(4, 7, 15, 0.68) 88%,
-          #04070f 100%);
+          rgba(4, 5, 8, 0.64) 88%,
+          rgba(4, 5, 8, 0.90) 100%);
     }
 
     .ch-page-hero-content {
@@ -1872,34 +1874,34 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       height: 128px;
       object-fit: cover;
       border-radius: 22px;
-      background: #000000;
-      border: 2px solid rgba(52, 211, 153, 0.58);
+      background: rgba(10, 12, 18, 0.85);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
       padding: 0;
       box-shadow:
         0 20px 46px rgba(0, 0, 0, 0.95),
-        0 0 28px rgba(52, 211, 153, 0.26);
+        0 0 24px rgba(255, 255, 255, 0.18);
       flex-shrink: 0;
     }
 
     .ch-page-title-block h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(30px, 3.8vw, 50px);
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: clamp(32px, 3.8vw, 50px);
       font-weight: 900;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
       color: #ffffff;
       text-shadow:
-        0 6px 24px rgba(0, 0, 0, 0.95),
-        0 0 26px rgba(52, 211, 153, 0.28);
+        0 3px 0 rgba(0, 0, 0, 0.90),
+        0 12px 32px rgba(0, 0, 0, 0.95);
       margin: 0 0 6px;
-      line-height: 1.06;
+      line-height: 1.1;
       text-transform: uppercase;
     }
 
     .ch-slogan-line {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
-      font-size: 18px;
-      color: #6ee7b7;
+      font-size: 18.5px;
+      color: #f7d07a;
       margin-bottom: 8px;
       text-shadow: 0 4px 16px rgba(0, 0, 0, 0.95);
     }
@@ -1974,9 +1976,11 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
     /* ==========================================================================
        CORPO DE SEÇÕES DA PÁGINA DO CANAL (SEÇÕES 2 A 7)
-       - Ampla respiração entre uma seção e outra (padding vertical generoso)!
-       - Cada seção possui sua própria identidade visual / atmosfera de cor (igual à
-         progressão de seções da página principal), mantendo o MESMO padrão nos 10 canais!
+       - Padronizado 100% com a Página Principal (vorticemidia.com.br):
+         * Cada seção inteira na tela (min-height: 108vh; padding: 104px 36px 64px)
+         * Fundo cinza escuro transparente uniforme (background: rgba(4, 5, 8, 0.22))
+         * ZERO linhas separando as seções (border: none)
+         * Títulos centralizados com a mesma fonte ('Cinzel') da Home!
        ========================================================================== */
     .ch-page-body {
       width: 100%;
@@ -1989,9 +1993,14 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
     .ch-section-block {
       width: 100%;
-      padding: 104px 48px;
+      min-height: 108vh;
+      padding: 104px 36px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       position: relative;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(4, 5, 8, 0.22);
+      border: none;
     }
 
     .ch-sec-inner {
@@ -2000,28 +2009,20 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       margin: 0 auto;
     }
 
-    /* Identidade Visual Unificada para TODAS as Seções de TODOS os 10 Canais (Seções 2 a 7):
-       - Somente o degradê Verde Esmeralda Transparente ("O Que Movimenta Este Universo")
-         com o Vórtice girando ao fundo (#vortex-canvas) em todas as seções! */
+    /* Identidade Visual Unificada Cinza Escuro Translúcido para TODAS as Seções de TODOS os 10 Canais (Seções 2 a 7):
+       - Exatamente igual à primeira página (sem verde, sem roxo e sem linhas divisórias!) */
     #ch-sec-historia,
     #ch-sec-repertorio,
+    #ch-sec-loja,
     #ch-sec-cronicas,
     #ch-sec-bastidores,
     #ch-sec-guia,
     #ch-sec-plataformas {
-      --sec-accent: #34d399;
-      --sec-accent-soft: rgba(52, 211, 153, 0.32);
-      --sec-card-bg: linear-gradient(160deg, rgba(6, 40, 35, 0.74) 0%, rgba(3, 19, 17, 0.84) 100%);
-      background:
-        radial-gradient(circle at 22% 38%, rgba(16, 185, 129, 0.34) 0%, rgba(6, 95, 70, 0.48) 46%, rgba(3, 22, 19, 0.64) 100%);
-    }
-
-    #ch-sec-loja {
-      --sec-accent: #ec4899;
-      --sec-accent-soft: rgba(255, 200, 240, 0.32);
-      --sec-card-bg: linear-gradient(165deg, rgba(68, 16, 52, 0.52) 0%, rgba(36, 8, 28, 0.82) 100%);
-      background:
-        radial-gradient(circle at 50% 45%, rgba(56, 12, 42, 0.38) 0%, rgba(28, 6, 20, 0.46) 60%, rgba(10, 2, 8, 0.54) 100%);
+      --sec-accent: #f7d07a;
+      --sec-accent-soft: rgba(255, 255, 255, 0.22);
+      --sec-card-bg: rgba(10, 12, 18, 0.56);
+      background: rgba(4, 5, 8, 0.22);
+      border: none;
     }
 
     #ch-sec-plataformas {
@@ -2030,77 +2031,116 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
     .ch-sec-header {
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 14px;
+      margin-top: 0;
       margin-bottom: 36px;
-      flex-wrap: wrap;
-      border-bottom: 1px solid var(--sec-accent-soft, rgba(0, 245, 212, 0.24));
-      padding-bottom: 18px;
+      border: none;
+      padding-bottom: 0;
     }
 
     .ch-sec-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(25px, 3vw, 36px);
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: clamp(30px, 3.3vw, 44px);
       font-weight: 900;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      text-transform: uppercase;
       color: #ffffff;
+      text-align: center;
       margin: 0;
-      text-shadow: 0 0 24px var(--sec-accent-soft, rgba(0, 245, 212, 0.28));
+      text-shadow:
+        0 3px 0 rgba(0, 0, 0, 0.90),
+        0 12px 32px rgba(0, 0, 0, 0.95);
     }
 
     .ch-sec-subtitle {
       font-size: 15px;
-      color: rgba(226, 232, 240, 0.84);
+      color: rgba(226, 232, 240, 0.88);
       margin: 8px 0 0;
+      text-align: center;
     }
 
     /* ==========================================================================
        SEÇÃO 2: SOBRE O CANAL, PROPÓSITO & IDENTIDADE CANÔNICA
+       - Ambos os lados (História à esquerda e Identidade à direita) dentro de cards
+         cinza escuro translúcido padronizados igual à Força Criativa da Home!
        ========================================================================== */
     .ch-story-editorial-grid {
       display: grid;
       grid-template-columns: 1.35fr 0.85fr;
-      gap: 36px;
+      gap: 24px;
       align-items: stretch;
+    }
+
+    #portal-story-left {
+      border-radius: 18px;
+      padding: 28px 32px;
+      background: rgba(10, 12, 18, 0.56);
+      backdrop-filter: blur(4px);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.72);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    #portal-story-left:hover {
+      background: rgba(18, 22, 32, 0.88);
+      border-color: #ffffff;
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.88), 0 0 20px rgba(255, 255, 255, 0.28);
     }
 
     .ch-story-lead {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 21.5px;
+      font-size: 21px;
       font-weight: 700;
-      line-height: 1.54;
-      color: #6ee7b7;
-      margin-bottom: 18px;
-    }
-
-    .ch-story-p {
-      font-size: 15.8px;
-      line-height: 1.80;
-      color: rgba(241, 245, 249, 0.92);
+      line-height: 1.50;
+      color: #f7d07a;
       margin-bottom: 16px;
     }
 
+    .ch-story-p {
+      font-size: 15.2px;
+      line-height: 1.72;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 14px;
+    }
+
+    .ch-story-p:last-child {
+      margin-bottom: 0;
+    }
+
     .ch-persona-dossier-box {
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 28px 30px;
-      background: var(--sec-card-bg);
-      border: 1.5px solid var(--sec-accent-soft);
-      box-shadow:
-        0 18px 44px rgba(0, 0, 0, 0.78),
-        inset 0 0 28px rgba(52, 211, 153, 0.12);
+      background: rgba(10, 12, 18, 0.56);
+      backdrop-filter: blur(4px);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.72);
       display: flex;
       flex-direction: column;
       justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    .ch-persona-dossier-box:hover {
+      background: rgba(18, 22, 32, 0.88);
+      border-color: #ffffff;
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.88), 0 0 20px rgba(255, 255, 255, 0.28);
     }
 
     .ch-persona-tag {
       font-family: 'Orbitron', sans-serif;
       font-size: 10.5px;
       font-weight: 800;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--sec-accent);
+      color: #f7d07a;
       margin-bottom: 6px;
     }
 
@@ -2112,25 +2152,26 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       color: #ffffff;
       margin: 14px 0;
       padding-left: 16px;
-      border-left: 3px solid var(--sec-accent);
+      border-left: 3px solid #f7d07a;
     }
 
     /* ==========================================================================
        SEÇÃO 3: CATÁLOGO DE MÚSICAS / EPISÓDIOS COM IMAGEM CRUA (SEM TEXTO)
-       + ÍCONES 3D PUROS DAS PLATAFORMAS (SEM BOTÃO DE PLAY NO SITE!)
+       + ÍCONES 3D PUROS DAS PLATAFORMAS (MESMO CINZA ESCURO TRANSLÚCIDO DA HOME!)
        ========================================================================== */
     .ch-tracks-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
+      gap: 20px;
     }
 
     .ch-track-card {
-      border-radius: 18px;
+      border-radius: 16px;
       overflow: hidden;
-      background: var(--sec-card-bg);
-      border: 1.5px solid var(--sec-accent-soft);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.82);
+      background: rgba(10, 12, 18, 0.56);
+      backdrop-filter: blur(4px);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.72);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -2138,10 +2179,11 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     }
 
     .ch-track-card:hover {
-      border-color: var(--sec-accent);
+      background: rgba(18, 22, 32, 0.88);
+      border-color: #ffffff;
       box-shadow:
-        0 22px 50px rgba(0, 0, 0, 0.92),
-        0 0 26px var(--sec-accent-soft);
+        0 22px 46px rgba(0, 0, 0, 0.88),
+        0 0 20px rgba(255, 255, 255, 0.28);
       transform: translateY(-5px);
     }
 
@@ -2151,7 +2193,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       aspect-ratio: 16 / 9;
       overflow: hidden;
       background: #04060c;
-      border-bottom: 1px solid var(--sec-accent-soft);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
     }
 
     .ch-track-raw-thumb-wrap img {
@@ -2172,9 +2214,9 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       left: 12px;
       padding: 4px 11px;
       border-radius: 999px;
-      background: rgba(3, 24, 20, 0.88);
-      border: 1px solid var(--sec-accent);
-      color: #a7f3d0;
+      background: rgba(10, 12, 18, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #f7d07a;
       font-family: 'Chakra Petch', sans-serif;
       font-size: 10.5px;
       font-weight: 800;
@@ -2184,27 +2226,27 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     }
 
     .ch-track-body {
-      padding: 20px 22px 22px;
+      padding: 18px 20px 20px;
       display: flex;
       flex-direction: column;
       flex: 1;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
     }
 
     .ch-track-title {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 21px;
+      font-size: 20.5px;
       font-weight: 800;
       color: #ffffff;
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       line-height: 1.22;
     }
 
     .ch-track-story {
-      font-size: 13.8px;
-      line-height: 1.62;
-      color: rgba(226, 232, 240, 0.88);
+      font-size: 13.5px;
+      line-height: 1.58;
+      color: rgba(255, 255, 255, 0.88);
       margin: 0;
     }
 
@@ -2212,42 +2254,44 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.10);
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     /* ==========================================================================
        SEÇÕES 4, 5 E 6: PILARES DO UNIVERSO, BASTIDORES DE PRODUÇÃO & GUIA DO PÚBLICO
-       (Cada seção usa automaticamente --sec-accent e --sec-card-bg da sua própria atmosfera!)
+       (Mesmo card cinza escuro translúcido + borda branca no hover da Página Principal!)
        ========================================================================== */
     .ch-chronicles-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .ch-neon-pillar-card {
-      border-radius: 18px;
-      padding: 26px 26px;
-      background: var(--sec-card-bg);
-      border: 1.5px solid var(--sec-accent-soft);
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.75);
-      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      border-radius: 16px;
+      padding: 24px 26px;
+      background: rgba(10, 12, 18, 0.56);
+      backdrop-filter: blur(4px);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.72);
+      transition: all 0.25s ease;
     }
 
     .ch-neon-pillar-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--sec-accent);
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.90), 0 0 22px var(--sec-accent-soft);
+      transform: translateY(-5px);
+      background: rgba(18, 22, 32, 0.88);
+      border-color: #ffffff;
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.88), 0 0 20px rgba(255, 255, 255, 0.28);
     }
 
     .ch-neon-pillar-tag {
       font-family: 'Orbitron', sans-serif;
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--sec-accent);
+      color: #f7d07a;
       margin-bottom: 8px;
     }
 
@@ -2260,16 +2304,16 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     }
 
     .ch-neon-pillar-text {
-      font-size: 14.2px;
-      line-height: 1.68;
-      color: rgba(226, 232, 240, 0.88);
+      font-size: 13.8px;
+      line-height: 1.62;
+      color: rgba(255, 255, 255, 0.88);
       margin: 0;
     }
 
     .ch-faq-grid-2col {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     /* ==========================================================================
@@ -2609,7 +2653,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
        (#platform-claim-overlay)
        - Abre dentro do próprio site sempre que o visitante clica em uma plataforma
          musical/social cujo perfil de artista ainda está em processo de reivindicação!
-       - Mantém o vórtice girando ao fundo com estética Verde Esmeralda & Ouro Translúcido.
+       - Mantém o vórtice girando ao fundo com a mesma estética Cinza Escuro Translúcido!
        ========================================================================== */
     .platform-claim-overlay {
       position: fixed;
@@ -2623,8 +2667,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       align-items: center;
       justify-content: center;
       padding: 90px 24px 36px;
-      background:
-        radial-gradient(circle at 22% 38%, rgba(16, 185, 129, 0.36) 0%, rgba(6, 95, 70, 0.56) 46%, rgba(3, 22, 19, 0.84) 100%);
+      background: rgba(4, 5, 8, 0.72);
       backdrop-filter: blur(8px);
       opacity: 0;
       visibility: hidden;
@@ -2642,14 +2685,14 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       position: relative;
       max-width: 780px;
       width: 100%;
-      border-radius: 26px;
+      border-radius: 22px;
       padding: 38px 42px;
-      background: linear-gradient(160deg, rgba(6, 40, 35, 0.82) 0%, rgba(3, 19, 17, 0.92) 100%);
-      border: 1.5px solid rgba(52, 211, 153, 0.48);
+      background: rgba(10, 12, 18, 0.78);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.26);
       box-shadow:
         0 28px 70px rgba(0, 0, 0, 0.92),
-        0 0 36px rgba(16, 185, 129, 0.24),
-        inset 0 1px 2px rgba(255, 255, 255, 0.22);
+        0 0 28px rgba(255, 255, 255, 0.14);
       text-align: center;
       color: #ffffff;
     }
@@ -2660,24 +2703,24 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       gap: 8px;
       padding: 6px 16px;
       border-radius: 999px;
-      background: rgba(245, 158, 11, 0.16);
-      border: 1px solid rgba(251, 191, 36, 0.65);
-      color: #fde68a;
+      background: rgba(16, 20, 30, 0.85);
+      border: 1px solid rgba(247, 208, 122, 0.55);
+      color: #f7d07a;
       font-family: 'Orbitron', sans-serif;
       font-size: 10.5px;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 22px;
-      box-shadow: 0 0 18px rgba(245, 158, 11, 0.22);
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.65);
     }
 
     .claim-status-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #fbbf24;
-      box-shadow: 0 0 10px #fbbf24;
+      background: #f7d07a;
+      box-shadow: 0 0 10px #f7d07a;
       animation: radioBtnBreathe 1.4s ease-in-out infinite;
     }
 
@@ -2694,7 +2737,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       height: 82px;
       border-radius: 18px;
       object-fit: cover;
-      border: 2px solid rgba(52, 211, 153, 0.68);
+      border: 2px solid rgba(255, 255, 255, 0.45);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.85);
       background: #000000;
     }
@@ -2703,7 +2746,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 6px;
-      color: #34d399;
+      color: #f7d07a;
       font-family: 'Orbitron', sans-serif;
       font-size: 12px;
       font-weight: 900;
@@ -2732,7 +2775,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     }
 
     .claim-main-title {
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Cinzel', Georgia, serif;
       font-size: clamp(22px, 2.8vw, 32px);
       font-weight: 900;
       color: #ffffff;
@@ -2745,13 +2788,13 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-size: 18px;
-      color: #6ee7b7;
+      color: #f7d07a;
       margin-bottom: 18px;
     }
 
     .claim-desc-box {
-      background: rgba(2, 14, 12, 0.58);
-      border: 1px solid rgba(52, 211, 153, 0.28);
+      background: rgba(10, 12, 18, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.20);
       border-radius: 16px;
       padding: 18px 22px;
       font-size: 14.8px;
@@ -2772,13 +2815,13 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     .claim-step-item {
       padding: 12px 14px;
       border-radius: 12px;
-      background: rgba(6, 32, 28, 0.72);
-      border: 1px solid rgba(52, 211, 153, 0.25);
+      background: rgba(10, 12, 18, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.20);
     }
 
     .claim-step-item.active-step {
-      background: rgba(245, 158, 11, 0.14);
-      border-color: rgba(251, 191, 36, 0.65);
+      background: rgba(18, 22, 32, 0.88);
+      border-color: rgba(255, 255, 255, 0.65);
     }
 
     .claim-step-tag {
@@ -2787,13 +2830,13 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #34d399;
+      color: #f7d07a;
       margin-bottom: 4px;
       display: block;
     }
 
     .claim-step-item.active-step .claim-step-tag {
-      color: #fbbf24;
+      color: #ffffff;
     }
 
     .claim-step-title {
@@ -2811,85 +2854,42 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       flex-wrap: wrap;
     }
 
-    .claim-btn-primary {
+    .claim-btn-primary,
+    .claim-btn-secondary,
+    .claim-btn-back {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
-      padding: 13px 24px;
+      padding: 13px 22px;
       border-radius: 12px;
-      background: linear-gradient(180deg, #ff2a2a 0%, #b30000 100%);
-      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      background: rgba(10, 12, 18, 0.68);
+      border: 1.5px solid rgba(255, 255, 255, 0.26);
       color: #ffffff;
       font-family: 'Chakra Petch', sans-serif;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      box-shadow: 0 4px 0 #5c0000, 0 10px 24px rgba(0, 0, 0, 0.75);
-      transition: transform 0.18s ease, filter 0.18s ease;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.72);
+      transition: all 0.2s ease;
     }
 
-    .claim-btn-primary:hover {
+    .claim-btn-primary:hover,
+    .claim-btn-secondary:hover,
+    .claim-btn-back:hover {
       transform: translateY(-2px);
-      filter: brightness(1.12);
+      background: rgba(18, 22, 32, 0.92);
+      border-color: #ffffff;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.88), 0 0 18px rgba(255, 255, 255, 0.28);
     }
 
     .claim-btn-PrimarySvg {
       width: 18px;
       height: 18px;
       fill: #ffffff;
-    }
-
-    .claim-btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 22px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #9d174d 0%, #500724 100%);
-      border: 1.5px solid #fbcfe8;
-      color: #ffffff;
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 4px 0 #2e0214, 0 10px 22px rgba(0, 0, 0, 0.7);
-      transition: transform 0.18s ease, filter 0.18s ease;
-    }
-
-    .claim-btn-secondary:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.12);
-    }
-
-    .claim-btn-back {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 22px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.10);
-      border: 1.5px solid rgba(255, 255, 255, 0.38);
-      color: #ffffff;
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.18s ease, transform 0.18s ease;
-    }
-
-    .claim-btn-back:hover {
-      background: rgba(255, 255, 255, 0.22);
-      transform: translateY(-2px);
     }
 
     @media (max-width: 1180px) {
@@ -4792,7 +4792,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
       const titleEl = document.getElementById('claim-title-heading');
       if (titleEl) {
-        titleEl.innerHTML = `${ch.name} &bull; <span style="color:#6ee7b7;">${pMeta.shortName}</span>`;
+        titleEl.innerHTML = `${ch.name} &bull; <span style="color:#f7d07a;">${pMeta.shortName}</span>`;
       }
 
       const descEl = document.getElementById('claim-desc-text');
@@ -5183,14 +5183,14 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     }
 
     function openChannelPortal(ch) {
-      /* Padronização total da paleta Noir-Neon (estilo Neon Asher) para todos os 10 canais */
-      portalOverlay.style.setProperty('--ch-accent', '#00f5d4');
-      portalOverlay.style.setProperty('--ch-secondary', '#a855f7');
-      portalOverlay.style.setProperty('--ch-glow-a', 'rgba(0, 245, 212, 0.28)');
-      portalOverlay.style.setProperty('--ch-glow-b', 'rgba(168, 85, 247, 0.26)');
-      portalOverlay.style.setProperty('--ch-bg', '#050811');
-      portalOverlay.style.setProperty('--ch-font', "'Orbitron', sans-serif");
-      portalOverlay.style.backgroundColor = '#050811';
+      /* Padronização total: Fundo 100% transparente (vendo o Vórtice girar ao fundo) + Cinza Escuro Translúcido igual à Página Principal! */
+      portalOverlay.style.setProperty('--ch-accent', '#f7d07a');
+      portalOverlay.style.setProperty('--ch-secondary', '#ffffff');
+      portalOverlay.style.setProperty('--ch-glow-a', 'rgba(255, 255, 255, 0.24)');
+      portalOverlay.style.setProperty('--ch-glow-b', 'rgba(247, 208, 122, 0.24)');
+      portalOverlay.style.setProperty('--ch-bg', 'transparent');
+      portalOverlay.style.setProperty('--ch-font', "'Cinzel', Georgia, serif");
+      portalOverlay.style.backgroundColor = 'transparent';
 
       /* SEÇÃO 1: Banner Full-Bleed com Degradê Preto nas Bordas + Logo + Título + Slogan + CTAs */
       document.getElementById('ch-page-bg').src = ch.bannerImg || ch.coverImg;
@@ -5228,9 +5228,9 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       `;
       document.getElementById('portal-story-right').innerHTML = `
         <span class="ch-persona-tag">${ch.personaTitle || 'IDENTIDADE CANÔNICA'}</span>
-        <h3 style="font-family:'Orbitron',sans-serif;font-size:21px;color:#ffffff;margin:4px 0 10px;">A Voz &amp; O Espírito do Canal</h3>
+        <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:21.5px;font-weight:800;color:#ffffff;margin:4px 0 10px;">A Voz &amp; O Espírito do Canal</h3>
         <blockquote class="ch-persona-quote">${ch.personaQuote || ch.slogan || ''}</blockquote>
-        <p style="font-size:13.5px;line-height:1.65;color:rgba(226,232,240,0.86);margin:12px 0 0;">${ch.personaDetails || ''}</p>
+        <p style="font-size:13.8px;line-height:1.65;color:rgba(255,255,255,0.88);margin:12px 0 0;">${ch.personaDetails || ''}</p>
       `;
 
       /* SEÇÃO 3: Catálogo de 6 Músicas / Episódios com IMAGEM CRUA (Sem texto)
