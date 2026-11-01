@@ -2172,12 +2172,15 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
        + ÍCONES 3D PUROS DAS PLATAFORMAS (MESMO CINZA ESCURO TRANSLÚCIDO DA HOME!)
        ========================================================================== */
     .ch-tracks-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
     }
 
     .ch-track-card {
+      width: min(100%, 420px);
+      flex: 0 1 420px;
       border-radius: 16px;
       overflow: hidden;
       background: rgba(10, 12, 18, 0.56);
@@ -2188,6 +2191,27 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       flex-direction: column;
       justify-content: space-between;
       transition: all 0.25s ease;
+    }
+
+    .ch-tracks-grid.single-card-mode .ch-track-card {
+      width: min(100%, 560px);
+      flex: 0 1 560px;
+    }
+
+    .ch-validation-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: rgba(247, 208, 122, 0.12);
+      border: 1px solid rgba(247, 208, 122, 0.45);
+      color: #f7d07a;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .ch-track-card:hover {
@@ -3824,46 +3848,28 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'Crítica política e indignação cidadã transformadas em hinos explosivos de guitarra, bateria pesada e animações 3D viscerais no coração de Brasília.',
         playlist: [
           {
-            title: 'O Barulho Vai Começar',
-            style: 'Hard Rock de Protesto • 136 BPM',
-            rawImg: './assets/episodes/rock_ep_01.jpg',
+            title: 'O Barulho Vai Começar — "Acabou o Silêncio dos Corruptos!"',
+            style: 'MÚSICA & CLIPE NO AR • EPISÓDIO 01',
+            rawImg: './assets/episodes/rock_real_ep01.jpg',
             audioUrl: './assets/audio/rock_incorruptivel_barulho.mp3',
+            youtubeUrl: 'https://www.youtube.com/watch?v=bbGKuAcQ-aw',
             story: 'O hino de abertura do canal: guitarras rasgadas diante do Congresso anunciando que o cidadão comum acordou e não aceita mais discursos vazios.'
           },
           {
-            title: 'Vai Incomodar',
-            style: 'Heavy Rock de Arena • 140 BPM',
-            rawImg: './assets/episodes/rock_ep_02.jpg',
-            audioUrl: './assets/audio/rock_vai_incomodar.mp3',
-            story: 'Uma crônica musical direta sobre como a transparência e a cobrança popular tiram o sono de quem governa de costas para o povo.'
-          },
-          {
-            title: 'Fábrica de Promessas',
-            style: 'Rock Alternativo Pesado • 128 BPM',
-            rawImg: './assets/episodes/rock_ep_03.jpg',
+            title: 'A Fábrica de Promessas — "As Mesmas Promessas de 4 em 4 Anos"',
+            style: 'MÚSICA & CLIPE NO AR • EPISÓDIO 02',
+            rawImg: './assets/episodes/rock_real_ep02.jpg',
             audioUrl: './assets/audio/rock_fabrica_de_promessas.mp3',
+            youtubeUrl: 'https://www.youtube.com/watch?v=4bPfRBxFmZE',
             story: 'Retrata os bastidores eleitorais onde promessas milagrosas são produzidas em série a cada quatro anos e esquecidas no dia seguinte.'
           },
           {
-            title: 'Campeão da Corrupção',
-            style: 'Hard Rock Satírico • 134 BPM',
-            rawImg: './assets/episodes/rock_ep_04.jpg',
-            audioUrl: './assets/audio/rock_campeao_da_corrupcao.mp3',
-            story: 'Sátira mordaz em forma de rock de estádio sobre os troféus invisíveis disputados nos corredores do poder.'
-          },
-          {
-            title: 'No Balcão das Alianças',
-            style: 'Arena Groove Rock • 130 BPM',
-            rawImg: './assets/episodes/rock_ep_05.jpg',
-            audioUrl: './assets/audio/rock_balcao_das_aliancas.mp3',
-            story: 'Expõe as negociações de bastidores onde convicções mudam de preço da noite para o dia.'
-          },
-          {
-            title: 'O Teatro dos Três Poderes',
-            style: 'Rock Cinematográfico de Protesto',
-            rawImg: './assets/episodes/rock_ep_06.jpg',
-            audioUrl: './assets/audio/rock_teatro_dos_tres_poderes.mp3',
-            story: 'Riffs pesados e letra afiada revelando a encenação pública diante de quem trabalha para pagar a conta.'
+            title: 'Próximos Hinos em Processo de Validação & Reivindicação',
+            style: 'EM PROCESSO DE VALIDAÇÃO',
+            rawImg: './assets/banners/rock_youtube_banner.jpg',
+            audioUrl: './assets/audio/rock_vai_incomodar.mp3',
+            isValidationCard: true,
+            story: 'Novas músicas e videoclipes oficiais de Rock Incorruptível já estão em processo de validação e distribuição nas plataformas. Aguarde mais músicas dentro desta seção!'
           }
         ],
         storyHeading: 'O Palco da Indignação: Quando o Rock Encontra a Crônica Política',
@@ -3909,46 +3915,12 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'As grandes batalhas espirituais, profecias e passagens épicas da Bíblia transformadas em Gospel Sacro Contemporâneo com orquestração grandiosa.',
         playlist: [
           {
-            title: 'A Voz Sobre as Águas',
-            style: 'Rock Sinfônico Épico • Salmo 29',
-            rawImg: './assets/episodes/sacronia_ep_01.jpg',
+            title: 'A Voz Sobre as Águas — Hino em Processo de Reivindicação & Validação',
+            style: '1º LANÇAMENTO • EM PROCESSO DE VALIDAÇÃO',
+            rawImg: './assets/banners/sacronia_youtube_banner.jpg',
             audioUrl: './assets/audio/sacronia_voz_sobre_as_aguas.mp3',
-            story: 'Inspirada no Salmo 29: a voz do Senhor que quebra os cedros do Líbano e faz tremer o deserto, conduzida por coros sacros e guitarras monumentais.'
-          },
-          {
-            title: 'Mais Forte Que o Trono',
-            style: 'Heavy Worship Cinematográfico',
-            rawImg: './assets/episodes/sacronia_ep_02.jpg',
-            audioUrl: './assets/audio/sacronia_mais_forte_que_o_trono.mp3',
-            story: 'Retrata a queda da arrogância dos impérios terrenos diante da soberania inabalável de Deus, como nos dias de Daniel e Nabucodonosor.'
-          },
-          {
-            title: 'Quando o Mar se Levanta',
-            style: 'Rock Épico de Travessia',
-            rawImg: './assets/episodes/sacronia_ep_03.jpg',
-            audioUrl: './assets/audio/sacronia_quando_o_mar_se_levanta.mp3',
-            story: 'A tensão da madrugada diante do Mar Vermelho e o momento exato em que a fé abre caminho no meio das águas.'
-          },
-          {
-            title: 'A Espada na Casa',
-            style: 'Rock Sacro Dramático • 2 Samuel',
-            rawImg: './assets/episodes/sacronia_ep_04.jpg',
-            audioUrl: './assets/audio/sacronia_espada_na_casa.mp3',
-            story: 'Uma reflexão intensa sobre as escolhas, quedas, arrependimento e redenção na história do Rei Davi.'
-          },
-          {
-            title: 'A Noite Antes da Travessia',
-            style: 'Sinfonia Sacra & Guitarras',
-            rawImg: './assets/episodes/sacronia_ep_05.jpg',
-            audioUrl: './assets/audio/sacronia_noite_antes_da_travessia.mp3',
-            story: 'A vigília de fé de Josué e do povo de Israel antes de atravessar o Jordão rumo à promessa.'
-          },
-          {
-            title: 'As Muralhas em Silêncio',
-            style: 'Épico Bíblico Cinematográfico',
-            rawImg: './assets/episodes/sacronia_ep_06.jpg',
-            audioUrl: './assets/audio/sacronia_muralhas_em_silencio.mp3',
-            story: 'Os seis dias de marcha silenciosa ao redor de Jericó até o clamor do sétimo dia que derrubou as fortalezas.'
+            isValidationCard: true,
+            story: 'A primeira música oficial desta nova fase do canal Sacronia já está em processo de validação e reivindicação nas plataformas digitais. Aguarde mais músicas e informações dentro desta seção!'
           }
         ],
         storyHeading: 'A Catedral de Pedra e Fogo: A Essência da Bíblia do Sacronia',
@@ -3994,46 +3966,20 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'Rock gótico melódico, violinos dramáticos e arranjos noturnos que contam histórias de amor partido, a dor da separação, despedidas, estradas solitárias e superação.',
         playlist: [
           {
-            title: 'Neon Asher (Theme)',
-            style: 'Dark Melodic Rock',
-            rawImg: './assets/episodes/neon_ep_01.jpg',
+            title: 'What Remains When The Lights Go Out — Neon Asher',
+            style: 'MÚSICA & CLIPE NO AR • EPISÓDIO 01',
+            rawImg: './assets/episodes/neon_real_ep01.jpg',
             audioUrl: './assets/audio/neon_asher_theme.mp3',
-            story: 'A faixa-assinatura de Neon Asher: guitarras intensas e violinos marcantes cortando a madrugada em uma jornada de superação.'
+            youtubeUrl: 'https://www.youtube.com/watch?v=GtTA4sO7X-g',
+            story: 'A faixa-assinatura de Neon Asher: guitarras intensas e violinos marcantes cortando a madrugada quando as luzes da cidade se apagam.'
           },
           {
-            title: 'Strings in the Night',
-            style: 'Gothic Symphonic Ballad',
-            rawImg: './assets/episodes/neon_ep_02.jpg',
-            audioUrl: './assets/audio/neon_violins_in_the_rain.mp3',
-            story: 'A dor silenciosa da separação quando os violinos expressam aquilo que as palavras não conseguiram dizer na despedida.'
-          },
-          {
-            title: 'Ashes of Your Name',
-            style: 'Noir Alternative Rock',
-            rawImg: './assets/episodes/neon_ep_03.jpg',
-            audioUrl: './assets/audio/neon_ashes_of_your_name.mp3',
-            story: 'Sobre deixar para trás as lembranças de uma promessa desfeita e seguir em frente mesmo quando o passado ainda ecoa na madrugada.'
-          },
-          {
-            title: 'Broken Vow',
-            style: 'Melancholic Heavy Rock',
-            rawImg: './assets/episodes/neon_ep_04.jpg',
-            audioUrl: './assets/audio/neon_broken_vow.mp3',
-            story: 'O retrato de um juramento quebrado e a força interior que nasce depois que as ilusões ficam para trás.'
-          },
-          {
-            title: 'The Last Time I Saw You',
-            style: 'Midnight Gothic Rock',
-            rawImg: './assets/episodes/neon_ep_05.jpg',
+            title: 'The Last Time I Saw You — Em Processo de Validação & Reivindicação',
+            style: 'EM PROCESSO DE VALIDAÇÃO • EPISÓDIO 02',
+            rawImg: './assets/episodes/neon_real_ep02.jpg',
             audioUrl: './assets/audio/neon_last_time_i_saw_you.mp3',
-            story: 'O último olhar na despedida antes que dois destinos tomassem estradas opostas.'
-          },
-          {
-            title: 'After the Lights Go Out',
-            style: 'Dark Atmospheric Rock',
-            rawImg: './assets/episodes/neon_ep_06.jpg',
-            audioUrl: './assets/audio/neon_after_the_lights.mp3',
-            story: 'Quando as luzes da cidade se apagam e resta apenas a verdade do que somos no silêncio da noite.'
+            isValidationCard: true,
+            story: 'O último olhar na despedida antes que dois destinos tomassem estradas opostas — próximo lançamento oficial em validação nas plataformas. Aguarde mais músicas dentro desta seção!'
           }
         ],
         storyHeading: 'Crônicas da Madrugada: A Dor da Separação, Violinos e Superação',
@@ -4079,46 +4025,12 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'Canções cristãs de louvor congregacional e voz e violão nascidas na oração, trazendo paz espiritual, consolo nas lutas e comunhão verdadeira com Deus.',
         playlist: [
           {
-            title: 'Cordeiro de Deus',
-            style: 'Louvor Congregacional & Violão',
-            rawImg: './assets/episodes/iago_ep_01.jpg',
+            title: '1º Louvor Oficial — Em Processo de Validação & Reivindicação',
+            style: '1º LANÇAMENTO • EM PROCESSO DE VALIDAÇÃO',
+            rawImg: './assets/episodes/iago_real_ep01.jpg',
             audioUrl: './assets/audio/iago_cordeiro_de_deus.mp3',
-            story: 'Uma oração cantada sobre o sacrifício da Cruz e a graça que alcança o coração cansado quando tudo ao redor silencia.'
-          },
-          {
-            title: 'Rei dos Reis',
-            style: 'Adoração Acústica & Cordas',
-            rawImg: './assets/episodes/iago_ep_02.jpg',
-            audioUrl: './assets/audio/iago_rei_dos_reis.mp3',
-            story: 'Exalta a majestade de Cristo com a intimidade de quem conversa com um Pai presente dentro de casa.'
-          },
-          {
-            title: 'Paz Que Vem do Alto',
-            style: 'Louvor Devocional Contemplativo',
-            rawImg: './assets/episodes/iago_ep_03.jpg',
-            audioUrl: './assets/audio/iago_paz_que_vem_do_alto.mp3',
-            story: 'Composta para acalmar a mente aflita e lembrar que a paz de Deus guarda o coração mesmo em dias de vento forte.'
-          },
-          {
-            title: 'A Rocha da Salvação',
-            style: 'Voz & Violão de Fé',
-            rawImg: './assets/episodes/iago_ep_04.jpg',
-            audioUrl: './assets/audio/iago_rocha_da_salvacao.mp3',
-            story: 'Um cântico de firmeza espiritual e gratidão pela fidelidade de Deus em todas as estações da vida.'
-          },
-          {
-            title: 'A Cruz É Minha Esperança',
-            style: 'Hino Congregacional Contemporâneo',
-            rawImg: './assets/episodes/iago_ep_05.jpg',
-            audioUrl: './assets/audio/iago_a_cruz_e_minha_esperanca.mp3',
-            story: 'Celebra a vitória da Cruz como âncora inabalável para a família e para a igreja.'
-          },
-          {
-            title: 'Nada Nos Separará',
-            style: 'Adoração Cristocêntrica • Romanos 8',
-            rawImg: './assets/episodes/iago_ep_06.jpg',
-            audioUrl: './assets/audio/iago_nada_nos_separara.mp3',
-            story: 'Inspirada em Romanos 8: a certeza de que nem a tribulação nem a angústia podem nos separar do amor de Cristo.'
+            isValidationCard: true,
+            story: 'A primeira música oficial de Iago Cordeiro já está em processo final de validação e reivindicação e subirá em breve nas plataformas digitais. Aguarde mais informações dentro desta seção!'
           }
         ],
         storyHeading: 'O Quarto Secreto e o Violão: A Essência de Iago Cordeiro',
@@ -4164,46 +4076,28 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'Músicas profundamente emocionantes e animações 3D estilo cinema que contam histórias reais de abandono, resgate, saudade e o amor puro dos pets.',
         playlist: [
           {
-            title: 'Alguém Ouviu Meu Silêncio',
-            style: 'Balada Cinematográfica Emotiva',
-            rawImg: './assets/episodes/patinhas_ep_01.jpg',
+            title: 'Olhos no Céu — "Toda Noite Ela Faz Isso... Você Já Reparou no Olhar do Seu Pet?"',
+            style: 'MÚSICA & CLIPE NO AR • EPISÓDIO 01',
+            rawImg: './assets/episodes/patinhas_real_ep01.jpg',
             audioUrl: './assets/audio/patinhas_silencio.mp3',
-            story: 'Cantada pela perspectiva de um cãozinho abandonado na chuva que vê dezenas de passos apressados até que uma mão amiga finalmente se abaixa para resgatá-lo.'
+            youtubeUrl: 'https://www.youtube.com/watch?v=dOXLD2OdOYk',
+            story: 'A história emocionante da gatinha Penélope olhando para o céu estrelado no jardim — uma canção sobre saudade, fidelidade e o amor eterno entre um pet e sua família.'
           },
           {
-            title: 'Agora Eu Vou Ficar',
-            style: 'Pop Acústico de Adoção & Esperança',
-            rawImg: './assets/episodes/patinhas_ep_02.jpg',
+            title: 'O Resgate na Chuva (Alguém Ouviu Meu Silêncio) — "O Resgate do Cão Feijão!"',
+            style: 'MÚSICA & CLIPE NO AR • EPISÓDIO 02',
+            rawImg: './assets/episodes/patinhas_real_ep02.jpg',
+            audioUrl: './assets/audio/patinhas_silencio.mp3',
+            youtubeUrl: 'https://www.youtube.com/watch?v=vlLEym6b8Lo',
+            story: 'Do chão molhado ao abraço mais quente: cantada pela perspectiva do cãozinho Feijão abandonado na chuva até o momento em que uma mão amiga se abaixa para resgatá-lo.'
+          },
+          {
+            title: 'Próxima Música em Processo de Validação & Estreia',
+            style: 'EM PROCESSO DE VALIDAÇÃO',
+            rawImg: './assets/banners/patinhas_youtube_banner.jpg',
             audioUrl: './assets/audio/patinhas_agora_eu_vou_ficar.mp3',
-            story: 'O primeiro dia de um pet resgatado em seu novo lar: o medo de ser deixado outra vez dando lugar à certeza de que agora ele tem uma família para sempre.'
-          },
-          {
-            title: 'A Gatinha no Telhado',
-            style: 'Fábula Musical 3D',
-            rawImg: './assets/episodes/patinhas_ep_03.jpg',
-            audioUrl: './assets/audio/patinhas_gatinha_no_telhado.mp3',
-            story: 'A história encantadora de uma gatinha arredia que observava as casas lá de cima até descobrir o calor de um colo seguro.'
-          },
-          {
-            title: 'A Gata da Janela',
-            style: 'Canção de Saudade & Lealdade',
-            rawImg: './assets/episodes/patinhas_ep_04.jpg',
-            audioUrl: './assets/audio/patinhas_gata_da_janela.mp3',
-            story: 'Retrata a fidelidade silenciosa dos nossos companheiros de quatro patas que esperam todos os dias pelo nosso retorno.'
-          },
-          {
-            title: 'O Cachorro que Esperava no Portão',
-            style: 'História Cantada de Fidelidade',
-            rawImg: './assets/episodes/patinhas_ep_05.jpg',
-            audioUrl: './assets/audio/patinhas_cachorro_no_portao.mp3',
-            story: 'Uma homenagem emocionante ao amigo fiel que nunca desistiu de esperar junto ao portão de casa.'
-          },
-          {
-            title: 'O Filhote Debaixo da Chuva',
-            style: 'Canção de Resgate & Compaixão',
-            rawImg: './assets/episodes/patinhas_ep_06.jpg',
-            audioUrl: './assets/audio/patinhas_filhote_na_chuva.mp3',
-            story: 'O encontro transformador entre uma família e um pequeno filhote que precisava apenas de uma chance para viver.'
+            isValidationCard: true,
+            story: 'A próxima música e clipe 3D do canal Patinhas & Canções já está em fase final de validação para subir nas plataformas. Aguarde mais músicas dentro desta seção!'
           }
         ],
         storyHeading: 'Se Eles Pudessem Cantar: A Bíblia Emocional do Patinhas & Canções',
@@ -4247,46 +4141,25 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'Sessões longas de leitura pausada da Bíblia, Salmos, frequências suaves e chuva serena no telhado para vencer a insônia e descansar em paz.',
         episodes: [
           {
-            style: 'Chuva Noturna + Salmos de Proteção',
-            rawImg: './assets/episodes/aguas_ep_01.jpg',
-            title: 'Salmos 1 a 10 com Chuva Suave na Cabana',
+            style: 'VÍDEO NO AR • SALMOS 1 A 10',
+            rawImg: './assets/episodes/aguas_real_ep01.jpg',
+            title: 'Salmos 1 a 10 — A Escolha do Caminho do Justo com Chuva Suave',
             story: 'Leitura calma e acolhedora sob o som contínuo de chuva suave na floresta e lareira acesa, desenhada com baixa luminosidade para induzir o sono profundo.',
-            url: 'https://www.youtube.com/@AguasDeDescanso/videos'
+            url: 'https://www.youtube.com/watch?v=pupK264Aq94'
           },
           {
-            style: 'Leitura Bíblica + Chuva Serena',
-            rawImg: './assets/episodes/aguas_ep_02.jpg',
-            title: 'Salmos 11 a 20 • Descansando nas Promessas',
-            story: 'Leitura serena das Escrituras acompanhada de chuva suave para desacelerar os pensamentos depois de um dia intenso.',
-            url: 'https://www.youtube.com/@AguasDeDescanso/videos'
+            style: 'VÍDEO NO AR • SALMOS 59 A 66',
+            rawImg: './assets/episodes/aguas_real_ep08.jpg',
+            title: 'O Fardo Que Você Pode Soltar Agora: A Paz dos Salmos 59 a 66',
+            story: 'Leitura serena das Escrituras acompanhada de chuva suave para desacelerar os pensamentos e descansar o coração após um dia intenso.',
+            url: 'https://www.youtube.com/watch?v=dwYiOzptAPM'
           },
           {
-            style: 'OBom Pastor • Salmo 23 & Chuva',
-            rawImg: './assets/episodes/aguas_ep_03.jpg',
-            title: 'Salmos 21 a 31 • Águas Tranquilas na Madrugada',
-            story: 'Ideal para deixar tocando a noite inteira no quarto ou na sala, abençoando o ambiente doméstico com a leitura da Bíblia e som de chuva.',
-            url: 'https://www.youtube.com/@AguasDeDescanso/videos'
-          },
-          {
-            style: 'Paz Interior & Refúgio Noturno',
-            rawImg: './assets/episodes/aguas_ep_04.jpg',
-            title: 'Salmos 32 a 41 • Consolo para o Coração Cansado',
-            story: 'Ambiência acústica de chuva e águas correntes combinada com passagens bíblicas de esperança e renovo espiritual.',
-            url: 'https://www.youtube.com/@AguasDeDescanso/videos'
-          },
-          {
-            style: 'Vigília de Paz • Chuva na Janela',
-            rawImg: './assets/episodes/aguas_ep_05.jpg',
-            title: 'Salmos 42 a 49 • Deus É o Nosso Refúgio e Fortaleza',
-            story: 'Narração pausada sobre o cuidado constante de Deus enquanto a chuva cai suavemente lá fora.',
-            url: 'https://www.youtube.com/@AguasDeDescanso/videos'
-          },
-          {
-            style: 'Noite Inteira • Proteção da Família',
-            rawImg: './assets/episodes/aguas_ep_06.jpg',
-            title: 'Salmo 91 & Salmos de Libertação da Ansiedade',
-            story: 'Sessão especial de longa duração criada para combater a insônia e preencher o lar de tranquilidade.',
-            url: 'https://www.youtube.com/@AguasDeDescanso/videos'
+            style: 'VÍDEO NO AR • SALMOS 67 A 71',
+            rawImg: './assets/episodes/aguas_real_ep09.jpg',
+            title: 'Não Me Rejeites na Minha Fraqueza: O Amparo Eterno dos Salmos 67 a 71',
+            story: 'Sessão de longa duração com narração pausada e chuva serena para preencher a casa de paz durante toda a noite.',
+            url: 'https://www.youtube.com/watch?v=nyya4Aah1Rc'
           }
         ],
         storyHeading: 'O Refúgio na Tempestade: A Cabana Iluminada de Águas de Descanso',
@@ -4324,47 +4197,12 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'As histórias da Bíblia contadas pelo querido Vovô Nésio em sua poltrona ao pé da lareira para Pedrinho, Aninha e a Ovelhinha.',
         episodes: [
           {
-            style: 'Série Bíblica Kids • Gênesis',
-            rawImg: './assets/episodes/trono_ep_01.jpg',
-            title: 'A Criação do Mundo & O Jardim de Deus',
-            story: 'Vovô Nésio abre a grande Bíblia e leva Pedrinho e Aninha para ver como Deus criou a luz, os animais e a natureza.',
-            url: 'https://www.youtube.com/@TronoDaPromessa/videos'
-          },
-          {
-            style: 'Série Bíblica Kids • Fé & Obediência',
-            rawImg: './assets/episodes/trono_ep_02.jpg',
-            title: 'A Arca de Noé e o Arco-Íris da Promessa',
-            story: 'Uma aventura encantadora sobre obediência, cuidado com os animais e a aliança de Deus com a humanidade.',
-            url: 'https://www.youtube.com/@TronoDaPromessa/videos'
-          },
-          {
-            style: 'Série Bíblica Kids • Coragem',
-            rawImg: './assets/episodes/trono_ep_03.jpg',
-            title: 'O Pequeno Davi e o Gigante Golias',
-            story: 'Como um pastorzinho de ovelhas venceu o medo confiando na força do Senhor.',
-            url: 'https://www.youtube.com/@TronoDaPromessa/videos'
-          },
-          {
-            style: 'Série Bíblica Kids • Fidelidade',
-            rawImg: './assets/episodes/trono_ep_04.jpg',
-            title: 'Daniel na Cova dos Leões',
-            story: 'A história do profeta que não deixou de orar e viu Deus enviar Seu anjo para fechar a boca dos leões.',
-            url: 'https://www.youtube.com/@TronoDaPromessa/videos'
-          },
-          {
-            style: 'Série Bíblica Kids • Milagres',
-            rawImg: './assets/episodes/trono_ep_05.jpg',
-            title: 'Moisés e a Travessia do Mar Vermelho',
-            story: 'Uma viagem visual emocionante mostrando como Deus abriu um caminho seco no meio das águas.',
-            url: 'https://www.youtube.com/@TronoDaPromessa/videos'
-          },
-          {
-            style: 'Jogos Bíblicos • Pintura • Quiz • Em Breve',
-            rawImg: './assets/episodes/trono_ep_06.jpg',
-            title: 'Aplicativo Trono da Promessa Kids (Em Breve)',
-            story: 'Plataforma interativa com Quebra-Cabeça Bíblico, Oficina de Pintura Mágica, Quiz do Vovô Nésio, Álbum da Fé e Cantinho de Dormir!',
+            style: '1º EPISÓDIO • EM PROCESSO DE VALIDAÇÃO',
+            rawImg: './assets/banners/trono_youtube_banner.jpg',
+            title: 'A Criação do Mundo & O Jardim de Deus — Em Processo de Validação',
+            story: 'O primeiro episódio oficial da Série Criação com o Vovô Nésio, Pedrinho e Aninha já está em processo final de validação para estreia nas plataformas. Aguarde mais informações dentro desta seção!',
             url: '#em-breve',
-            isApp: true
+            isComingSoon: true
           }
         ],
         storyHeading: 'A Poltrona do Vovô Nésio: Onde a Bíblia Ganha Vida para as Crianças',
@@ -4403,50 +4241,10 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'Crítica política, análise investigativa e dossiês audiovisuais sobre as instituições, a economia e os bastidores do poder no Brasil.',
         episodes: [
           {
-            style: 'EM BREVE • SÉRIE EM PRODUÇÃO',
-            rawImg: './assets/episodes/incorruptivel_ep_01.jpg',
-            title: 'Em Breve — O Plenário da República',
-            story: 'Novos episódios em animação 3D com as raposas, lobos e ovelhas nos bastidores do Congresso estarão disponíveis em breve.',
-            url: '#em-breve',
-            isComingSoon: true
-          },
-          {
-            style: 'EM BREVE • SÉRIE EM PRODUÇÃO',
-            rawImg: './assets/episodes/incorruptivel_ep_02.jpg',
-            title: 'Em Breve — A Sala de Situação e Comissões',
-            story: 'As reuniões de cúpula e negociações de bastidor contadas através da fábula política em 3D do canal Incorruptível.',
-            url: '#em-breve',
-            isComingSoon: true
-          },
-          {
-            style: 'EM BREVE • SÉRIE EM PRODUÇÃO',
-            rawImg: './assets/episodes/incorruptivel_ep_03.jpg',
-            title: 'Em Breve — O Gabinete de Bastidor',
-            story: 'Acompanhe em breve os episódios inéditos com o Senador Raposo, Deputada Vivi, Ministro Dito Prazo e todo o elenco.',
-            url: '#em-breve',
-            isComingSoon: true
-          },
-          {
-            style: 'EM BREVE • SÉRIE EM PRODUÇÃO',
-            rawImg: './assets/episodes/incorruptivel_ep_04.jpg',
-            title: 'Em Breve — Os Corredores Monumentais',
-            story: 'Onde os acordos acontecem longe dos microfones: estreia em breve no canal oficial Incorruptível.',
-            url: '#em-breve',
-            isComingSoon: true
-          },
-          {
-            style: 'EM BREVE • SÉRIE EM PRODUÇÃO',
-            rawImg: './assets/episodes/incorruptivel_ep_05.jpg',
-            title: 'Em Breve — Raposas, Lobos e Ovelhas no Plenário',
-            story: 'O embate entre a velha política e a fiscalização cidadã em episódios animados em altíssima definição.',
-            url: '#em-breve',
-            isComingSoon: true
-          },
-          {
-            style: 'EM BREVE • SÉRIE EM PRODUÇÃO',
-            rawImg: './assets/episodes/incorruptivel_ep_06.jpg',
-            title: 'Em Breve — Crônicas da República em 3D',
-            story: 'Inscreva-se no canal e cadastre seu WhatsApp no portal para receber o aviso assim que o primeiro episódio estrear.',
+            style: '1º EPISÓDIO • EM PROCESSO DE VALIDAÇÃO',
+            rawImg: './assets/banners/incorruptivel_youtube_banner.jpg',
+            title: 'Quarenta e Oito Horas — Em Processo de Validação & Estreia',
+            story: 'O primeiro episódio em animação 3D com as raposas, lobos e ovelhas nos bastidores da República já está em processo final de validação para estreia. Aguarde mais informações dentro desta seção!',
             url: '#em-breve',
             isComingSoon: true
           }
@@ -4486,46 +4284,12 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'Documentários cinematográficos em 8K investigando as carruagens de fogo de Ezequiel, os Vigilantes do Livro de Enoque e os grandes enigmas dos textos antigos.',
         episodes: [
           {
-            style: 'Cinema Documental 8K • Ezequiel Cap. 1',
-            rawImg: './assets/episodes/aliens_ep_01.jpg',
-            title: 'A Roda Dentro da Roda: O Que Ezequiel Viu no Rio Quebar?',
-            story: 'Reconstrução visual em 8K da descrição detalhada de Ezequiel: seres de quatro faces, metal incandescente e anéis cobertos de olhos.',
-            url: 'https://www.youtube.com/@AliensDaBiblia/videos'
-          },
-          {
-            style: 'Investigação Bíblica • Arquivo Aurelion',
-            rawImg: './assets/episodes/aliens_ep_02.jpg',
-            title: 'Os Vigilantes do Monte Hermom e os Segredos de Enoque',
-            story: 'A história das sentinelas celestes mencionadas em Gênesis 6 e detalhadas nos manuscritos antigos encontrados no Mar Morto.',
-            url: 'https://www.youtube.com/@AliensDaBiblia/videos'
-          },
-          {
-            style: 'Mistérios do Antigo Testamento • Arquivo Drakhor',
-            rawImg: './assets/episodes/aliens_ep_03.jpg',
-            title: 'Arrebatados aos Céus: Elias, Enoque e os Carros de Fogo',
-            story: 'Um estudo fascinante sobre os relatos de transporte dimensional e manifestações celestes nas Escrituras.',
-            url: 'https://www.youtube.com/@AliensDaBiblia/videos'
-          },
-          {
-            style: 'Arqueologia & Manuscritos • Arquivo Kael',
-            rawImg: './assets/episodes/aliens_ep_04.jpg',
-            title: 'A Coluna de Nuvem e Fogo no Deserto do Sinai',
-            story: 'Análise dos termos originais em hebraico que descrevem a estrutura luminosa que guiou Israel por quarenta anos.',
-            url: 'https://www.youtube.com/@AliensDaBiblia/videos'
-          },
-          {
-            style: 'Cosmologia Antiga • Arquivo Vhakar',
-            rawImg: './assets/episodes/aliens_ep_05.jpg',
-            title: 'A Escada de Jacó e os Portais Dimensionais da Antiguidade',
-            story: 'O significado profundo de Betel e os relatos bíblicos onde a fronteira entre o céu e a Terra se tornou visível.',
-            url: 'https://www.youtube.com/@AliensDaBiblia/videos'
-          },
-          {
-            style: 'Série Original • As 4 Testemunhas',
-            rawImg: './assets/episodes/aliens_ep_06.jpg',
-            title: 'Aurelion, Kael, Drakhor e Vhakar: Crônicas do Cosmos Antigo',
-            story: 'Os quatro observadores canônicos da Bíblia do canal guiam o espectador pelos enigmas mais profundos da história.',
-            url: 'https://www.youtube.com/@AliensDaBiblia/videos'
+            style: '1º DOCUMENTÁRIO • EM PROCESSO DE VALIDAÇÃO',
+            rawImg: './assets/banners/aliens_youtube_banner.jpg',
+            title: 'A Roda Dentro da Roda (Ezequiel) — Em Processo de Validação & Estreia',
+            story: 'O primeiro documentário oficial em 8K do canal Aliens da Bíblia já está em processo final de validação para estreia nas plataformas. Aguarde mais informações dentro desta seção!',
+            url: '#em-breve',
+            isComingSoon: true
           }
         ],
         storyHeading: 'Quando o Céu Tocou a Terra: A Bíblia Cósmica de Aliens da Bíblia',
@@ -4563,46 +4327,12 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         description: 'Série animada infantil em 3D acompanhando as aventuras de Mike, Tufão, Penélope e Feijão enquanto protegem um aquário mágico e aprendem sobre trabalho em equipe.',
         episodes: [
           {
-            style: 'Animação Infantil 3D • Amizade',
-            rawImg: './assets/episodes/aquario_ep_01.jpg',
-            title: 'O Mistério da Pérola Brilhante do Aquário',
-            story: 'Mike, Tufão, Penélope e a turma descobrem que os peixinhos luminosos guardam um segredo no fundo do grande aquário.',
-            url: 'https://www.youtube.com/@AquarioDosFelinos/videos'
-          },
-          {
-            style: 'Animação Infantil 3D • Liderança & Coragem',
-            rawImg: './assets/episodes/aquario_ep_02.jpg',
-            title: 'A Missão Secreta do Capitão Mike',
-            story: 'O gatinho líder da turma organiza uma operação noturna para ajudar um peixinho dourado a reencontrar sua casa de coral.',
-            url: 'https://www.youtube.com/@AquarioDosFelinos/videos'
-          },
-          {
-            style: 'Animação Infantil 3D • Energia & Diversão',
-            rawImg: './assets/episodes/aquario_ep_03.jpg',
-            title: 'A Corrida Maluca de Tufão pela Sala',
-            story: 'Quando Tufão tenta alcançar uma bolha gigante de cristal, toda a sala se transforma em uma pista de aventura.',
-            url: 'https://www.youtube.com/@AquarioDosFelinos/videos'
-          },
-          {
-            style: 'Animação Infantil 3D • Criatividade',
-            rawImg: './assets/episodes/aquario_ep_04.jpg',
-            title: 'A Grande Invenção de Penélope',
-            story: 'Com sua lupa e muita inteligência, Penélope decifra o mapa das luzes coloridas do aquário encantado.',
-            url: 'https://www.youtube.com/@AquarioDosFelinos/videos'
-          },
-          {
-            style: 'Animação Infantil 3D • Ternura & Partilha',
-            rawImg: './assets/episodes/aquario_ep_05.jpg',
-            title: 'O Segredo Doce de Chantily e da Turma',
-            story: 'Uma história encantadora sobre dividir os brinquedos, acolher os novos amigos e trabalhar em equipe.',
-            url: 'https://www.youtube.com/@AquarioDosFelinos/videos'
-          },
-          {
-            style: 'Animação Infantil 3D • Hora de Dormir',
-            rawImg: './assets/episodes/aquario_ep_06.jpg',
-            title: 'Os Guardiões da Noite Azul',
-            story: 'Uma aventura divertida e acolhedora sobre cuidar uns dos outros sob o brilho suave do aquário antes de dormir.',
-            url: 'https://www.youtube.com/@AquarioDosFelinos/videos'
+            style: '1º EPISÓDIO • EM PROCESSO DE VALIDAÇÃO',
+            rawImg: './assets/banners/aquario_youtube_banner.jpg',
+            title: 'O Mistério da Pérola Brilhante do Aquário — Em Processo de Validação',
+            story: 'A primeira aventura oficial em 3D de Mike, Tufão, Penélope e Feijão já está em processo final de validação para estreia. Aguarde mais informações dentro desta seção!',
+            url: '#em-breve',
+            isComingSoon: true
           }
         ],
         storyHeading: 'O Mundo Mágico de Mike, Tufão, Penélope e Feijão',
@@ -5253,6 +4983,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       const tracksContainer = document.getElementById('portal-tracks-container');
 
       if (ch.hasMusic && ch.playlist && ch.playlist.length) {
+        tracksContainer.classList.toggle('single-card-mode', ch.playlist.length === 1);
         repTitle.textContent = `Músicas & Clipes Oficiais de ${ch.name}`;
         if (repSub) {
           repSub.textContent = 'Cenas originais sem texto sobreposto — clique no símbolo 3D da sua plataforma preferida para ouvir ou assistir.';
@@ -5266,7 +4997,11 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             <a ${getPlatformLinkAttrs(ch, 'youtube', 'YouTube Oficial')} class="ch-plat-icon-3d youtube">${SVG_ICONS.youtube}</a>
           </div>
         `;
-        tracksContainer.innerHTML = ch.playlist.map((trk, idx) => `
+        tracksContainer.innerHTML = ch.playlist.map((trk, idx) => {
+          const ytAttrs = trk.youtubeUrl
+            ? `href="${trk.youtubeUrl}" target="_blank" rel="noopener" title="Assistir Clipe Oficial no YouTube"`
+            : getPlatformLinkAttrs(ch, 'youtube', 'Assistir no YouTube Oficial');
+          return `
           <div class="ch-track-card" data-ch-id="${ch.id}" data-trk-idx="${idx}">
             <div>
               <div class="ch-track-raw-thumb-wrap">
@@ -5278,7 +5013,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   <h3 class="ch-track-title">${trk.title}</h3>
                   <p class="ch-track-story">${trk.story}</p>
                 </div>
-                <div class="ch-track-actions-stack">
+                <div class="ch-track-actions-stack" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+                  ${trk.isValidationCard ? `<span class="ch-validation-status-pill">&#9203; Em Processo de Validação &amp; Reivindicação</span>` : ''}
                   <div class="ch-pure-icons-row">
                     <a ${getPlatformLinkAttrs(ch, 'spotify', 'Ouvir no Spotify')} class="ch-plat-icon-3d spotify">
                       ${SVG_ICONS.spotify}
@@ -5292,7 +5028,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                     <a ${getPlatformLinkAttrs(ch, 'amazon', 'Ouvir no Amazon Music')} class="ch-plat-icon-3d amazon">
                       ${SVG_ICONS.amazon}
                     </a>
-                    <a ${getPlatformLinkAttrs(ch, 'youtube', 'Assistir no YouTube Oficial')} class="ch-plat-icon-3d youtube">
+                    <a ${ytAttrs} class="ch-plat-icon-3d youtube">
                       ${SVG_ICONS.youtube}
                     </a>
                   </div>
@@ -5300,8 +5036,11 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
               </div>
             </div>
           </div>
-        `).join('');
+          `;
+        }).join('');
       } else {
+        const epList = ch.episodes || [];
+        tracksContainer.classList.toggle('single-card-mode', epList.length === 1);
         repTitle.textContent = `Episódios & Produções de ${ch.name}`;
         if (repSub) {
           repSub.textContent = 'Cenas originais em alta definição — clique no símbolo 3D do YouTube para assistir no canal oficial.';
@@ -5313,7 +5052,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             </a>
           </div>
         ` : '';
-        tracksContainer.innerHTML = (ch.episodes || []).map((ep) => `
+        tracksContainer.innerHTML = epList.map((ep) => `
           <div class="ch-track-card">
             <div>
               <div class="ch-track-raw-thumb-wrap">
@@ -5325,15 +5064,12 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   <h3 class="ch-track-title">${ep.title}</h3>
                   <p class="ch-track-story">${ep.story}</p>
                 </div>
-                <div class="ch-track-actions-stack">
+                <div class="ch-track-actions-stack" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+                  ${ep.isComingSoon ? `<span class="ch-validation-status-pill">&#9203; Em Processo de Validação &amp; Estreia</span>` : ''}
                   <div class="ch-pure-icons-row">
-                    ${ep.isComingSoon ? `
-                      <button type="button" class="emerald-action-btn" style="padding:8px 18px;font-size:11.5px;border-radius:10px;opacity:0.95;cursor:pointer;" onclick="alert('Em breve! Os episódios de ${ch.name} estarão disponíveis em breve.')">Em Breve</button>
-                    ` : `
-                      <a href="${ep.url}" ${ep.isApp ? 'onclick="event.preventDefault(); alert(\'Em breve! O aplicativo Trono da Promessa Kids estará disponível em breve.\');"' : 'target="_blank" rel="noopener"'} class="ch-plat-icon-3d ${ep.isApp ? 'deezer' : 'youtube'}" title="${ep.isApp ? 'Aplicativo Kids — Em Breve' : 'Assistir Episódio no YouTube Oficial'}">
-                        ${SVG_ICONS.youtube}
-                      </a>
-                    `}
+                    <a href="${ep.isComingSoon ? (ch.links.youtube || '#') : ep.url}" target="_blank" rel="noopener" class="ch-plat-icon-3d youtube" title="Canal Oficial no YouTube">
+                      ${SVG_ICONS.youtube}
+                    </a>
                   </div>
                 </div>
               </div>
