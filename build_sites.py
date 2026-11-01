@@ -11,6 +11,16 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="./assets/tornado/tornado_dunes_8k.jpg" fetchpriority="high">
   <link rel="preload" as="image" href="./assets/ui/vortice_midia_official_logo.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_01_rock.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_02_sacronia.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_03_neon.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_04_iago.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_05_patinhas.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_06_aguas.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_07_trono.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_08_incorruptivel.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_09_aliens.png" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/signs/sign_10_aquario.png" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Chakra+Petch:wght@600;700&family=Cinzel:wght@700;800;900&family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -3002,7 +3012,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- Card 1: Rock Incorruptível -->
           <div class="momento-photo-card">
             <div class="momento-img-wrap">
-              <img src="./assets/banners/rock_youtube_banner.jpg" alt="Rock Incorruptível">
+              <img src="./assets/banners/rock_youtube_banner.jpg" alt="Rock Incorruptível" loading="lazy">
             </div>
             <div class="momento-card-body">
               <span class="momento-kicker">ROCK INCORRUPTÍVEL</span>
@@ -3017,7 +3027,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- Card 2: Sacronia -->
           <div class="momento-photo-card">
             <div class="momento-img-wrap">
-              <img src="./assets/banners/sacronia_youtube_banner.jpg" alt="Sacronia">
+              <img src="./assets/banners/sacronia_youtube_banner.jpg" alt="Sacronia" loading="lazy">
             </div>
             <div class="momento-card-body">
               <span class="momento-kicker">SACRONIA</span>
@@ -3032,7 +3042,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- Card 3: Neon Asher -->
           <div class="momento-photo-card">
             <div class="momento-img-wrap">
-              <img src="./assets/banners/neon_youtube_banner.jpg" alt="Neon Asher">
+              <img src="./assets/banners/neon_youtube_banner.jpg" alt="Neon Asher" loading="lazy">
             </div>
             <div class="momento-card-body">
               <span class="momento-kicker">NEON ASHER</span>
@@ -3047,7 +3057,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- Card 4: Iago Cordeiro -->
           <div class="momento-photo-card">
             <div class="momento-img-wrap">
-              <img src="./assets/banners/iago_youtube_banner.jpg" alt="Iago Cordeiro">
+              <img src="./assets/banners/iago_youtube_banner.jpg" alt="Iago Cordeiro" loading="lazy">
             </div>
             <div class="momento-card-body">
               <span class="momento-kicker">IAGO CORDEIRO</span>
@@ -3062,7 +3072,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- Card 5: Patinhas & Canções -->
           <div class="momento-photo-card">
             <div class="momento-img-wrap">
-              <img src="./assets/banners/patinhas_youtube_banner.jpg" alt="Patinhas e Canções">
+              <img src="./assets/banners/patinhas_youtube_banner.jpg" alt="Patinhas e Canções" loading="lazy">
             </div>
             <div class="momento-card-body">
               <span class="momento-kicker">PATINHAS &amp; CANÇÕES</span>
@@ -3100,7 +3110,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 1. Águas de Descanso -->
           <div class="universo-poster-card" data-yt-handle="AguasDeDescanso">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/aguas_youtube_banner.jpg" alt="Águas de Descanso">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/aguas_youtube_banner.jpg" alt="Águas de Descanso" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Leitura da Bíblia &amp; Descanso com Chuva</span>
@@ -3115,7 +3125,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 2. Rock Incorruptível -->
           <div class="universo-poster-card" data-yt-handle="RockIncorruptivel">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/rock_youtube_banner.jpg" alt="Rock Incorruptível">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/rock_youtube_banner.jpg" alt="Rock Incorruptível" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Crítica Política</span>
@@ -3130,7 +3140,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 3. Sacronia -->
           <div class="universo-poster-card" data-yt-handle="SacroniaMusic">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/sacronia_youtube_banner.jpg" alt="Sacronia">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/sacronia_youtube_banner.jpg" alt="Sacronia" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Gospel Sacro Contemporâneo</span>
@@ -3145,7 +3155,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 4. Neon Asher -->
           <div class="universo-poster-card" data-yt-handle="NeonAsherDarkRock">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/neon_youtube_banner.jpg" alt="Neon Asher">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/neon_youtube_banner.jpg" alt="Neon Asher" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Rock Gótico</span>
@@ -3160,7 +3170,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 5. Iago Cordeiro -->
           <div class="universo-poster-card" data-yt-handle="iagocordeiromusic">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/iago_youtube_banner.jpg" alt="Iago Cordeiro">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/iago_youtube_banner.jpg" alt="Iago Cordeiro" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Louvor Congregacional</span>
@@ -3175,7 +3185,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 6. Patinhas & Canções -->
           <div class="universo-poster-card" data-yt-handle="patinhasecancoes">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/patinhas_youtube_banner.jpg" alt="Patinhas e Canções">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/patinhas_youtube_banner.jpg" alt="Patinhas e Canções" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Amor por Pets</span>
@@ -3190,7 +3200,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 7. Trono da Promessa -->
           <div class="universo-poster-card" data-yt-handle="TronoDaPromessa">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/trono_youtube_banner.jpg" alt="Trono da Promessa">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/trono_youtube_banner.jpg" alt="Trono da Promessa" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Série Bíblica Kids</span>
@@ -3205,7 +3215,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 8. Incorruptível -->
           <div class="universo-poster-card" data-yt-handle="CanalIncorruptivel">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/incorruptivel_youtube_banner.jpg" alt="Incorruptível">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/incorruptivel_youtube_banner.jpg" alt="Incorruptível" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Crítica Política</span>
@@ -3220,7 +3230,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 9. Aliens da Bíblia -->
           <div class="universo-poster-card" data-yt-handle="AliensDaBiblia">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/aliens_youtube_banner.jpg" alt="Aliens da Bíblia">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/aliens_youtube_banner.jpg" alt="Aliens da Bíblia" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Mistérios da Bíblia</span>
@@ -3235,7 +3245,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           <!-- 10. Aquário dos Felinos -->
           <div class="universo-poster-card" data-yt-handle="AquarioDosFelinos">
             <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/aquario_youtube_banner.jpg" alt="Aquário dos Felinos">
+              <img class="bg-art yt-auto-thumb" src="./assets/banners/aquario_youtube_banner.jpg" alt="Aquário dos Felinos" loading="lazy">
             </div>
             <div class="universo-body">
               <span class="universo-style-tag">Aventura Pet Infantil</span>
@@ -3412,7 +3422,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         </div>
 
         <div class="studio-hero-banner">
-          <img class="studio-bg" src="./assets/ui/banner_estudio_vortice.jpg" alt="Vórtice Mídia — Produções Sob Encomenda">
+          <img class="studio-bg" src="./assets/ui/banner_estudio_vortice.jpg" alt="Vórtice Mídia — Produções Sob Encomenda" loading="lazy">
           <div class="studio-banner-mask"></div>
           <div class="studio-banner-content">
             <p class="studio-banner-desc" style="font-size:16.5px;font-weight:600;margin-bottom:18px;">
@@ -3472,7 +3482,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         </div>
 
         <div class="studio-hero-banner">
-          <img class="studio-bg" src="./assets/ui/banner_apps_vortice.jpg" alt="Vórtice Mídia — Aplicativos para EBD e Igrejas">
+          <img class="studio-bg" src="./assets/ui/banner_apps_vortice.jpg" alt="Vórtice Mídia — Aplicativos para EBD e Igrejas" loading="lazy">
           <div class="studio-banner-mask"></div>
           <div class="studio-banner-content">
             <p class="studio-banner-desc" style="font-size:16.5px;font-weight:600;margin-bottom:18px;">
