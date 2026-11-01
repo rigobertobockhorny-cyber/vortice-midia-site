@@ -1809,10 +1809,11 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       position: relative;
       width: 100%;
       height: 100vh;
-      min-height: 100vh;
+      min-height: 680px;
       max-height: 100vh;
       margin-top: 0;
-      padding: 84px 48px 46px;
+      margin-bottom: 140px;
+      padding: 84px 48px 92px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -1977,7 +1978,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     /* ==========================================================================
        CORPO DE SEÇÕES DA PÁGINA DO CANAL (SEÇÕES 2 A 7)
        - Padronizado 100% com a Página Principal (vorticemidia.com.br):
-         * Cada seção inteira na tela (min-height: 108vh; padding: 104px 36px 64px)
+         * Espaçamento/suspiro padronizado e generoso entre TODAS as seções (padding: 150px 36px 150px),
+           sem espaço minúsculo após Músicas e sem espaço exagerado desigual após a Loja!
          * Fundo cinza escuro transparente uniforme (background: rgba(4, 5, 8, 0.22))
          * ZERO linhas separando as seções (border: none)
          * Títulos centralizados com a mesma fonte ('Cinzel') da Home!
@@ -1993,8 +1995,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
     .ch-section-block {
       width: 100%;
-      min-height: 108vh;
-      padding: 104px 36px 64px;
+      min-height: 0;
+      padding: 150px 36px 150px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -2026,7 +2028,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     }
 
     #ch-sec-plataformas {
-      padding-bottom: 120px;
+      padding-bottom: 160px;
     }
 
     .ch-sec-header {
@@ -2035,9 +2037,9 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 14px;
+      gap: 20px;
       margin-top: 0;
-      margin-bottom: 36px;
+      margin-bottom: 44px;
       border: none;
       padding-bottom: 0;
     }
