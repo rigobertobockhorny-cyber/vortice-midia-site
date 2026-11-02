@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAINEL DE VALIDAÇÃO RIGO — 80 Produtos Aprovados com Preço (vorticemidia-20)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #090b10;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      padding: 24px 28px 80px;
+    }
+    .top-banner {
+      max-width: 1420px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+      border: 2px solid #22c55e;
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+    }
+    .top-banner h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 21px;
+      color: #4ade80;
+      margin-bottom: 8px;
+    }
+    .top-banner p {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: #d1d5db;
+    }
+    .tag-pill {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid #f59e0b;
+      color: #fbbf24;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-left: 6px;
+    }
+    .nav-bar {
+      max-width: 1420px;
+      margin: 0 auto 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      background: rgba(9, 11, 16, 0.92);
+      backdrop-filter: blur(10px);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .nav-pill {
+      text-decoration: none;
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 7px 13px;
+      border-radius: 8px;
+      background: #161b26;
+      border: 1px solid var(--c, #fbbf24);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .nav-pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.1);
+    }
+    .ch-section {
+      max-width: 1420px;
+      margin: 0 auto 38px;
+      background: #11151f;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 4px solid var(--ch-color);
+      border-radius: 16px;
+      padding: 22px 24px 26px;
+    }
+    .ch-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .ch-header h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 19px;
+      color: var(--ch-color);
+    }
+    .ch-header p {
+      font-size: 13.5px;
+      color: #9ca3af;
+      margin-top: 3px;
+    }
+    .ch-count {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #4ade80;
+    }
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+      gap: 16px;
+    }
+    .prod-card {
+      background: #181e2c;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .prod-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--ch-color);
+    }
+    .prod-top-badges {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 12px;
+      background: rgba(0,0,0,0.35);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .badge-num { color: #fbbf24; }
+    .badge-asin { color: #9ca3af; font-family: monospace; }
+    .prod-img-box {
+      width: 100%;
+      height: 210px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .prod-img-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .prod-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .prod-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #f9fafb;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .prod-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .price-label { color: #d1d5db; font-weight: 600; }
+    .price-val { color: #4ade80; font-weight: 800; font-size: 15px; }
+    .btn-amz {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
+      color: #090b10;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      transition: filter 0.15s ease;
+    }
+    .btn-amz:hover { filter: brightness(1.1); }
+  </style>
+</head>
+<body>
+  <div class="top-banner">
+    <h1>✅ PAINEL DE VALIDAÇÃO ATUALIZADO COM PREÇOS EM R$ — 80 PRODUTOS APROVADOS <span class="tag-pill">Tag: vorticemidia-20</span></h1>
+    <p>
+      <strong>Todos os ajustes que você pediu já foram aplicados:</strong><br>
+      • <strong>Valores em R$ adicionados</strong> aqui no seu painel de validação (e no site oficial <code>vorticemidia.com.br</code> aparece apenas <em>"Ver Oferta na Amazon"</em> sem o preço fixo, exatamente como você pediu!).<br>
+      • <strong>Rock Incorruptível:</strong> Adicionada a Bandeira Grande do Brasil (150x90cm) e removido o Conjunto Bowl (#4).<br>
+      • <strong>Neon Asher:</strong> Removidos o Moletom (#1), a Camiseta Oversized (#2) e o Óculos (#8).<br>
+      • <strong>Iago Cordeiro:</strong> Removidos o Quadro Colheitadeira (#5), as Xícaras Rosa (#6) e o Boné Country (#8), mantendo os livros, Bíblias e violão.<br>
+      • <strong>Incorruptível:</strong> Removidos a Caneta (#7) e o Kindle (#8), e adicionados <strong>6 livros do Olavo de Carvalho</strong> junto aos clássicos de Mises, Hayek, Bastiat e George Orwell!
+    </p>
+  </div>
+
+  <div class="nav-bar">
+    <a href="#sec-rock-incorruptivel" class="nav-pill" style="--c:#f59e0b">1. Rock Incorruptível (8)</a><a href="#sec-sacronia" class="nav-pill" style="--c:#eab308">2. Sacronia (8)</a><a href="#sec-neon-asher" class="nav-pill" style="--c:#a855f7">3. Neon Asher (5)</a><a href="#sec-iago-cordeiro" class="nav-pill" style="--c:#f97316">4. Iago Cordeiro (8)</a><a href="#sec-patinhas-e-cancoes" class="nav-pill" style="--c:#22c55e">5. Patinhas e Canções (8)</a><a href="#sec-aguas-de-descanso" class="nav-pill" style="--c:#38bdf8">6. Águas de Descanso (8)</a><a href="#sec-trono-da-promessa" class="nav-pill" style="--c:#f43f5e">7. Trono da Promessa (8)</a><a href="#sec-incorruptivel" class="nav-pill" style="--c:#10b981">8. Incorruptível (11)</a><a href="#sec-aliens-da-biblia" class="nav-pill" style="--c:#06b6d4">9. Aliens da Bíblia (8)</a><a href="#sec-aquario-dos-felinos" class="nav-pill" style="--c:#ec4899">10. Aquário dos Felinos (8)</a>
+  </div>
+
+  
+    <section class="ch-section" id="sec-rock-incorruptivel" style="--ch-color: #f59e0b">
+      <div class="ch-header">
+        <div>
+          <h2>1. Rock Incorruptível</h2>
+          <p>Rock Patriota, Bandeira Grande 150x90cm, Liberdade & Estúdio</p>
+        </div>
+        <span class="ch-count">8 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-rock-incorruptivel-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Bandeira do Brasil de Mesa</span>
+            <span class="badge-asin">ASIN: B0HD8MW2J8</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61I3zsS7uML._AC_UL600_.jpg" alt="2 Bandeiras do Brasil em Poliéster para Decoração (150 Cm x 90 cm) Kit 2 Bandeiras Do Brasil)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">2 Bandeiras do Brasil em Poliéster para Decoração (150 Cm x 90 cm) Kit 2 Bandeiras Do Brasil)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 22,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HD8MW2J8?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Bandeira do Brasil Oficial</span>
+            <span class="badge-asin">ASIN: B0G837NXLX</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71Xizvj2NDL._AC_UL600_.jpg" alt="Kit Bandeira de Mesa Brasil e Rio Grande do Sul, Decorativa, Dupla Face, Multicolorido, 19x13cm, Bas..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit Bandeira de Mesa Brasil e Rio Grande do Sul, Decorativa, Dupla Face, Multicolorido, 19x13cm, Bas...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 47,40</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0G837NXLX?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Vestuário Patriota</span>
+            <span class="badge-asin">ASIN: B0HM434N7W</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61Snm+5Uf7L._AC_UL600_.jpg" alt="Camisa Masculina Patriota BRK Agro Bandeira Brasil Preta | Proteção Solar UV50+ com Zíper e Gola Padre" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Camisa Masculina Patriota BRK Agro Bandeira Brasil Preta | Proteção Solar UV50+ com Zíper e Gola Padre</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$161,40</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HM434N7W?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Acessório Patriota</span>
+            <span class="badge-asin">ASIN: B0GPP8X9LC</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/618BEYrLWVL._AC_UL600_.jpg" alt="Boné Brasil Bandeira Brasileira Bordada Tático Militar Ajustável Aba Curva Patriota Nacional Alpha B..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Boné Brasil Bandeira Brasileira Bordada Tático Militar Ajustável Aba Curva Patriota Nacional Alpha B...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$56,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0GPP8X9LC?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Fone de Ouvido Rock / Estúdio</span>
+            <span class="badge-asin">ASIN: B0D2XRXNGY</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/6181jAbkbOL._AC_UL600_.jpg" alt="soundcore V20i da Anker, Fone de Ouvido Bluetooth Aberto e Esportivo, 36H | Bass Up, IP55, Luzes Led com sincronização de música Open Ear, Ganchos ajustáveis Ultraconfortáveis, Encaixe perfeito Clip On" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">soundcore V20i da Anker, Fone de Ouvido Bluetooth Aberto e Esportivo, 36H | Bass Up, IP55, Luzes Led com sincronização de música Open Ear, Ganchos ajustáveis Ultraconfortáveis, Encaixe perfeito Clip On</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$319,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0D2XRXNGY?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Caixa de Som Bluetooth</span>
+            <span class="badge-asin">ASIN: B0FK18FNYH</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/718KNSMkqJL._AC_UL600_.jpg" alt="Caixa de Som Portátil JBL Boombox 4, Bluetooth, Branco | JBL Pro Sound, AI Sound Boost, 210W RMS, At..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caixa de Som Portátil JBL Boombox 4, Bluetooth, Branco | JBL Pro Sound, AI Sound Boost, 210W RMS, At...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$3.199,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0FK18FNYH?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Instrumentos & Guitarra</span>
+            <span class="badge-asin">ASIN: B0H5W4474J</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71kLPRZ9FvL._AC_UL600_.jpg" alt="38 Polegadas Guitarra Acústico com Cutaway Kit, Corpo de Violão em Tília | 6 Cordas de Nylon, com Af..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">38 Polegadas Guitarra Acústico com Cutaway Kit, Corpo de Violão em Tília | 6 Cordas de Nylon, com Af...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 200,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0H5W4474J?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Decoração Rock / Estúdio</span>
+            <span class="badge-asin">ASIN: B0G5L9T9C2</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/412mqc8iNBL._AC_UL600_.jpg" alt="Placa Decorativa Lar Doce Lar com Gancho" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Placa Decorativa Lar Doce Lar com Gancho</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 78,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0G5L9T9C2?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-sacronia" style="--ch-color: #eab308">
+      <div class="ch-header">
+        <div>
+          <h2>2. Sacronia</h2>
+          <p>Rock Sinfônico Cristão, Bíblias de Estudo, C.S. Lewis & Arte Sacra</p>
+        </div>
+        <span class="ch-count">8 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-sacronia-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Bíblia de Estudo King James</span>
+            <span class="badge-asin">ASIN: 6583509792</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61EtgxaIWbL._AC_UL600_.jpg" alt="Bíblia de Estudo King James 1611 | KJA 400 Anos | Full Collor | Capa Dura" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bíblia de Estudo King James 1611 | KJA 400 Anos | Full Collor | Capa Dura</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 75,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6583509792?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Bíblia de Estudo NVI / NAA</span>
+            <span class="badge-asin">ASIN: 6552650272</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg" alt="Bíblia Solas Reformata" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bíblia Solas Reformata</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$159,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Devocional Clássico</span>
+            <span class="badge-asin">ASIN: 1680430009</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51DgwkHYiRL._AC_UL600_.jpg" alt="Dia a dia com Spurgeon - Devocional Diário - Luxo: Manhã e noite" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Dia a dia com Spurgeon - Devocional Diário - Luxo: Manhã e noite</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 52,68</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/1680430009?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Livro Cristão Best-Seller</span>
+            <span class="badge-asin">ASIN: 857860184X</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/91w74bA251L._AC_UL600_.jpg" alt="Cartas de um diabo a seu aprendiz" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Cartas de um diabo a seu aprendiz</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$69,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/857860184X?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Box / Teologia & História</span>
+            <span class="badge-asin">ASIN: 0000188654</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71YikhmqKKL._AC_UL600_.jpg" alt="Coleção Grandes Sucesso de C.S. Lewis" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Coleção Grandes Sucesso de C.S. Lewis</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 96,43</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/0000188654?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Harpa & Hinário / Louvor</span>
+            <span class="badge-asin">ASIN: B087K9P25C</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51IS6QBXdeL._AC_UL600_.jpg" alt="Biblia Slim Harpa Grande Luxo (Vinho)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Biblia Slim Harpa Grande Luxo (Vinho)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 110,49</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B087K9P25C?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Quadro Decorativo Sacro</span>
+            <span class="badge-asin">ASIN: B0FGLZNB66</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61Hqd4xPh9L._AC_UL600_.jpg" alt="Kit 3 Quadro Decorativo Sala Quarto Leão Judá Nunca Foi Sorte Motivacional (15)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit 3 Quadro Decorativo Sala Quarto Leão Judá Nunca Foi Sorte Motivacional (15)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$49,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0FGLZNB66?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Caneca Cristã Fé</span>
+            <span class="badge-asin">ASIN: B09PSM4SHN</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71iSu7rGn5L._AC_UL600_.jpg" alt="Caneca evangelica Salmos 23" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caneca evangelica Salmos 23</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 29,17</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B09PSM4SHN?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-neon-asher" style="--ch-color: #a855f7">
+      <div class="ch-header">
+        <div>
+          <h2>3. Neon Asher</h2>
+          <p>Rock Alternativo Dark, Violino 4/4, Headphone, Microfone & Iluminação</p>
+        </div>
+        <span class="ch-count">5 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-neon-asher-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Luminária LED / Neon Gamer</span>
+            <span class="badge-asin">ASIN: B0B6P9J3J5</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61ZPUe0nvkL._AC_UL600_.jpg" alt="Quntis Light Bar PRO+, Barra de Luz para Monitor com Controle Remoto, Compatível com Monitores Curvos e Planos, Proteção Ocular, Brilho Ajustável com Escurecimento Automático, Sem Reflexo" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Quntis Light Bar PRO+, Barra de Luz para Monitor com Controle Remoto, Compatível com Monitores Curvos e Planos, Proteção Ocular, Brilho Ajustável com Escurecimento Automático, Sem Reflexo</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$309,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0B6P9J3J5?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Headphone Over-Ear</span>
+            <span class="badge-asin">ASIN: B0FCB2VKVR</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51n+edKvBPL._AC_UL600_.jpg" alt="Basike Fone de Ouvido Bluetooth, ANC Cancelamento de Ruído, LE29 (Rosa) | Headphone com Bluetooth 5.4, Headset com Microfone, Certificação Hi-Res Audio, 30 horas reprodução, Carregamento USB-C" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Basike Fone de Ouvido Bluetooth, ANC Cancelamento de Ruído, LE29 (Rosa) | Headphone com Bluetooth 5.4, Headset com Microfone, Certificação Hi-Res Audio, 30 horas reprodução, Carregamento USB-C</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$183,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0FCB2VKVR?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Violino Acústico Clássico</span>
+            <span class="badge-asin">ASIN: B0H7MR969P</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/712FpgIjTzL._AC_UL600_.jpg" alt="VEDO Conjunto de Violino 4/4 Tamanho Normal Fosco | Adequado para Iniciantes e Adultos, Inclui Estoj..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">VEDO Conjunto de Violino 4/4 Tamanho Normal Fosco | Adequado para Iniciantes e Adultos, Inclui Estoj...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 1.599,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0H7MR969P?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Caneca Preta Fosca</span>
+            <span class="badge-asin">ASIN: B0H5WQPQXR</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61IrDWv-nfL._AC_UL600_.jpg" alt="Caneca Térmica 360ml Aço Inoxidável com Tampa Hermética Antivazamento Quente e Gelado (Preto)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caneca Térmica 360ml Aço Inoxidável com Tampa Hermética Antivazamento Quente e Gelado (Preto)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 119,59</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0H5WQPQXR?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Microfone Condensador USB</span>
+            <span class="badge-asin">ASIN: B09JG62KDJ</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61ciiEJ7HRL._AC_UL600_.jpg" alt="FIFINE A6V Microfone USB Para Jogos Para PS5 PC Para Twitch Podcasts | Microfone Condensador Com Mud..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">FIFINE A6V Microfone USB Para Jogos Para PS5 PC Para Twitch Podcasts | Microfone Condensador Com Mud...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$305,99</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B09JG62KDJ?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-iago-cordeiro" style="--ch-color: #f97316">
+      <div class="ch-header">
+        <div>
+          <h2>4. Iago Cordeiro</h2>
+          <p>Louvor, Família, Bíblias, Devocionais & Violão</p>
+        </div>
+        <span class="ch-count">8 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-iago-cordeiro-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Bíblia da Família Letra Gigante</span>
+            <span class="badge-asin">ASIN: 6552650272</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg" alt="Bíblia Solas Reformata" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bíblia Solas Reformata</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$159,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Devocional Café com Deus Pai</span>
+            <span class="badge-asin">ASIN: 6555843179</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51mcGQ8D0dL._AC_UL600_.jpg" alt="Café com Deus Pai - Teens" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Café com Deus Pai - Teens</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$63,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6555843179?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Diário / Caderno de Oração</span>
+            <span class="badge-asin">ASIN: B0GNBBDJ4Q</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61MT-osDF+L._AC_UL600_.jpg" alt="Caderno Devocional Em Sintonia com Deus | Diário de Oração e Reflexão - Capa Dura, 238 páginas, Pape..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caderno Devocional Em Sintonia com Deus | Diário de Oração e Reflexão - Capa Dura, 238 páginas, Pape...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 183,60</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0GNBBDJ4Q?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Livro Casamento & Família</span>
+            <span class="badge-asin">ASIN: 6552174721</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71UB-2RliyL._AC_UL600_.jpg" alt="As Cinco Linguagens do Amor Contadas às Crianças, Gary Chapman - Thomas Nelson" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">As Cinco Linguagens do Amor Contadas às Crianças, Gary Chapman - Thomas Nelson</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$55,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6552174721?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Violão Sertanejo / Louvor</span>
+            <span class="badge-asin">ASIN: B079ZJMZCS</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51X2uc9iU+L._AC_UL600_.jpg" alt="Violão Eletroacústico Dreadnought Folk Cutaway Aço GF-1D CEQ Translucent" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Violão Eletroacústico Dreadnought Folk Cutaway Aço GF-1D CEQ Translucent</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 349,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B079ZJMZCS?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Harpa & Hinário / Louvor</span>
+            <span class="badge-asin">ASIN: B087K9P25C</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51IS6QBXdeL._AC_UL600_.jpg" alt="Biblia Slim Harpa Grande Luxo (Vinho)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Biblia Slim Harpa Grande Luxo (Vinho)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 110,49</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B087K9P25C?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Devocional Clássico</span>
+            <span class="badge-asin">ASIN: 1680430009</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51DgwkHYiRL._AC_UL600_.jpg" alt="Dia a dia com Spurgeon - Devocional Diário - Luxo: Manhã e noite" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Dia a dia com Spurgeon - Devocional Diário - Luxo: Manhã e noite</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 52,68</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/1680430009?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Clássico Cristão — Edição de Luxo</span>
+            <span class="badge-asin">ASIN: 6584956393</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/91mYAMQ785L._AC_UL600_.jpg" alt="Confissões de Santo Agostinho - Edição de Luxo Almofadada" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Confissões de Santo Agostinho - Edição de Luxo Almofadada</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 37,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6584956393?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-patinhas-e-cancoes" style="--ch-color: #22c55e">
+      <div class="ch-header">
+        <div>
+          <h2>5. Patinhas e Canções</h2>
+          <p>Cães, Gatos, Caminhas, Fontes & Cuidado Pet</p>
+        </div>
+        <span class="ch-count">8 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Caminha Pet Nuvem Macia</span>
+            <span class="badge-asin">ASIN: B0HFQ53P8M</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61h+9ewmAUL._AC_UL600_.jpg" alt="Cama Pet Sofá Gigante 120x80cm Cachorro Porte Grande Lavável Borda Alta Confortável Marrom" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Cama Pet Sofá Gigante 120x80cm Cachorro Porte Grande Lavável Borda Alta Confortável Marrom</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$324,74</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HFQ53P8M?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Fonte Bebedouro Água Pet</span>
+            <span class="badge-asin">ASIN: B07KCLC6J3</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71gUUBWN9SL._AC_UL600_.jpg" alt="Fonte Bebedouro de Água Portátil Amicus 1,2L para Gatos e Cães" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Fonte Bebedouro de Água Portátil Amicus 1,2L para Gatos e Cães</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$79,13</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B07KCLC6J3?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Comedouro Automático / Duplo</span>
+            <span class="badge-asin">ASIN: B0H4HTZGRF</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61iQq3+quCL._AC_UL600_.jpg" alt="Mordedor Center Cut Branqueado Bovino PETSKO 100% Natural Para Cães - 2 Unidades" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Mordedor Center Cut Branqueado Bovino PETSKO 100% Natural Para Cães - 2 Unidades</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$36,96</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0H4HTZGRF?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Peitoral & Guia Passeio</span>
+            <span class="badge-asin">ASIN: B0FPBV6GN2</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71qo1OtVhTL._AC_UL600_.jpg" alt="Peitoral H para Cães, Antipuxão com 2 Pontos de Engate, Ajustável Tamanhos P/M/G, para Passeio e Ade..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Peitoral H para Cães, Antipuxão com 2 Pontos de Engate, Ajustável Tamanhos P/M/G, para Passeio e Ade...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 143,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0FPBV6GN2?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Tapete Higiênico / Impermeável</span>
+            <span class="badge-asin">ASIN: B0HGMDBSQ1</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61YkQKdS6BL._AC_UL600_.jpg" alt="Tapete Higiênico para Cães Mozão Aroma Neutro 50x60cm 30 Unidades 6 Camadas Super Absorvente com Gel Anti Vazamento e Controle de Odores - TOICE" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Tapete Higiênico para Cães Mozão Aroma Neutro 50x60cm 30 Unidades 6 Camadas Super Absorvente com Gel Anti Vazamento e Controle de Odores - TOICE</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$35,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HGMDBSQ1?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Arranhador Torre para Gatos</span>
+            <span class="badge-asin">ASIN: B0795T91YP</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81Jo-RtW8RL._AC_UL600_.jpg" alt="Feandrea Árvore para Gatos, 84 cm, Tamanho G, para Gatos Grandes até 7 kg, Poleiro Amplo, 2 Tocas, Poste Arranhador, Cinza Claro BRPCT61WV2" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Feandrea Árvore para Gatos, 84 cm, Tamanho G, para Gatos Grandes até 7 kg, Poleiro Amplo, 2 Tocas, Poste Arranhador, Cinza Claro BRPCT61WV2</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$369,99</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0795T91YP?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Brinquedo Interativo Cães</span>
+            <span class="badge-asin">ASIN: B07YBNLXH6</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71CnYh8YNNL._AC_UL600_.jpg" alt="Mordedor Pet Games Monstrinho Azul, Tamanho Médio" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Mordedor Pet Games Monstrinho Azul, Tamanho Médio</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$58,98</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B07YBNLXH6?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Mochila / Bolsa Transporte Pet</span>
+            <span class="badge-asin">ASIN: B0CKT43D9Q</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71TsGRxSLVL._AC_UL600_.jpg" alt="Bolsa Transporte Pet Ventilação em 4 lados 42 * 26 * 27 cm Não Se Deforma Facilmente Bolsa Transport..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bolsa Transporte Pet Ventilação em 4 lados 42 * 26 * 27 cm Não Se Deforma Facilmente Bolsa Transport...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$168,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0CKT43D9Q?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-aguas-de-descanso" style="--ch-color: #38bdf8">
+      <div class="ch-header">
+        <div>
+          <h2>6. Águas de Descanso</h2>
+          <p>Salmos para Dormir, Difusores, Paz Interior & Relaxamento</p>
+        </div>
+        <span class="ch-count">8 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-aguas-de-descanso-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Difusor de Aromas Ultrassônico</span>
+            <span class="badge-asin">ASIN: B0HKLPW4VJ</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/613g5n0gTwL._AC_UL600_.jpg" alt="Umidificador de Ar Difusor de Ambiente Ultrassônico 700ml LED | Aromas Óleo Essencial com Controle R..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Umidificador de Ar Difusor de Ambiente Ultrassônico 700ml LED | Aromas Óleo Essencial com Controle R...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 99,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HKLPW4VJ?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Kit Óleos Essenciais Lavanda</span>
+            <span class="badge-asin">ASIN: B0CM4NT481</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81IHn4DCtnL._AC_UL600_.jpg" alt="Óleo de Rosa Mosqueta - Puro, Uniformizador, Hidratante e Antioxidante - Para Manchas, Rugas, Estrias e Melhor Elasticidade - Uso Facial, Oleo Corporal e Cabelos - 100% Pura Natural Vegano - 30 mL Beauts" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Óleo de Rosa Mosqueta - Puro, Uniformizador, Hidratante e Antioxidante - Para Manchas, Rugas, Estrias e Melhor Elasticidade - Uso Facial, Oleo Corporal e Cabelos - 100% Pura Natural Vegano - 30 mL Beauts</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$49,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0CM4NT481?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Bíblia Salmos Letra Gigante</span>
+            <span class="badge-asin">ASIN: 655265040X</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81DYHIHkrlL._AC_UL600_.jpg" alt="Bíblia Trindade - Marrom - Heziom - Letra Grande" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bíblia Trindade - Marrom - Heziom - Letra Grande</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$159,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/655265040X?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Luminária Lua Cheia Cabeceira</span>
+            <span class="badge-asin">ASIN: B0C3Q7152B</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51dh3ERsgdL._AC_UL600_.jpg" alt="Luminatti by Danuri Luminária Pixar E27 30W - Preto | Articulada de Mesa para Escritório, Estudo, Le..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Luminatti by Danuri Luminária Pixar E27 30W - Preto | Articulada de Mesa para Escritório, Estudo, Le...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$84,20</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0C3Q7152B?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Chá Relaxante / Infusor</span>
+            <span class="badge-asin">ASIN: B0HG6HT49F</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71s0y7YgSZL._AC_UL600_.jpg" alt="Garrafa Térmica 2000ml Aço Inoxidável com Alça e Canudo - Preto | Bico Duplo, Gancho Incluso, Capacidade 2L, Tampa com Trava, Uso Esportivo" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Garrafa Térmica 2000ml Aço Inoxidável com Alça e Canudo - Preto | Bico Duplo, Gancho Incluso, Capacidade 2L, Tampa com Trava, Uso Esportivo</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 99,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HG6HT49F?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Máscara de Dormir Conforto</span>
+            <span class="badge-asin">ASIN: B0CRGR2TS5</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/418EcYAOCbL._AC_UL600_.jpg" alt="soundcore Sleep A20 da Anker Fone para Dormir Bluetooth 5.3 Antirruído ANC | 80H, Conforto Superior , Compacto e Confortável para Dormir de Lado, Áudio com IA, Monitor de Sono e Alarme Personalizado" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">soundcore Sleep A20 da Anker Fone para Dormir Bluetooth 5.3 Antirruído ANC | 80H, Conforto Superior , Compacto e Confortável para Dormir de Lado, Áudio com IA, Monitor de Sono e Alarme Personalizado</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$778,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0CRGR2TS5?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Travesseiro Nasa / Ortopédico</span>
+            <span class="badge-asin">ASIN: B0GH17SBYW</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/717sedux3SL._AC_UL600_.jpg" alt="TOKE DIN DON 1 Kit Travesseiro Nasa de Verdade Viscoelástico Ajustável | Antialérgico, com Capa 50x7..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">TOKE DIN DON 1 Kit Travesseiro Nasa de Verdade Viscoelástico Ajustável | Antialérgico, com Capa 50x7...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$219,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0GH17SBYW?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Caixa de Som Ruído Branco</span>
+            <span class="badge-asin">ASIN: B0HCDQBVHB</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/616Re1xmAaL._AC_UL600_.jpg" alt="Aparelho Ruído Branco Bebês e Adultos com Luz Noturna, Sons Relaxantes Sono | Maquina de som 20 son..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Aparelho Ruído Branco Bebês e Adultos com Luz Noturna, Sons Relaxantes Sono | Maquina de som 20 son...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$78,99</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HCDQBVHB?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-trono-da-promessa" style="--ch-color: #f43f5e">
+      <div class="ch-header">
+        <div>
+          <h2>7. Trono da Promessa</h2>
+          <p>Histórias Bíblicas Infantis, Livros de Colorir, LEGO & Brinquedos</p>
+        </div>
+        <span class="ch-count">8 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-trono-da-promessa-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Bíblia Infantil Ilustrada</span>
+            <span class="badge-asin">ASIN: 655217201X</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81azmSNhAuL._AC_UL600_.jpg" alt="Bíblia Aventura para crianças NVI, Capa dura com fechamento em ímã, Leão, Leitura Perfeita" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bíblia Aventura para crianças NVI, Capa dura com fechamento em ímã, Leão, Leitura Perfeita</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$139,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/655217201X?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • 365 Histórias Bíblicas</span>
+            <span class="badge-asin">ASIN: 8595200629</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81m74G-S1fL._AC_UL600_.jpg" alt="365 Historias Bíblicas" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">365 Historias Bíblicas</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 15,59</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8595200629?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Livros de Colorir Cristão Kids</span>
+            <span class="badge-asin">ASIN: 6555001992</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71mfwkzNXHL._AC_UL600_.jpg" alt="365 Desenhos da Bíblia para colorir" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">365 Desenhos da Bíblia para colorir</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 16,13</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6555001992?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Pelúcia Ovelhinha / Leãozinho</span>
+            <span class="badge-asin">ASIN: B0G2SWWR5V</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81HF3FdNjyL._AC_UL600_.jpg" alt="LEGO Creator 3 em 1 Animais da Floresta: Lobo-cinzento; Brinquedo 31393" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">LEGO Creator 3 em 1 Animais da Floresta: Lobo-cinzento; Brinquedo 31393</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$449,99</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0G2SWWR5V?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Jogo Educativo Família</span>
+            <span class="badge-asin">ASIN: B077PLFYWF</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51XF78npGsL._AC_UL600_.jpg" alt="Jogo Imagem e Ação 2 Grow, Multicor" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Jogo Imagem e Ação 2 Grow, Multicor</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$263,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B077PLFYWF?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Projetor de Estrelas Quarto Kids</span>
+            <span class="badge-asin">ASIN: B0DSXYB3PD</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61WQ7fpHs1L._AC_UL600_.jpg" alt="Projetor Luminaria de luz da galáxia do astronauta Luz Noturna LED com Céu Estrelado, Aurora, Contro..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Projetor Luminaria de luz da galáxia do astronauta Luz Noturna LED com Céu Estrelado, Aurora, Contro...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$39,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0DSXYB3PD?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Blocos de Montar Criativos</span>
+            <span class="badge-asin">ASIN: B0G2T4739R</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81zcdle7-cL._AC_UL600_.jpg" alt="LEGO NINJAGO Pack de Combate Dragão Meca do Lloyd 71862 | Brinquedos De Construção, Meninos E Meninas, Anos 6+, Figuras De Ação, 3 Minifiguras, 81 Peças" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">LEGO NINJAGO Pack de Combate Dragão Meca do Lloyd 71862 | Brinquedos De Construção, Meninos E Meninas, Anos 6+, Figuras De Ação, 3 Minifiguras, 81 Peças</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$79,99</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0G2T4739R?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Garrafinha Infantil Escola</span>
+            <span class="badge-asin">ASIN: B0FXZVDG74</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61AWuRvjq+L._AC_UL600_.jpg" alt="MODUS Garrafa Térmica Esportiva De Inox Com Isolamento A Vácuo 950ML | Azul" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">MODUS Garrafa Térmica Esportiva De Inox Com Isolamento A Vácuo 950ML | Azul</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$75,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0FXZVDG74?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-incorruptivel" style="--ch-color: #10b981">
+      <div class="ch-header">
+        <div>
+          <h2>8. Incorruptível</h2>
+          <p>Olavo de Carvalho, Mises, Hayek, Bastiat, George Orwell & Direita Conservadora</p>
+        </div>
+        <span class="ch-count">11 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-incorruptivel-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Olavo de Carvalho — Best-Seller</span>
+            <span class="badge-asin">ASIN: 8501402516</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/718qyVMPR7L._AC_UL600_.jpg" alt="O mínimo que você precisa saber para não ser um idiota — Olavo de Carvalho" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">O mínimo que você precisa saber para não ser um idiota — Olavo de Carvalho</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 59,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8501402516?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Olavo de Carvalho — Clássico</span>
+            <span class="badge-asin">ASIN: 6587138691</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71g22PdHYrL._AC_UL600_.jpg" alt="O Imbecil Coletivo — Atualidades inculturais brasileiras (Olavo de Carvalho)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">O Imbecil Coletivo — Atualidades inculturais brasileiras (Olavo de Carvalho)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 99,92</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6587138691?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Olavo de Carvalho — Filosofia</span>
+            <span class="badge-asin">ASIN: 8567394511</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/619dC2skyQL._AC_UL600_.jpg" alt="O Jardim das Aflições — Olavo de Carvalho" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">O Jardim das Aflições — Olavo de Carvalho</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 73,54</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8567394511?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Olavo de Carvalho — Antologia</span>
+            <span class="badge-asin">ASIN: 8595074186</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51d7QNeh8gL._AC_UL600_.jpg" alt="O Essencial de Olavo de Carvalho" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">O Essencial de Olavo de Carvalho</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 85,40</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8595074186?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Olavo de Carvalho — Cultura & Política</span>
+            <span class="badge-asin">ASIN: 8567394260</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51AqekpukSL._AC_UL600_.jpg" alt="A Nova Era e a Revolução Cultural: Fritjof Capra e Antonio Gramsci — Olavo de Carvalho" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">A Nova Era e a Revolução Cultural: Fritjof Capra e Antonio Gramsci — Olavo de Carvalho</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 89,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8567394260?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Olavo de Carvalho — Geopolítica</span>
+            <span class="badge-asin">ASIN: 8595071217</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61IW0oP4b4L._AC_UL600_.jpg" alt="O Foro de São Paulo: A ascensão do comunismo latino-americano — Olavo de Carvalho" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">O Foro de São Paulo: A ascensão do comunismo latino-americano — Olavo de Carvalho</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 59,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8595071217?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • As Seis Lições - Mises</span>
+            <span class="badge-asin">ASIN: 8593751253</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71M-fsD472L._AC_UL600_.jpg" alt="As seis lições" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">As seis lições</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 33,25</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8593751253?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • O Caminho da Servidão - Hayek</span>
+            <span class="badge-asin">ASIN: 6586029724</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61XgkB3IDBL._AC_UL600_.jpg" alt="O caminho da servidão: 2ª Edição" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">O caminho da servidão: 2ª Edição</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 65,01</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6586029724?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-9">
+          <div class="prod-top-badges">
+            <span class="badge-num">#9 • A Lei - Frédéric Bastiat</span>
+            <span class="badge-asin">ASIN: 8562409715</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81l+1yVENCL._AC_UL600_.jpg" alt="A lei: por que a esquerda não funciona" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">A lei: por que a esquerda não funciona</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 25,94</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8562409715?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-10">
+          <div class="prod-top-badges">
+            <span class="badge-num">#10 • 1984 - George Orwell (Edição Especial)</span>
+            <span class="badge-asin">ASIN: B08ZK6N3XZ</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61F-KPiT4KL._AC_UL600_.jpg" alt="As obras revolucionárias de George Orwell - Box com 3 livros" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">As obras revolucionárias de George Orwell - Box com 3 livros</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$74,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B08ZK6N3XZ?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-11">
+          <div class="prod-top-badges">
+            <span class="badge-num">#11 • Bandeira do Brasil de Mesa</span>
+            <span class="badge-asin">ASIN: B0HD8MW2J8</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61I3zsS7uML._AC_UL600_.jpg" alt="2 Bandeiras do Brasil em Poliéster para Decoração (150 Cm x 90 cm) Kit 2 Bandeiras Do Brasil)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">2 Bandeiras do Brasil em Poliéster para Decoração (150 Cm x 90 cm) Kit 2 Bandeiras Do Brasil)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 22,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HD8MW2J8?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-aliens-da-biblia" style="--ch-color: #06b6d4">
+      <div class="ch-header">
+        <div>
+          <h2>9. Aliens da Bíblia</h2>
+          <p>O Livro de Enoque, Deuses Astronautas, Atlas Bíblico, Telescópio & Arqueologia</p>
+        </div>
+        <span class="ch-count">8 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-aliens-da-biblia-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • O Livro de Enoque</span>
+            <span class="badge-asin">ASIN: 6559579611</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71XC87bA64L._AC_UL600_.jpg" alt="O livro de Enoque: Inclui – O testamento de Salomão" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">O livro de Enoque: Inclui – O testamento de Salomão</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 19,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6559579611?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Eram os Deuses Astronautas</span>
+            <span class="badge-asin">ASIN: 6555393971</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71-OO+glHtL._AC_UL600_.jpg" alt="Eram os deuses astronautas? (Edição comemorativa - 50 anos)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Eram os deuses astronautas? (Edição comemorativa - 50 anos)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$69,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6555393971?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Bíblia de Estudo Arqueológica</span>
+            <span class="badge-asin">ASIN: 6552650272</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg" alt="Bíblia Solas Reformata" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bíblia Solas Reformata</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$159,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Atlas Histórico da Bíblia</span>
+            <span class="badge-asin">ASIN: 8537642673</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71t3RjohqaL._AC_UL600_.jpg" alt="Atlas Bíblico Ilustrado" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Atlas Bíblico Ilustrado</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 51,77</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8537642673?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Telescópio / Luneta Astronômica</span>
+            <span class="badge-asin">ASIN: B0HK1HQTBP</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61S2W7rFcuL._AC_UL600_.jpg" alt="Kit Telescópio e Microscópio Infantil 2 em 1 com Tripé | Ampliação até 450x, A partir de 8 anos, Mat..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit Telescópio e Microscópio Infantil 2 em 1 com Tripé | Ampliação até 450x, A partir de 8 anos, Mat...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 154,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HK1HQTBP?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Luminária Projetor Galáxia</span>
+            <span class="badge-asin">ASIN: B0H7NSWW95</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61mFMGAtNiL._AC_UL600_.jpg" alt="Projetor Astronauta Galáxia com Nebulosa e Estrelas | Controle Remoto, Timer, Cabeça Ajustável, Luz ..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Projetor Astronauta Galáxia com Nebulosa e Estrelas | Controle Remoto, Timer, Cabeça Ajustável, Luz ...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 185,00</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0H7NSWW95?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Globo Terrestre Iluminado</span>
+            <span class="badge-asin">ASIN: B076H4QDNN</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61OHQBgOMoL._AC_UL600_.jpg" alt="Globo Terrestre Studio Politico, ProCalc, Multicor" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Globo Terrestre Studio Politico, ProCalc, Multicor</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$189,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B076H4QDNN?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Livro Mistérios da Antiguidade</span>
+            <span class="badge-asin">ASIN: 8572441786</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71jk7fDJINL._AC_UL600_.jpg" alt="As primeiras civilizações" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">As primeiras civilizações</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 27,59</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/8572441786?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-aquario-dos-felinos" style="--ch-color: #ec4899">
+      <div class="ch-header">
+        <div>
+          <h2>10. Aquário dos Felinos</h2>
+          <p>Universo dos Gatos, Arranhadores, Fontes, Túneis & Diversão Felina</p>
+        </div>
+        <span class="ch-count">8 Produtos Aprovados</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Arranhador Torre para Gatos</span>
+            <span class="badge-asin">ASIN: B0795T91YP</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81Jo-RtW8RL._AC_UL600_.jpg" alt="Feandrea Árvore para Gatos, 84 cm, Tamanho G, para Gatos Grandes até 7 kg, Poleiro Amplo, 2 Tocas, Poste Arranhador, Cinza Claro BRPCT61WV2" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Feandrea Árvore para Gatos, 84 cm, Tamanho G, para Gatos Grandes até 7 kg, Poleiro Amplo, 2 Tocas, Poste Arranhador, Cinza Claro BRPCT61WV2</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$369,99</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0795T91YP?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Fonte de Água Inox para Gatos</span>
+            <span class="badge-asin">ASIN: B07KCLC6J3</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71gUUBWN9SL._AC_UL600_.jpg" alt="Fonte Bebedouro de Água Portátil Amicus 1,2L para Gatos e Cães" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Fonte Bebedouro de Água Portátil Amicus 1,2L para Gatos e Cães</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$79,13</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B07KCLC6J3?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Brinquedo Peixe Elétrico / Interativo</span>
+            <span class="badge-asin">ASIN: B0HH5TJNV6</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51a49NUqjOL._AC_UL600_.jpg" alt="Bola Interativa para Gatos Automática com Movimento e Cordão | Brinquedo interativo com movimento qu..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bola Interativa para Gatos Automática com Movimento e Cordão | Brinquedo interativo com movimento qu...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$15,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0HH5TJNV6?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Túnel Dobrável para Gatos</span>
+            <span class="badge-asin">ASIN: B0H4HP5XPW</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51tjuK9s-VL._AC_UL600_.jpg" alt="Tunel para Gatos em Poliester Colorido Formato T | Uso recomendado para interacao de pets combater o..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Tunel para Gatos em Poliester Colorido Formato T | Uso recomendado para interacao de pets combater o...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$39,40</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0H4HP5XPW?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Rede de Janela para Gatos</span>
+            <span class="badge-asin">ASIN: B0GS7MBF5C</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/418fEAmfw+L._AC_UL600_.jpg" alt="Caminha Suspensa para Gatos com Ventosas | Cama de Janela para Gato | Rede para Janela Super Resiste..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caminha Suspensa para Gatos com Ventosas | Cama de Janela para Gato | Rede para Janela Super Resiste...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 579,99</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0GS7MBF5C?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Caixa de Areia Fechada / Furba</span>
+            <span class="badge-asin">ASIN: B0H2XL7SL7</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71pkJ59BIKL._AC_UL600_.jpg" alt="Caixa de Areia Fechada para Gatos, Aço Inoxidável, Extra Grande, 62x38x34cm | Três formas de uso" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caixa de Areia Fechada para Gatos, Aço Inoxidável, Extra Grande, 62x38x34cm | Três formas de uso</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$579,99</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0H2XL7SL7?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Varinha com Penas e Guizo</span>
+            <span class="badge-asin">ASIN: B0G4HLLKP7</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51NLJWfycvL._AC_UL600_.jpg" alt="Kit 3 Brinquedo Gato Varinha Pássaro Com Ventosa Fixa Chao Parede Janela Bolinha Catnip" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit 3 Brinquedo Gato Varinha Pássaro Com Ventosa Fixa Chao Parede Janela Bolinha Catnip</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$11,97</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0G4HLLKP7?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Caneca Gateiros / Gatinho</span>
+            <span class="badge-asin">ASIN: B0DS6HFWKQ</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61rvZDSGVOL._AC_UL600_.jpg" alt="Caneca de Gato Fofa 325ml | Presente Criativo para Quem Ama Gatos | Caneca Engraçada para Café | Ide..." loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caneca de Gato Fofa 325ml | Presente Criativo para Quem Ama Gatos | Caneca Engraçada para Café | Ide...</h3>
+            <div class="prod-price-row">
+              <span class="price-label">💰 Valor hoje na Amazon:</span>
+              <span class="price-val">R$ 45,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://www.amazon.com.br/dp/B0DS6HFWKQ?tag=vorticemidia-20" target="_blank" rel="noopener" class="btn-amz">
+                🔎 Abrir na Amazon (com sua Tag vorticemidia-20)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+</body>
+</html>

@@ -2543,22 +2543,32 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         0 0 22px rgba(255, 255, 255, 0.24);
     }
 
-    /* Imagem Padronizada com "EM BREVE" em TODOS os blocos da loja (Cinza Escuro Translúcido) */
+    /* Vitrine Oficial de Produtos Reais Amazon (vorticemidia-20) */
     .store-prod-visual {
       position: relative;
       width: 100%;
-      height: 142px;
+      height: 168px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 42%, rgba(36, 42, 58, 0.55) 0%, rgba(16, 20, 30, 0.78) 58%, rgba(8, 10, 16, 0.92) 100%);
+      background: #ffffff;
       border-bottom: 1.5px solid rgba(255, 255, 255, 0.16);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 12px;
+      padding: 10px;
       text-align: center;
+      cursor: pointer;
+    }
+
+    .store-prod-real-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.26s ease;
+    }
+
+    .store-product-card:hover .store-prod-real-img {
+      transform: scale(1.06);
     }
 
     .store-coming-soon-stamp {
@@ -2602,12 +2612,16 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     }
 
     .store-prod-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 16px;
-      font-weight: 800;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
       color: #ffffff;
-      line-height: 1.24;
+      line-height: 1.32;
       margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .store-prod-actions {
@@ -5318,390 +5332,605 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
        - Dentro de cada Canal (#ch-sec-loja): 4 produtos específicos daquele universo
        ========================================================================= */
     const CHANNEL_STORE_CATALOG = {
-      'rock-incorruptivel': [
-        {
-          cat: 'patriota',
-          typeBadge: 'VESTUÁRIO',
-          subTag: 'COLEÇÃO PATRIOTA & LIBERDADE',
-          title: 'Camiseta "Incorruptível — A Verdade Não Se Cala"',
-          desc: 'Algodão premium com estampa de alta definição em verde, amarelo e dourado metálico inspirada no palco de Rock Incorruptível.',
-          img: './assets/tracks/rock_01.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'patriota',
-          typeBadge: 'SÍMBOLO NACIONAL',
-          subTag: 'EDIÇÃO BORDADA DUPLA FACE',
-          title: 'Bandeira Oficial do Brasil Dupla Face Premium',
-          desc: 'Bandeira oficial em tecido náutico de alta resistência com estrelas e faixa bordadas para casa, estúdio ou manifestações.',
-          img: './assets/tracks/rock_05.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'patriota',
-          typeBadge: 'COLECIONÁVEL',
-          subTag: 'LINHA STUDIO ROCK',
-          title: 'Caneca Preta Fosca "OGigante Acordou"',
-          desc: 'Cerâmica preta fosca com interior dourado e gravação exclusiva das letras e símbolos de Rock Incorruptível.',
-          img: './assets/tracks/rock_03.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'patriota',
-          typeBadge: 'ACESSÓRIO',
-          subTag: 'BORDADO 3D EM RELEVO',
-          title: 'Boné Trucker Bordado "Rock Incorruptível"',
-          desc: 'Modelagem americana com ajuste traseiro e brasão frontal bordado em alto-relevo dourado.',
-          img: './assets/tracks/rock_04.jpg',
-          featuredHome: false
-        }
+      "rock-incorruptivel": [
+            {
+                  "asin": "B0HD8MW2J8",
+                  "category": "Bandeira do Brasil de Mesa",
+                  "title": "2 Bandeiras do Brasil em Poliéster para Decoração (150 Cm x 90 cm) Kit 2 Bandeiras Do Brasil)",
+                  "img": "https://m.media-amazon.com/images/I/61I3zsS7uML._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HD8MW2J8?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0G837NXLX",
+                  "category": "Bandeira do Brasil Oficial",
+                  "title": "Kit Bandeira de Mesa Brasil e Rio Grande do Sul, Decorativa, Dupla Face, Multicolorido, 19x13cm, Bas...",
+                  "img": "https://m.media-amazon.com/images/I/71Xizvj2NDL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0G837NXLX?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0HM434N7W",
+                  "category": "Vestuário Patriota",
+                  "title": "Camisa Masculina Patriota BRK Agro Bandeira Brasil Preta | Proteção Solar UV50+ com Zíper e Gola Padre",
+                  "img": "https://m.media-amazon.com/images/I/61Snm+5Uf7L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HM434N7W?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0GPP8X9LC",
+                  "category": "Acessório Patriota",
+                  "title": "Boné Brasil Bandeira Brasileira Bordada Tático Militar Ajustável Aba Curva Patriota Nacional Alpha B...",
+                  "img": "https://m.media-amazon.com/images/I/618BEYrLWVL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0GPP8X9LC?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0D2XRXNGY",
+                  "category": "Fone de Ouvido Rock / Estúdio",
+                  "title": "soundcore V20i da Anker, Fone de Ouvido Bluetooth Aberto e Esportivo, 36H | Bass Up, IP55, Luzes Led com sincronização de música Open Ear, Ganchos ajustáveis Ultraconfortáveis, Encaixe perfeito Clip On",
+                  "img": "https://m.media-amazon.com/images/I/6181jAbkbOL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0D2XRXNGY?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0FK18FNYH",
+                  "category": "Caixa de Som Bluetooth",
+                  "title": "Caixa de Som Portátil JBL Boombox 4, Bluetooth, Branco | JBL Pro Sound, AI Sound Boost, 210W RMS, At...",
+                  "img": "https://m.media-amazon.com/images/I/718KNSMkqJL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0FK18FNYH?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0H5W4474J",
+                  "category": "Instrumentos & Guitarra",
+                  "title": "38 Polegadas Guitarra Acústico com Cutaway Kit, Corpo de Violão em Tília | 6 Cordas de Nylon, com Af...",
+                  "img": "https://m.media-amazon.com/images/I/71kLPRZ9FvL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0H5W4474J?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0G5L9T9C2",
+                  "category": "Decoração Rock / Estúdio",
+                  "title": "Placa Decorativa Lar Doce Lar com Gancho",
+                  "img": "https://m.media-amazon.com/images/I/412mqc8iNBL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0G5L9T9C2?tag=vorticemidia-20"
+            }
       ],
-      'sacronia': [
-        {
-          cat: 'fe',
-          typeBadge: 'MODA CRISTÃ',
-          subTag: 'LINHA SINFÔNICA & FÉ',
-          title: 'Camiseta Cristã "Soli Deo Gloria — Sacronia"',
-          desc: 'Estampa artística inspirada nas grandes catedrais e nas batalhas espirituais das Escrituras com acabamento nobre.',
-          img: './assets/tracks/sacronia_01.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'DEVOCIONAL',
-          subTag: 'CAPA DURA & FITILHO DOURADO',
-          title: 'Bíblia & Devocional "Valentes da Fé"',
-          desc: 'Edição de estudo e meditação diária acompanhando os grandes capítulos bíblicos cantados no canal Sacronia.',
-          img: './assets/tracks/sacronia_02.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'DECORAÇÃO',
-          subTag: 'ARTE SACRA 8K EM CANVAS',
-          title: 'Quadro Decorativo "Arca da Aliança & Luz"',
-          desc: 'Impressão fine-art em tela canvas com chassi de madeira nobre para sala, escritório ou igreja.',
-          img: './assets/tracks/sacronia_04.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'PRESENTE CRISTÃO',
-          subTag: 'CERÂMICA METALIZADA',
-          title: 'Caneca Dourada "Fé Inabalável nas Batalhas"',
-          desc: 'Caneca especial com versículo gravado e acabamento metalizado para o seu momento diário de leitura e oração.',
-          img: './assets/tracks/sacronia_06.jpg',
-          featuredHome: false
-        }
+      "sacronia": [
+            {
+                  "asin": "6583509792",
+                  "category": "Bíblia de Estudo King James",
+                  "title": "Bíblia de Estudo King James 1611 | KJA 400 Anos | Full Collor | Capa Dura",
+                  "img": "https://m.media-amazon.com/images/I/61EtgxaIWbL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6583509792?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6552650272",
+                  "category": "Bíblia de Estudo NVI / NAA",
+                  "title": "Bíblia Solas Reformata",
+                  "img": "https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "1680430009",
+                  "category": "Devocional Clássico",
+                  "title": "Dia a dia com Spurgeon - Devocional Diário - Luxo: Manhã e noite",
+                  "img": "https://m.media-amazon.com/images/I/51DgwkHYiRL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/1680430009?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "857860184X",
+                  "category": "Livro Cristão Best-Seller",
+                  "title": "Cartas de um diabo a seu aprendiz",
+                  "img": "https://m.media-amazon.com/images/I/91w74bA251L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/857860184X?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "0000188654",
+                  "category": "Box / Teologia & História",
+                  "title": "Coleção Grandes Sucesso de C.S. Lewis",
+                  "img": "https://m.media-amazon.com/images/I/71YikhmqKKL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/0000188654?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B087K9P25C",
+                  "category": "Harpa & Hinário / Louvor",
+                  "title": "Biblia Slim Harpa Grande Luxo (Vinho)",
+                  "img": "https://m.media-amazon.com/images/I/51IS6QBXdeL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B087K9P25C?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0FGLZNB66",
+                  "category": "Quadro Decorativo Sacro",
+                  "title": "Kit 3 Quadro Decorativo Sala Quarto Leão Judá Nunca Foi Sorte Motivacional (15)",
+                  "img": "https://m.media-amazon.com/images/I/61Hqd4xPh9L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0FGLZNB66?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B09PSM4SHN",
+                  "category": "Caneca Cristã Fé",
+                  "title": "Caneca evangelica Salmos 23",
+                  "img": "https://m.media-amazon.com/images/I/71iSu7rGn5L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B09PSM4SHN?tag=vorticemidia-20"
+            }
       ],
-      'neon-asher': [
-        {
-          cat: 'dark',
-          typeBadge: 'STREETWEAR DARK',
-          subTag: 'EDIÇÃO NOTURNA PESADA',
-          title: 'Moletom Canguru Dark "Catedral de Cinzas"',
-          desc: 'Moletom felpudo de alta gramatura com capuz duplo e arte gótica exclusiva da banda Neon Asher.',
-          img: './assets/tracks/neon_01.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'dark',
-          typeBadge: 'OVERSIZED',
-          subTag: 'LINHA DARK CINEMATOGRÁFICO',
-          title: 'Camiseta Oversized "Neon Asher — Estrada Noturna"',
-          desc: 'Corte streetwear moderno em preto profundo com estampa inspirada nos violinos e guitarras da banda.',
-          img: './assets/tracks/neon_02.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'dark',
-          typeBadge: 'COLECIONÁVEL',
-          subTag: 'EFEITO TERMOSSENSÍVEL',
-          title: 'Caneca Preta "Cicatrizes & Redenção"',
-          desc: 'Caneca exclusiva para fãs de rock alternativo e sinfônico noturno, perfeita para noites de estudo e foco.',
-          img: './assets/tracks/neon_04.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'dark',
-          typeBadge: 'ACESSÓRIO',
-          subTag: 'DARK EDITION',
-          title: 'Boné Snapback "Neon Asher — Violino & Fogo"',
-          desc: 'Aba curva estruturada em sarja preta com bordado minimalista prateado.',
-          img: './assets/tracks/neon_06.jpg',
-          featuredHome: false
-        }
+      "neon-asher": [
+            {
+                  "asin": "B0B6P9J3J5",
+                  "category": "Luminária LED / Neon Gamer",
+                  "title": "Quntis Light Bar PRO+, Barra de Luz para Monitor com Controle Remoto, Compatível com Monitores Curvos e Planos, Proteção Ocular, Brilho Ajustável com Escurecimento Automático, Sem Reflexo",
+                  "img": "https://m.media-amazon.com/images/I/61ZPUe0nvkL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0B6P9J3J5?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0FCB2VKVR",
+                  "category": "Headphone Over-Ear",
+                  "title": "Basike Fone de Ouvido Bluetooth, ANC Cancelamento de Ruído, LE29 (Rosa) | Headphone com Bluetooth 5.4, Headset com Microfone, Certificação Hi-Res Audio, 30 horas reprodução, Carregamento USB-C",
+                  "img": "https://m.media-amazon.com/images/I/51n+edKvBPL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0FCB2VKVR?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0H7MR969P",
+                  "category": "Violino Acústico Clássico",
+                  "title": "VEDO Conjunto de Violino 4/4 Tamanho Normal Fosco | Adequado para Iniciantes e Adultos, Inclui Estoj...",
+                  "img": "https://m.media-amazon.com/images/I/712FpgIjTzL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0H7MR969P?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0H5WQPQXR",
+                  "category": "Caneca Preta Fosca",
+                  "title": "Caneca Térmica 360ml Aço Inoxidável com Tampa Hermética Antivazamento Quente e Gelado (Preto)",
+                  "img": "https://m.media-amazon.com/images/I/61IrDWv-nfL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0H5WQPQXR?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B09JG62KDJ",
+                  "category": "Microfone Condensador USB",
+                  "title": "FIFINE A6V Microfone USB Para Jogos Para PS5 PC Para Twitch Podcasts | Microfone Condensador Com Mud...",
+                  "img": "https://m.media-amazon.com/images/I/61ciiEJ7HRL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B09JG62KDJ?tag=vorticemidia-20"
+            }
       ],
-      'iago-cordeiro': [
-        {
-          cat: 'fe',
-          typeBadge: 'MODA GOSPEL',
-          subTag: 'LOUVOR & FAMÍLIA',
-          title: 'Camiseta Gospel "Deus Cuida da Minha Casa"',
-          desc: 'Camiseta confortável com mensagem de fé, esperança e proteção familiar inspirada nas canções de Iago Cordeiro.',
-          img: './assets/tracks/iago_01.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'DEVOCIONAL',
-          subTag: 'CADERNO DE ORAÇÃO',
-          title: 'Diário de Oração, Gratidão & Promessas',
-          desc: 'Caderno devocional em capa dura para registrar pedidos de oração, testemunhos e versículos em família.',
-          img: './assets/tracks/iago_03.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'PRESENTE',
-          subTag: 'PORCELANA NOBRE',
-          title: 'Caneca "Café, Fé & Louvor no Coração"',
-          desc: 'Ideal para começar a manhã ouvindo louvores e compartilhando uma palavra de paz.',
-          img: './assets/tracks/iago_04.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'LAR CRISTÃO',
-          subTag: 'MOLDURA PREMIUM',
-          title: 'Quadro Decorativo "Eu e a Minha Casa Serviremos ao Senhor"',
-          desc: 'Arte acolhedora para abençoar a entrada da casa ou a sala de estar da família.',
-          img: './assets/tracks/iago_06.jpg',
-          featuredHome: false
-        }
+      "iago-cordeiro": [
+            {
+                  "asin": "6552650272",
+                  "category": "Bíblia da Família Letra Gigante",
+                  "title": "Bíblia Solas Reformata",
+                  "img": "https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6555843179",
+                  "category": "Devocional Café com Deus Pai",
+                  "title": "Café com Deus Pai - Teens",
+                  "img": "https://m.media-amazon.com/images/I/51mcGQ8D0dL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6555843179?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0GNBBDJ4Q",
+                  "category": "Diário / Caderno de Oração",
+                  "title": "Caderno Devocional Em Sintonia com Deus | Diário de Oração e Reflexão - Capa Dura, 238 páginas, Pape...",
+                  "img": "https://m.media-amazon.com/images/I/61MT-osDF+L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0GNBBDJ4Q?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6552174721",
+                  "category": "Livro Casamento & Família",
+                  "title": "As Cinco Linguagens do Amor Contadas às Crianças, Gary Chapman - Thomas Nelson",
+                  "img": "https://m.media-amazon.com/images/I/71UB-2RliyL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6552174721?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B079ZJMZCS",
+                  "category": "Violão Sertanejo / Louvor",
+                  "title": "Violão Eletroacústico Dreadnought Folk Cutaway Aço GF-1D CEQ Translucent",
+                  "img": "https://m.media-amazon.com/images/I/51X2uc9iU+L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B079ZJMZCS?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B087K9P25C",
+                  "category": "Harpa & Hinário / Louvor",
+                  "title": "Biblia Slim Harpa Grande Luxo (Vinho)",
+                  "img": "https://m.media-amazon.com/images/I/51IS6QBXdeL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B087K9P25C?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "1680430009",
+                  "category": "Devocional Clássico",
+                  "title": "Dia a dia com Spurgeon - Devocional Diário - Luxo: Manhã e noite",
+                  "img": "https://m.media-amazon.com/images/I/51DgwkHYiRL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/1680430009?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6584956393",
+                  "category": "Clássico Cristão — Edição de Luxo",
+                  "title": "Confissões de Santo Agostinho - Edição de Luxo Almofadada",
+                  "img": "https://m.media-amazon.com/images/I/91mYAMQ785L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6584956393?tag=vorticemidia-20"
+            }
       ],
-      'patinhas-e-cancoes': [
-        {
-          cat: 'pet',
-          typeBadge: 'MODA PET',
-          subTag: 'LINHA PET SHOP OFICIAL',
-          title: 'Roupinha & Moletom Pet Conforto "Patinhas"',
-          desc: 'Tecido macio, hipoalergênico e quentinho para cães e gatos de pequeno, médio e grande porte.',
-          img: './assets/tracks/patinhas_01.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'pet',
-          typeBadge: 'ACESSÓRIO PET',
-          subTag: 'ALIMENTAÇÃO & CUIDADO',
-          title: 'Kit Comedouro Duplo Inox + Tapete Pet Impermeável',
-          desc: 'Base antiderrapante e tigelas em aço inox higiênico para o bem-estar diário do seu melhor amigo.',
-          img: './assets/tracks/patinhas_02.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'pet',
-          typeBadge: 'PASSEIO SEGURO',
-          subTag: 'IDENTIFICAÇÃO INTELIGENTE',
-          title: 'Peitoral Ergonômico + Guia com Plaquinha QR Code',
-          desc: 'Passeio confortável sem puxões, acompanhado de medalha de identificação para segurança total do seu pet.',
-          img: './assets/tracks/patinhas_05.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'pet',
-          typeBadge: 'PARA TUTORES',
-          subTag: 'AMOR PELOS ANIMAIS',
-          title: 'Camiseta Unissex "Quem Ama Protege — Patinhas"',
-          desc: 'Feita para quem considera cães e gatos parte verdadeira da família e apoia a causa da adoção responsável.',
-          img: './assets/tracks/patinhas_06.jpg',
-          featuredHome: false
-        }
+      "patinhas-e-cancoes": [
+            {
+                  "asin": "B0HFQ53P8M",
+                  "category": "Caminha Pet Nuvem Macia",
+                  "title": "Cama Pet Sofá Gigante 120x80cm Cachorro Porte Grande Lavável Borda Alta Confortável Marrom",
+                  "img": "https://m.media-amazon.com/images/I/61h+9ewmAUL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HFQ53P8M?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B07KCLC6J3",
+                  "category": "Fonte Bebedouro Água Pet",
+                  "title": "Fonte Bebedouro de Água Portátil Amicus 1,2L para Gatos e Cães",
+                  "img": "https://m.media-amazon.com/images/I/71gUUBWN9SL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B07KCLC6J3?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0H4HTZGRF",
+                  "category": "Comedouro Automático / Duplo",
+                  "title": "Mordedor Center Cut Branqueado Bovino PETSKO 100% Natural Para Cães - 2 Unidades",
+                  "img": "https://m.media-amazon.com/images/I/61iQq3+quCL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0H4HTZGRF?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0FPBV6GN2",
+                  "category": "Peitoral & Guia Passeio",
+                  "title": "Peitoral H para Cães, Antipuxão com 2 Pontos de Engate, Ajustável Tamanhos P/M/G, para Passeio e Ade...",
+                  "img": "https://m.media-amazon.com/images/I/71qo1OtVhTL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0FPBV6GN2?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0HGMDBSQ1",
+                  "category": "Tapete Higiênico / Impermeável",
+                  "title": "Tapete Higiênico para Cães Mozão Aroma Neutro 50x60cm 30 Unidades 6 Camadas Super Absorvente com Gel Anti Vazamento e Controle de Odores - TOICE",
+                  "img": "https://m.media-amazon.com/images/I/61YkQKdS6BL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HGMDBSQ1?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0795T91YP",
+                  "category": "Arranhador Torre para Gatos",
+                  "title": "Feandrea Árvore para Gatos, 84 cm, Tamanho G, para Gatos Grandes até 7 kg, Poleiro Amplo, 2 Tocas, Poste Arranhador, Cinza Claro BRPCT61WV2",
+                  "img": "https://m.media-amazon.com/images/I/81Jo-RtW8RL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0795T91YP?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B07YBNLXH6",
+                  "category": "Brinquedo Interativo Cães",
+                  "title": "Mordedor Pet Games Monstrinho Azul, Tamanho Médio",
+                  "img": "https://m.media-amazon.com/images/I/71CnYh8YNNL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B07YBNLXH6?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0CKT43D9Q",
+                  "category": "Mochila / Bolsa Transporte Pet",
+                  "title": "Bolsa Transporte Pet Ventilação em 4 lados 42 * 26 * 27 cm Não Se Deforma Facilmente Bolsa Transport...",
+                  "img": "https://m.media-amazon.com/images/I/71TsGRxSLVL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0CKT43D9Q?tag=vorticemidia-20"
+            }
       ],
-      'aguas-de-descanso': [
-        {
-          cat: 'fe',
-          typeBadge: 'SONO & PAZ',
-          subTag: 'AMBIENTE ACOLHEDOR',
-          title: 'Luminária Noturna & Difusor Ultrassônico de Aromas',
-          desc: 'Luz âmbar suave de baixa intensidade combinada com difusor silencioso para noites de leitura bíblica e sono profundo.',
-          img: './assets/episodes/aguas_ep_01.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'LEITURA CONFORTÁVEL',
-          subTag: 'LETRA GIGANTE',
-          title: 'Bíblia de Cabeceira — Salmos de Paz & Descanso',
-          desc: 'Edição com leitura ultra-confortável para meditar na Palavra de Deus antes de dormir.',
-          img: './assets/episodes/aguas_ep_02.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'BEM-ESTAR',
-          subTag: 'INOX TÉRMICO',
-          title: 'Caneca Térmica "Deitar-me-ei em Paz (Salmo 4:8)"',
-          desc: 'Mantém seu chá noturno quentinho por horas na cabeceira da cama.',
-          img: './assets/episodes/aguas_ep_04.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'fe',
-          typeBadge: 'DESCANSO NO LAR',
-          subTag: 'KIT RELAXAMENTO',
-          title: 'Kit Travesseiro Aromático Lavanda & Guia de Oração Noturna',
-          desc: 'Preparado para desacelerar a mente e consagrar o descanso da sua família.',
-          img: './assets/episodes/aguas_ep_06.jpg',
-          featuredHome: false
-        }
+      "aguas-de-descanso": [
+            {
+                  "asin": "B0HKLPW4VJ",
+                  "category": "Difusor de Aromas Ultrassônico",
+                  "title": "Umidificador de Ar Difusor de Ambiente Ultrassônico 700ml LED | Aromas Óleo Essencial com Controle R...",
+                  "img": "https://m.media-amazon.com/images/I/613g5n0gTwL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HKLPW4VJ?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0CM4NT481",
+                  "category": "Kit Óleos Essenciais Lavanda",
+                  "title": "Óleo de Rosa Mosqueta - Puro, Uniformizador, Hidratante e Antioxidante - Para Manchas, Rugas, Estrias e Melhor Elasticidade - Uso Facial, Oleo Corporal e Cabelos - 100% Pura Natural Vegano - 30 mL Beauts",
+                  "img": "https://m.media-amazon.com/images/I/81IHn4DCtnL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0CM4NT481?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "655265040X",
+                  "category": "Bíblia Salmos Letra Gigante",
+                  "title": "Bíblia Trindade - Marrom - Heziom - Letra Grande",
+                  "img": "https://m.media-amazon.com/images/I/81DYHIHkrlL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/655265040X?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0C3Q7152B",
+                  "category": "Luminária Lua Cheia Cabeceira",
+                  "title": "Luminatti by Danuri Luminária Pixar E27 30W - Preto | Articulada de Mesa para Escritório, Estudo, Le...",
+                  "img": "https://m.media-amazon.com/images/I/51dh3ERsgdL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0C3Q7152B?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0HG6HT49F",
+                  "category": "Chá Relaxante / Infusor",
+                  "title": "Garrafa Térmica 2000ml Aço Inoxidável com Alça e Canudo - Preto | Bico Duplo, Gancho Incluso, Capacidade 2L, Tampa com Trava, Uso Esportivo",
+                  "img": "https://m.media-amazon.com/images/I/71s0y7YgSZL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HG6HT49F?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0CRGR2TS5",
+                  "category": "Máscara de Dormir Conforto",
+                  "title": "soundcore Sleep A20 da Anker Fone para Dormir Bluetooth 5.3 Antirruído ANC | 80H, Conforto Superior , Compacto e Confortável para Dormir de Lado, Áudio com IA, Monitor de Sono e Alarme Personalizado",
+                  "img": "https://m.media-amazon.com/images/I/418EcYAOCbL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0CRGR2TS5?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0GH17SBYW",
+                  "category": "Travesseiro Nasa / Ortopédico",
+                  "title": "TOKE DIN DON 1 Kit Travesseiro Nasa de Verdade Viscoelástico Ajustável | Antialérgico, com Capa 50x7...",
+                  "img": "https://m.media-amazon.com/images/I/717sedux3SL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0GH17SBYW?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0HCDQBVHB",
+                  "category": "Caixa de Som Ruído Branco",
+                  "title": "Aparelho Ruído Branco Bebês e Adultos com Luz Noturna, Sons Relaxantes Sono | Maquina de som 20 son...",
+                  "img": "https://m.media-amazon.com/images/I/616Re1xmAaL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HCDQBVHB?tag=vorticemidia-20"
+            }
       ],
-      'trono-da-promessa': [
-        {
-          cat: 'kids',
-          typeBadge: 'LIVRO INFANTIL',
-          subTag: 'CAPA DURA ILUSTRADA 3D',
-          title: 'Livro Ilustrado "As Aventuras do Vovô Nésio & Heróis da Fé"',
-          desc: 'Histórias bíblicas ricamente ilustradas em 3D para ler com os filhos antes de dormir e ensinar valores eternos.',
-          img: './assets/banners/trono_youtube_banner.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'kids',
-          typeBadge: 'BRINQUEDO EDUCATIVO',
-          subTag: 'PELÚCIA ANTIALÉRGICA',
-          title: 'Pelúcia Oficial Ovelhinha & Personagens do Trono',
-          desc: 'Pelúcia macia e 100% segura para abraçar e acompanhar as crianças nos momentos de história e oração.',
-          img: './assets/banners/trono_youtube_banner.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'kids',
-          typeBadge: 'JOGO EM FAMÍLIA',
-          subTag: 'APRENDIZADO BÍBLICO',
-          title: 'Jogo de Tabuleiro & Cartas "Desafio dos Heróis da Bíblia"',
-          desc: 'Diversão saudável longe das telas para reunir pais e filhos ao redor da mesa no fim de semana.',
-          img: './assets/banners/trono_youtube_banner.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'kids',
-          typeBadge: 'MODA KIDS',
-          subTag: 'ALGODÃO MACIO INFANTIL',
-          title: 'Camiseta Infantil "Pequenos Guardiões da Promessa"',
-          desc: 'Estampa alegre e colorida com os personagens favoritos das crianças no canal Trono da Promessa.',
-          img: './assets/banners/trono_youtube_banner.jpg',
-          featuredHome: false
-        }
+      "trono-da-promessa": [
+            {
+                  "asin": "655217201X",
+                  "category": "Bíblia Infantil Ilustrada",
+                  "title": "Bíblia Aventura para crianças NVI, Capa dura com fechamento em ímã, Leão, Leitura Perfeita",
+                  "img": "https://m.media-amazon.com/images/I/81azmSNhAuL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/655217201X?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8595200629",
+                  "category": "365 Histórias Bíblicas",
+                  "title": "365 Historias Bíblicas",
+                  "img": "https://m.media-amazon.com/images/I/81m74G-S1fL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8595200629?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6555001992",
+                  "category": "Livros de Colorir Cristão Kids",
+                  "title": "365 Desenhos da Bíblia para colorir",
+                  "img": "https://m.media-amazon.com/images/I/71mfwkzNXHL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6555001992?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0G2SWWR5V",
+                  "category": "Pelúcia Ovelhinha / Leãozinho",
+                  "title": "LEGO Creator 3 em 1 Animais da Floresta: Lobo-cinzento; Brinquedo 31393",
+                  "img": "https://m.media-amazon.com/images/I/81HF3FdNjyL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0G2SWWR5V?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B077PLFYWF",
+                  "category": "Jogo Educativo Família",
+                  "title": "Jogo Imagem e Ação 2 Grow, Multicor",
+                  "img": "https://m.media-amazon.com/images/I/51XF78npGsL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B077PLFYWF?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0DSXYB3PD",
+                  "category": "Projetor de Estrelas Quarto Kids",
+                  "title": "Projetor Luminaria de luz da galáxia do astronauta Luz Noturna LED com Céu Estrelado, Aurora, Contro...",
+                  "img": "https://m.media-amazon.com/images/I/61WQ7fpHs1L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0DSXYB3PD?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0G2T4739R",
+                  "category": "Blocos de Montar Criativos",
+                  "title": "LEGO NINJAGO Pack de Combate Dragão Meca do Lloyd 71862 | Brinquedos De Construção, Meninos E Meninas, Anos 6+, Figuras De Ação, 3 Minifiguras, 81 Peças",
+                  "img": "https://m.media-amazon.com/images/I/81zcdle7-cL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0G2T4739R?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0FXZVDG74",
+                  "category": "Garrafinha Infantil Escola",
+                  "title": "MODUS Garrafa Térmica Esportiva De Inox Com Isolamento A Vácuo 950ML | Azul",
+                  "img": "https://m.media-amazon.com/images/I/61AWuRvjq+L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0FXZVDG74?tag=vorticemidia-20"
+            }
       ],
-      'incorruptivel': [
-        {
-          cat: 'patriota',
-          typeBadge: 'ESCRITÓRIO & ESTÚDIO',
-          subTag: 'BASE EM MADEIRA & METAL',
-          title: 'Kit Bandeira do Brasil de Mesa Executiva',
-          desc: 'Acabamento de gala para escritórios, bibliotecas e mesas de trabalho de quem valoriza a pátria e a liberdade.',
-          img: './assets/episodes/incorruptivel_ep_01.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'patriota',
-          typeBadge: 'VESTUÁRIO',
-          subTag: 'LINHA CIDADANIA',
-          title: 'Camiseta "O Incorruptível — Consciência & Liberdade"',
-          desc: 'Design sóbrio e elegante para quem defende a verdade factual, a família e a responsabilidade cidadã.',
-          img: './assets/episodes/incorruptivel_ep_02.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'patriota',
-          typeBadge: 'LEITURA & HISTÓRIA',
-          subTag: 'EDIÇÃO DE ESTUDO',
-          title: 'Livro "Raízes da Liberdade & Crônica Política"',
-          desc: 'Coletânea de análises históricas sobre cidadania, economia real e os pilares de uma nação livre.',
-          img: './assets/episodes/incorruptivel_ep_04.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'patriota',
-          typeBadge: 'EXECUTIVO',
-          subTag: 'PRETO & OURO',
-          title: 'Caneca Executiva "Fatos Acima de Narrativas"',
-          desc: 'Cerâmica de alta densidade com o selo oficial do canal Incorruptível.',
-          img: './assets/episodes/incorruptivel_ep_06.jpg',
-          featuredHome: false
-        }
+      "incorruptivel": [
+            {
+                  "asin": "8501402516",
+                  "category": "Olavo de Carvalho — Best-Seller",
+                  "title": "O mínimo que você precisa saber para não ser um idiota — Olavo de Carvalho",
+                  "img": "https://m.media-amazon.com/images/I/718qyVMPR7L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8501402516?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6587138691",
+                  "category": "Olavo de Carvalho — Clássico",
+                  "title": "O Imbecil Coletivo — Atualidades inculturais brasileiras (Olavo de Carvalho)",
+                  "img": "https://m.media-amazon.com/images/I/71g22PdHYrL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6587138691?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8567394511",
+                  "category": "Olavo de Carvalho — Filosofia",
+                  "title": "O Jardim das Aflições — Olavo de Carvalho",
+                  "img": "https://m.media-amazon.com/images/I/619dC2skyQL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8567394511?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8595074186",
+                  "category": "Olavo de Carvalho — Antologia",
+                  "title": "O Essencial de Olavo de Carvalho",
+                  "img": "https://m.media-amazon.com/images/I/51d7QNeh8gL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8595074186?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8567394260",
+                  "category": "Olavo de Carvalho — Cultura & Política",
+                  "title": "A Nova Era e a Revolução Cultural: Fritjof Capra e Antonio Gramsci — Olavo de Carvalho",
+                  "img": "https://m.media-amazon.com/images/I/51AqekpukSL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8567394260?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8595071217",
+                  "category": "Olavo de Carvalho — Geopolítica",
+                  "title": "O Foro de São Paulo: A ascensão do comunismo latino-americano — Olavo de Carvalho",
+                  "img": "https://m.media-amazon.com/images/I/61IW0oP4b4L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8595071217?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8593751253",
+                  "category": "As Seis Lições - Mises",
+                  "title": "As seis lições",
+                  "img": "https://m.media-amazon.com/images/I/71M-fsD472L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8593751253?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6586029724",
+                  "category": "O Caminho da Servidão - Hayek",
+                  "title": "O caminho da servidão: 2ª Edição",
+                  "img": "https://m.media-amazon.com/images/I/61XgkB3IDBL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6586029724?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8562409715",
+                  "category": "A Lei - Frédéric Bastiat",
+                  "title": "A lei: por que a esquerda não funciona",
+                  "img": "https://m.media-amazon.com/images/I/81l+1yVENCL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8562409715?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B08ZK6N3XZ",
+                  "category": "1984 - George Orwell (Edição Especial)",
+                  "title": "As obras revolucionárias de George Orwell - Box com 3 livros",
+                  "img": "https://m.media-amazon.com/images/I/61F-KPiT4KL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B08ZK6N3XZ?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0HD8MW2J8",
+                  "category": "Bandeira do Brasil de Mesa",
+                  "title": "2 Bandeiras do Brasil em Poliéster para Decoração (150 Cm x 90 cm) Kit 2 Bandeiras Do Brasil)",
+                  "img": "https://m.media-amazon.com/images/I/61I3zsS7uML._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HD8MW2J8?tag=vorticemidia-20"
+            }
       ],
-      'aliens-da-biblia': [
-        {
-          cat: 'misterios',
-          typeBadge: 'LIVRO & E-BOOK',
-          subTag: 'INVESTIGAÇÃO & ARQUEOLOGIA',
-          title: 'Livro Ilustrado "Mistérios e Enigmas das Escrituras"',
-          desc: 'Estudo detalhado sobre Ezequiel, Enoque, os Nefilins e os grandes mistérios da antiguidade sob a luz do texto bíblico.',
-          img: './assets/episodes/aliens_ep_01.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'misterios',
-          typeBadge: 'COLECIONÁVEL 3D',
-          subTag: 'MINIATURA DE ALTA PRECISÃO',
-          title: 'Action Figure / Escultura "Querubim & Carruagem de Fogo"',
-          desc: 'Peça de coleção modelada em resina de alta definição inspirada nas descrições proféticas de Ezequiel.',
-          img: './assets/episodes/aliens_ep_02.jpg',
-          featuredHome: true
-        },
-        {
-          cat: 'misterios',
-          typeBadge: 'COLECIONADOR',
-          subTag: 'EDIÇÃO COSMOS 8K',
-          title: 'Caneca Preta Galáxia "O Que Está Escrito?"',
-          desc: 'Arte panorâmica exclusiva dos documentários de Aliens da Bíblia.',
-          img: './assets/episodes/aliens_ep_04.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'misterios',
-          typeBadge: 'VESTUÁRIO',
-          subTag: 'LINHA DOCUMENTÁRIO',
-          title: 'Camiseta "Arqueologia Proibida & Enigmas Antigos"',
-          desc: 'Estampa exclusiva para apaixonados por história antiga, astronomia e mistérios bíblicos.',
-          img: './assets/episodes/aliens_ep_06.jpg',
-          featuredHome: false
-        }
+      "aliens-da-biblia": [
+            {
+                  "asin": "6559579611",
+                  "category": "O Livro de Enoque",
+                  "title": "O livro de Enoque: Inclui – O testamento de Salomão",
+                  "img": "https://m.media-amazon.com/images/I/71XC87bA64L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6559579611?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6555393971",
+                  "category": "Eram os Deuses Astronautas",
+                  "title": "Eram os deuses astronautas? (Edição comemorativa - 50 anos)",
+                  "img": "https://m.media-amazon.com/images/I/71-OO+glHtL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6555393971?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "6552650272",
+                  "category": "Bíblia de Estudo Arqueológica",
+                  "title": "Bíblia Solas Reformata",
+                  "img": "https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8537642673",
+                  "category": "Atlas Histórico da Bíblia",
+                  "title": "Atlas Bíblico Ilustrado",
+                  "img": "https://m.media-amazon.com/images/I/71t3RjohqaL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8537642673?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0HK1HQTBP",
+                  "category": "Telescópio / Luneta Astronômica",
+                  "title": "Kit Telescópio e Microscópio Infantil 2 em 1 com Tripé | Ampliação até 450x, A partir de 8 anos, Mat...",
+                  "img": "https://m.media-amazon.com/images/I/61S2W7rFcuL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HK1HQTBP?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0H7NSWW95",
+                  "category": "Luminária Projetor Galáxia",
+                  "title": "Projetor Astronauta Galáxia com Nebulosa e Estrelas | Controle Remoto, Timer, Cabeça Ajustável, Luz ...",
+                  "img": "https://m.media-amazon.com/images/I/61mFMGAtNiL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0H7NSWW95?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B076H4QDNN",
+                  "category": "Globo Terrestre Iluminado",
+                  "title": "Globo Terrestre Studio Politico, ProCalc, Multicor",
+                  "img": "https://m.media-amazon.com/images/I/61OHQBgOMoL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B076H4QDNN?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "8572441786",
+                  "category": "Livro Mistérios da Antiguidade",
+                  "title": "As primeiras civilizações",
+                  "img": "https://m.media-amazon.com/images/I/71jk7fDJINL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/8572441786?tag=vorticemidia-20"
+            }
       ],
-      'aquario-dos-felinos': [
-        {
-          cat: 'pet',
-          typeBadge: 'MUNDO FELINO',
-          subTag: 'DIVERSÃO PARA GATOS',
-          title: 'Arranhador & Torre Interativa "Aquário dos Felinos"',
-          desc: 'Estrutura revestida em sisal natural e pelúcia macia para entreter e exercitar o seu gatinho dentro de casa.',
-          img: './assets/episodes/aquario_ep_01.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'pet',
-          typeBadge: 'BRINQUEDO PET',
-          subTag: 'ESTÍMULO & AGILIDADE',
-          title: 'Kit Brinquedos Interativos, Varinha & Bolinhas para Gatos',
-          desc: 'Desenvolvido para estimular a curiosidade natural dos felinos com segurança total.',
-          img: './assets/episodes/aquario_ep_02.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'pet',
-          typeBadge: 'MODA FELINA',
-          subTag: 'CONFORTO & ESTILO',
-          title: 'Bandana & Roupinha Pet "Gatinho Aventureiro"',
-          desc: 'Leve, anatômica e confortável para deixar o seu felino ainda mais charmoso nas fotos em família.',
-          img: './assets/episodes/aquario_ep_03.jpg',
-          featuredHome: false
-        },
-        {
-          cat: 'pet',
-          typeBadge: 'PARA GATEIROS',
-          subTag: 'COLEÇÃO OFICIAL',
-          title: 'Kit Caneca + Camiseta "Amor por Felinos 3D"',
-          desc: 'Homenagem especial para quem ama gatos e acompanha as aventuras do canal Aquário dos Felinos.',
-          img: './assets/episodes/aquario_ep_05.jpg',
-          featuredHome: false
-        }
+      "aquario-dos-felinos": [
+            {
+                  "asin": "B0795T91YP",
+                  "category": "Arranhador Torre para Gatos",
+                  "title": "Feandrea Árvore para Gatos, 84 cm, Tamanho G, para Gatos Grandes até 7 kg, Poleiro Amplo, 2 Tocas, Poste Arranhador, Cinza Claro BRPCT61WV2",
+                  "img": "https://m.media-amazon.com/images/I/81Jo-RtW8RL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0795T91YP?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B07KCLC6J3",
+                  "category": "Fonte de Água Inox para Gatos",
+                  "title": "Fonte Bebedouro de Água Portátil Amicus 1,2L para Gatos e Cães",
+                  "img": "https://m.media-amazon.com/images/I/71gUUBWN9SL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B07KCLC6J3?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0HH5TJNV6",
+                  "category": "Brinquedo Peixe Elétrico / Interativo",
+                  "title": "Bola Interativa para Gatos Automática com Movimento e Cordão | Brinquedo interativo com movimento qu...",
+                  "img": "https://m.media-amazon.com/images/I/51a49NUqjOL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0HH5TJNV6?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0H4HP5XPW",
+                  "category": "Túnel Dobrável para Gatos",
+                  "title": "Tunel para Gatos em Poliester Colorido Formato T | Uso recomendado para interacao de pets combater o...",
+                  "img": "https://m.media-amazon.com/images/I/51tjuK9s-VL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0H4HP5XPW?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0GS7MBF5C",
+                  "category": "Rede de Janela para Gatos",
+                  "title": "Caminha Suspensa para Gatos com Ventosas | Cama de Janela para Gato | Rede para Janela Super Resiste...",
+                  "img": "https://m.media-amazon.com/images/I/418fEAmfw+L._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0GS7MBF5C?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0H2XL7SL7",
+                  "category": "Caixa de Areia Fechada / Furba",
+                  "title": "Caixa de Areia Fechada para Gatos, Aço Inoxidável, Extra Grande, 62x38x34cm | Três formas de uso",
+                  "img": "https://m.media-amazon.com/images/I/71pkJ59BIKL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0H2XL7SL7?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0G4HLLKP7",
+                  "category": "Varinha com Penas e Guizo",
+                  "title": "Kit 3 Brinquedo Gato Varinha Pássaro Com Ventosa Fixa Chao Parede Janela Bolinha Catnip",
+                  "img": "https://m.media-amazon.com/images/I/51NLJWfycvL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0G4HLLKP7?tag=vorticemidia-20"
+            },
+            {
+                  "asin": "B0DS6HFWKQ",
+                  "category": "Caneca Gateiros / Gatinho",
+                  "title": "Caneca de Gato Fofa 325ml | Presente Criativo para Quem Ama Gatos | Caneca Engraçada para Café | Ide...",
+                  "img": "https://m.media-amazon.com/images/I/61rvZDSGVOL._AC_UL600_.jpg",
+                  "url": "https://www.amazon.com.br/dp/B0DS6HFWKQ?tag=vorticemidia-20"
+            }
       ]
-    };
+};
 
-    function openStoreReservationAlert(prodTitle, chName) {
-      alert(`🛍️ LOJA OFICIAL • ${chName}\n\nProduto selecionado:\n"${prodTitle}"\n\nNossa vitrine oficial de e-commerce e envios para todo o Brasil está em fase final de homologação. Cadastre seu WhatsApp na seção "Receba os Lançamentos" para garantir acesso antecipado assim que o lote abrir!`);
+    function trackStoreProductClick(prodTitle, chId, chName, url) {
+      try {
+        fetch('https://vortice-cloud-bot.onrender.com/api/site/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'click',
+            channel: chId || 'loja-amazon',
+            label: '🛒 Amazon (' + (chName || 'Loja') + '): ' + prodTitle,
+            path: window.location.pathname
+          }),
+          keepalive: true
+        }).catch(() => {});
+      } catch (e) {}
+      if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
     }
 
     function openChannelStoreDirect(chId) {
@@ -5724,25 +5953,26 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       }
 
       const items = CHANNEL_STORE_CATALOG[ch.id] || CHANNEL_STORE_CATALOG['rock-incorruptivel'];
-      storeContainer.innerHTML = items.map(prod => `
+      storeContainer.innerHTML = items.map(prod => {
+        const safeTitle = (prod.title || '').replace(/'/g, "\'").replace(/"/g, '&quot;');
+        const safeChName = (ch.name || '').replace(/'/g, "\'").replace(/"/g, '&quot;');
+        return `
         <div class="store-product-card">
           <div>
-            <div class="store-prod-visual">
-              <div class="store-coming-soon-stamp">
-                <span class="store-coming-soon-word">EM BREVE</span>
-              </div>
+            <div class="store-prod-visual" onclick="trackStoreProductClick('${safeTitle}', '${ch.id}', '${safeChName}', '${prod.url}')" title="Ver oferta oficial na Amazon">
+              <img src="${prod.img}" alt="${safeTitle}" class="store-prod-real-img" loading="lazy">
             </div>
             <div class="store-prod-body">
               <h3 class="store-prod-title">${prod.title}</h3>
             </div>
           </div>
           <div class="store-prod-actions">
-            <button type="button" class="store-btn-buy" onclick="openStoreReservationAlert('${prod.title.replace(/'/g, "\\'")}', '${ch.name.replace(/'/g, "\\'")}')">
-              Quero Este Item
-            </button>
+            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="store-btn-buy" onclick="trackStoreProductClick('${safeTitle}', '${ch.id}', '${safeChName}', '')">
+              Ver Oferta na Amazon
+            </a>
           </div>
         </div>
-      `).join('');
+      `}).join('');
     }
 
     let storeConveyorPaused = false;
@@ -5755,7 +5985,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       const wrap = document.getElementById('home-store-conveyor-wrap');
       if (!track || !viewport) return;
 
-      /* Renderiza os 10 botões no topo (sem logo interna, formato placa retangular) para abrir direto a Loja de cada Canal */
+      /* Renderiza os 10 botões no topo para abrir direto a Loja de cada Canal */
       if (channelsBar) {
         channelsBar.innerHTML = VORTICE_CHANNELS.map(ch => `
           <button type="button" class="store-channel-ShortcutBtn" onclick="openChannelStoreDirect('${ch.id}')" title="Abrir Loja Oficial de ${ch.name}">
@@ -5764,44 +5994,48 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         `).join('');
       }
 
-      /* Junta todos os produtos de todos os canais na esteira */
+      /* Junta todos os produtos de todos os canais na esteira intercalando para variedade máxima */
       const allProducts = [];
-      VORTICE_CHANNELS.forEach(ch => {
-        const prods = CHANNEL_STORE_CATALOG[ch.id] || [];
-        prods.forEach(p => {
-          allProducts.push({
-            ...p,
-            chId: ch.id,
-            chName: ch.name
-          });
+      const maxLen = Math.max(...VORTICE_CHANNELS.map(ch => (CHANNEL_STORE_CATALOG[ch.id] || []).length));
+      for (let i = 0; i < maxLen; i++) {
+        VORTICE_CHANNELS.forEach(ch => {
+          const prods = CHANNEL_STORE_CATALOG[ch.id] || [];
+          if (prods[i]) {
+            allProducts.push({
+              ...prods[i],
+              chId: ch.id,
+              chName: ch.name
+            });
+          }
         });
-      });
+      }
 
       /* Duplica a lista na esteira para permitir rolagem infinita contínua */
       const loopList = [...allProducts, ...allProducts];
 
-      track.innerHTML = loopList.map(prod => `
+      track.innerHTML = loopList.map(prod => {
+        const safeTitle = (prod.title || '').replace(/'/g, "\'").replace(/"/g, '&quot;');
+        const safeChName = (prod.chName || '').replace(/'/g, "\'").replace(/"/g, '&quot;');
+        return `
         <div class="store-product-card">
           <div>
-            <div class="store-prod-visual">
-              <div class="store-coming-soon-stamp">
-                <span class="store-coming-soon-word">EM BREVE</span>
-              </div>
+            <div class="store-prod-visual" onclick="trackStoreProductClick('${safeTitle}', '${prod.chId}', '${safeChName}', '${prod.url}')" title="Ver oferta oficial na Amazon">
+              <img src="${prod.img}" alt="${safeTitle}" class="store-prod-real-img" loading="lazy">
             </div>
             <div class="store-prod-body">
               <h3 class="store-prod-title">${prod.title}</h3>
             </div>
           </div>
           <div class="store-prod-actions">
-            <button type="button" class="store-btn-buy" onclick="openStoreReservationAlert('${prod.title.replace(/'/g, "\\'")}', '${prod.chName.replace(/'/g, "\\'")}')">
-              Quero Este Item
-            </button>
-            <button type="button" class="store-btn-channel" onclick="openChannelStoreDirect('${prod.chId}')" title="Ir para a Loja de ${prod.chName}">
+            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="store-btn-buy" onclick="trackStoreProductClick('${safeTitle}', '${prod.chId}', '${safeChName}', '')">
+              Ver Oferta na Amazon
+            </a>
+            <button type="button" class="store-btn-channel" onclick="openChannelStoreDirect('${prod.chId}')" title="Ir para a Loja de ${safeChName}">
               Loja do Canal
             </button>
           </div>
         </div>
-      `).join('');
+      `}).join('');
 
       if (wrap) {
         wrap.addEventListener('mouseenter', () => { storeConveyorPaused = true; });
