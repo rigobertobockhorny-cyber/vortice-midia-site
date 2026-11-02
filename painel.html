@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel de Audiência & Inteligência — Vórtice Mídia</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/ui/favicon.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=3">
+  <link rel="shortcut icon" href="/favicon.ico?v=3">
+  <link rel="apple-touch-icon" href="/assets/ui/favicon.png?v=3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -141,6 +145,7 @@
         </div>
       </div>
       <div class="actions">
+        <button class="btn" onclick="zerarDados()" title="Limpa acessos de teste para começar do zero">🧹 Zerar Testes</button>
         <button class="btn btn-primary" onclick="carregarDados()">↻ Atualizar Agora</button>
         <a href="/" class="btn">← Voltar para o Portal</a>
       </div>
@@ -230,6 +235,15 @@
 
   <script>
     const STATS_URL = "https://vortice-cloud-bot.onrender.com/api/site/stats";
+    const RESET_URL = "https://vortice-cloud-bot.onrender.com/api/site/reset";
+
+    async function zerarDados() {
+      if (!confirm("Deseja zerar os contadores de teste atuais (mantendo os Inscritos VIP)?")) return;
+      try {
+        await fetch(RESET_URL, { method: "POST" });
+        await carregarDados();
+      } catch (e) {}
+    }
 
     function formatTime(sec) {
       sec = parseInt(sec || 0, 10);
