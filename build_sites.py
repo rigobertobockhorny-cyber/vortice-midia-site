@@ -6078,6 +6078,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
     requestAnimationFrame(animateScene);
   </script>
+  <script src="/assets/js/vortice-analytics.js" defer></script>
 </body>
 </html>
 """
@@ -6095,4 +6096,16 @@ with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
 with open(os.path.join(out_dir, "index_transparente.html"), "w", encoding="utf-8") as f:
     f.write(final_html)
 
-print("Generated unified 3D Orbital Tornado site in both index.html and index_transparente.html successfully!")
+canais_dir = os.path.join(out_dir, "canais")
+if os.path.isdir(canais_dir):
+    for fn in os.listdir(canais_dir):
+        if fn.endswith(".html"):
+            fp = os.path.join(canais_dir, fn)
+            with open(fp, "r", encoding="utf-8") as cf:
+                ch_html = cf.read()
+            if "vortice-analytics.js" not in ch_html:
+                ch_html = ch_html.replace("</body>", '  <script src="/assets/js/vortice-analytics.js" defer></script>\n</body>')
+                with open(fp, "w", encoding="utf-8") as cf:
+                    cf.write(ch_html)
+
+print("Generated unified 3D Orbital Tornado site + Vortice Analytics in index.html and all channel pages successfully!")

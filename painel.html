@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Audiência & Inteligência — Vórtice Mídia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05070d;
+      --card: rgba(14, 18, 30, 0.88);
+      --border: rgba(255, 255, 255, 0.12);
+      --accent: #00e5ff;
+      --gold: #ffbd2e;
+      --green: #00e676;
+      --purple: #b388ff;
+      --text: #f4f6fb;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top right, #0e172a 0%, #05070d 65%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 28px 24px 60px;
+    }
+    .container { max-width: 1280px; margin: 0 auto; }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .live-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.65; }
+    }
+    .brand h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+    .brand p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .actions { display: flex; gap: 12px; align-items: center; }
+    .btn {
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: rgba(0, 229, 255, 0.15); border-color: var(--accent); }
+    .btn-primary {
+      background: linear-gradient(135deg, #00e5ff, #0077ff);
+      color: #000;
+      font-weight: 800;
+      border: none;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+    .kpi-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; }
+    .kpi-value { font-size: 36px; font-weight: 900; margin: 8px 0 4px; color: #fff; }
+    .kpi-sub { font-size: 12px; color: var(--accent); font-weight: 600; }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+    .panel-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .panel-box h2 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bar-list { display: flex; flex-direction: column; gap: 12px; }
+    .bar-item { display: flex; flex-direction: column; gap: 5px; }
+    .bar-top { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
+    .bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.07); border-radius: 99px; overflow: hidden; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--purple)); border-radius: 99px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 11px 10px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(0, 229, 255, 0.14);
+      color: var(--accent);
+    }
+    .badge.click { background: rgba(255, 189, 46, 0.18); color: var(--gold); }
+    .badge.lead { background: rgba(0, 230, 118, 0.2); color: var(--green); }
+    .empty-msg { color: var(--muted); font-size: 13px; padding: 14px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <div class="brand">
+        <div class="live-dot"></div>
+        <div>
+          <h1>PAINEL DE AUDIÊNCIA & CLIQUES — VÓRTICE MÍDIA</h1>
+          <p>Monitoramento em tempo real de visitantes, tempo de permanência, seções e canais clicados</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="carregarDados()">↻ Atualizar Agora</button>
+        <a href="/" class="btn">← Voltar para o Portal</a>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Visitantes Hoje</div>
+        <div class="kpi-value" id="kpiToday">--</div>
+        <div class="kpi-sub">Pessoas que entraram hoje</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Total de Visitantes</div>
+        <div class="kpi-value" id="kpiTotal">--</div>
+        <div class="kpi-sub">Visitantes únicos acumulados</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Páginas Abertas</div>
+        <div class="kpi-value" id="kpiViews">--</div>
+        <div class="kpi-sub">Total de visualizações de telas</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Tempo Médio no Site</div>
+        <div class="kpi-value" id="kpiDuration">--</div>
+        <div class="kpi-sub">Permanência média por pessoa</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Inscritos VIP</div>
+        <div class="kpi-value" id="kpiLeads">--</div>
+        <div class="kpi-sub">Cadastros em "Receba Lançamentos"</div>
+      </div>
+    </div>
+
+    <div class="main-grid">
+      <div class="panel-box">
+        <h2>🔥 Canais, Músicas e Links Mais Clicados</h2>
+        <div class="bar-list" id="clicksList">
+          <div class="empty-msg">Carregando cliques...</div>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h2>👁️ Seções Mais Vistas pelos Visitantes</h2>
+        <div class="bar-list" id="sectionsList">
+          <div class="empty-msg">Carregando seções...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-grid">
+      <div class="panel-box">
+        <h2>🌍 De Onde Vieram os Visitantes (Origem + Aparelho)</h2>
+        <div class="bar-list" id="sourcesList">
+          <div class="empty-msg">Carregando origens...</div>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <h2>📩 Inscritos VIP ("Receba os Lançamentos")</h2>
+        <div id="leadsList">
+          <div class="empty-msg">Nenhum inscrito ainda.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-box">
+      <h2>⚡ Atividade ao Vivo (Últimas Pessoas que Entraram e Clicaram)</h2>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Horário</th>
+              <th>Ação</th>
+              <th>Detalhe (Página ou Canal Clicado)</th>
+              <th>Aparelho</th>
+              <th>Origem</th>
+              <th>Tempo no Site</th>
+            </tr>
+          </thead>
+          <tbody id="eventsTable">
+            <tr><td colspan="6" class="empty-msg">Carregando histórico em tempo real...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STATS_URL = "https://vortice-cloud-bot.onrender.com/api/site/stats";
+
+    function formatTime(sec) {
+      sec = parseInt(sec || 0, 10);
+      if (sec <= 0) return "Novo acesso";
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return m > 0 ? (m + "m " + s + "s") : (s + "s");
+    }
+
+    function renderBars(containerId, objData, emptyText) {
+      const el = document.getElementById(containerId);
+      const entries = Object.entries(objData || {}).sort((a, b) => b[1] - a[1]).slice(0, 8);
+      if (!entries.length) {
+        el.innerHTML = `<div class="empty-msg">${emptyText}</div>`;
+        return;
+      }
+      const maxVal = Math.max(...entries.map(e => e[1]), 1);
+      el.innerHTML = entries.map(([label, val]) => {
+        const pct = Math.max(8, Math.round((val / maxVal) * 100));
+        return `
+          <div class="bar-item">
+            <div class="bar-top">
+              <span>${label}</span>
+              <span style="color:var(--accent)">${val}</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    async function carregarDados() {
+      try {
+        const res = await fetch(STATS_URL + "?t=" + Date.now());
+        const d = await res.json();
+
+        document.getElementById("kpiToday").textContent = d.visitors_today || 0;
+        document.getElementById("kpiTotal").textContent = d.total_visitors || 0;
+        document.getElementById("kpiViews").textContent = d.total_pageviews || 0;
+        document.getElementById("kpiDuration").textContent = formatTime(d.avg_duration_sec || 0);
+        document.getElementById("kpiLeads").textContent = (d.leads || []).length;
+
+        renderBars("clicksList", d.clicks, "Assim que alguém clicar em um canal ou música, o ranking aparece aqui.");
+        renderBars("sectionsList", d.sections, "Aguardando navegação pelas seções do site.");
+
+        const combinedSources = Object.assign({}, d.sources || {});
+        if (d.devices) {
+          Object.entries(d.devices).forEach(([dev, cnt]) => {
+            if (cnt > 0) combinedSources["Aparelho: " + dev] = cnt;
+          });
+        }
+        renderBars("sourcesList", combinedSources, "Aguardando visitantes.");
+
+        const leadsEl = document.getElementById("leadsList");
+        const leads = d.leads || [];
+        if (!leads.length) {
+          leadsEl.innerHTML = `<div class="empty-msg">Quando alguém preencher "Receba os Lançamentos", o contato aparece aqui e no seu Telegram!</div>`;
+        } else {
+          leadsEl.innerHTML = `<table><thead><tr><th>Data/Hora</th><th>Contato</th><th>Aparelho</th></tr></thead><tbody>` +
+            leads.slice(0, 8).map(l => `<tr><td>${l.time}</td><td><strong>${l.contact}</strong></td><td>${l.device}</td></tr>`).join("") +
+            `</tbody></table>`;
+        }
+
+        const evBody = document.getElementById("eventsTable");
+        const evs = d.recent_events || [];
+        if (!evs.length) {
+          evBody.innerHTML = `<tr><td colspan="6" class="empty-msg">Nenhum evento registrado ainda.</td></tr>`;
+        } else {
+          evBody.innerHTML = evs.map(ev => {
+            const bClass = ev.type === "Clique" ? "badge click" : (ev.type === "Inscrito VIP" ? "badge lead" : "badge");
+            return `
+              <tr>
+                <td>${ev.time}</td>
+                <td><span class="${bClass}">${ev.type}</span></td>
+                <td><strong>${ev.detail}</strong></td>
+                <td>${ev.device || "-"}</td>
+                <td>${ev.origin || "Direto"}</td>
+                <td>${formatTime(ev.duration)}</td>
+              </tr>
+            `;
+          }).join("");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    carregarDados();
+    setInterval(carregarDados, 10000);
+  </script>
+</body>
+</html>
