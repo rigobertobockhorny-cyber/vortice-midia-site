@@ -2959,6 +2959,41 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       .momentos-photo-grid, .universos-grid, .studio-cards-3col, .ivory-grid-inputs, .mvv-corporate-grid, .flying-signs-platforms-grid, .ch-chronicles-grid, .ch-tracks-grid, .ch-faq-grid-2col, .vortice-store-grid {
         grid-template-columns: 1fr;
       }
+      #hero-stage {
+        min-height: 100svh;
+        overflow-x: hidden;
+      }
+      .top-brand-bar {
+        top: 8px;
+        gap: 2px;
+      }
+      .logo-3d-frame {
+        padding: 4px 10px 2px;
+      }
+      .logo-3d-img {
+        height: 82px;
+      }
+      .logo-subtitle-pill {
+        margin-top: -12px;
+      }
+      .logo-subtitle-pill span {
+        font-size: 9px;
+        letter-spacing: 0.14em;
+      }
+      .radio-plate-wrapper {
+        left: 50%;
+        top: 112px;
+        transform: translateX(-50%) scale(0.76);
+        transform-origin: center top;
+      }
+      .scroll-down-hint {
+        bottom: 10px;
+        padding: 6px 14px;
+        font-size: 9.5px;
+      }
+      .section-block {
+        padding: 80px 16px 80px;
+      }
     }
   </style>
 </head>
@@ -5338,56 +5373,128 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Bandeira do Brasil de Mesa",
                   "title": "2 Bandeiras do Brasil em Poliéster para Decoração (150 Cm x 90 cm) Kit 2 Bandeiras Do Brasil)",
                   "img": "https://m.media-amazon.com/images/I/61I3zsS7uML._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HD8MW2J8?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HD8MW2J8?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Bandeira do Brasil Grande 150x90cm",
+                  "title": "Bandeira do Brasil Grande 150x90cm Oficial Poliéster Reforçado",
+                  "img": "https://m.media-amazon.com/images/I/61bZZzucw3L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=bandeira%20do%20brasil%20150x90%20dupla%20face&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0G837NXLX",
                   "category": "Bandeira do Brasil Oficial",
                   "title": "Kit Bandeira de Mesa Brasil e Rio Grande do Sul, Decorativa, Dupla Face, Multicolorido, 19x13cm, Bas...",
                   "img": "https://m.media-amazon.com/images/I/71Xizvj2NDL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0G837NXLX?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0G837NXLX?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Placa Decorativa Rock Vintage",
+                  "title": "Kit Placas Decorativas MDF Rock Classic & Guitarra Estúdio",
+                  "img": "https://m.media-amazon.com/images/I/718F25CoNsL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=placa%20decorativa%20mdf%20rock%20guitarra&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0HM434N7W",
                   "category": "Vestuário Patriota",
                   "title": "Camisa Masculina Patriota BRK Agro Bandeira Brasil Preta | Proteção Solar UV50+ com Zíper e Gola Padre",
                   "img": "https://m.media-amazon.com/images/I/61Snm+5Uf7L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HM434N7W?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HM434N7W?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Caneca Guitarra / Rock Preta",
+                  "title": "Caneca Criativa Rock & Guitarra Cerâmica Preta 325ml",
+                  "img": "https://m.media-amazon.com/images/I/51L6uZhkVpL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=caneca%20guitarra%20rock%20musica&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0GPP8X9LC",
                   "category": "Acessório Patriota",
                   "title": "Boné Brasil Bandeira Brasileira Bordada Tático Militar Ajustável Aba Curva Patriota Nacional Alpha B...",
                   "img": "https://m.media-amazon.com/images/I/618BEYrLWVL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0GPP8X9LC?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0GPP8X9LC?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Suporte de Parede para Guitarra/Violão",
+                  "title": "Suporte de Parede Acolchoado para Guitarra, Violão e Baixo",
+                  "img": "https://m.media-amazon.com/images/I/71uCPMYaTuL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=suporte%20parede%20guitarra%20violao&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0D2XRXNGY",
                   "category": "Fone de Ouvido Rock / Estúdio",
                   "title": "soundcore V20i da Anker, Fone de Ouvido Bluetooth Aberto e Esportivo, 36H | Bass Up, IP55, Luzes Led com sincronização de música Open Ear, Ganchos ajustáveis Ultraconfortáveis, Encaixe perfeito Clip On",
                   "img": "https://m.media-amazon.com/images/I/6181jAbkbOL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0D2XRXNGY?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0D2XRXNGY?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Boné Brasil Patriota Bordado",
+                  "title": "Boné Tático Brasil Patriota Bandeira Bordada Ajustável",
+                  "img": "https://m.media-amazon.com/images/I/61sAv+tQ7NL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=bone%20brasil%20patriota%20bordado&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0FK18FNYH",
                   "category": "Caixa de Som Bluetooth",
                   "title": "Caixa de Som Portátil JBL Boombox 4, Bluetooth, Branco | JBL Pro Sound, AI Sound Boost, 210W RMS, At...",
                   "img": "https://m.media-amazon.com/images/I/718KNSMkqJL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0FK18FNYH?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0FK18FNYH?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Kit Palhetas Guitarra + Porta Palhetas",
+                  "title": "Kit 24 Palhetas Guitarra e Violão + Porta Palheta Adesivo",
+                  "img": "https://m.media-amazon.com/images/I/61lfsHI3CiL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=kit%20palhetas%20guitarra%20fender%20Alice&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0H5W4474J",
                   "category": "Instrumentos & Guitarra",
                   "title": "38 Polegadas Guitarra Acústico com Cutaway Kit, Corpo de Violão em Tília | 6 Cordas de Nylon, com Af...",
                   "img": "https://m.media-amazon.com/images/I/71kLPRZ9FvL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H5W4474J?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0H5W4474J?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Luminária LED Letreiro Rock / Música",
+                  "title": "Luminária LED Neon Formato Guitarra / Nota Musical Decoração Estúdio",
+                  "img": "https://m.media-amazon.com/images/I/71Wfw2Kd9BL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=luminaria%20led%20neon%20guitarra%20nota%20musical&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0G5L9T9C2",
                   "category": "Decoração Rock / Estúdio",
                   "title": "Placa Decorativa Lar Doce Lar com Gancho",
                   "img": "https://m.media-amazon.com/images/I/412mqc8iNBL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0G5L9T9C2?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0G5L9T9C2?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Cabo P10 Profissional Guitarra 3m",
+                  "title": "Cabo P10 x P10 Blindado Profissional para Guitarra e Violão 3m",
+                  "img": "https://m.media-amazon.com/images/I/51YJzaVS1oL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=cabo%20p10%20guitarra%20blindado%203%20metros&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             }
       ],
       "sacronia": [
@@ -5396,56 +5503,112 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Bíblia de Estudo King James",
                   "title": "Bíblia de Estudo King James 1611 | KJA 400 Anos | Full Collor | Capa Dura",
                   "img": "https://m.media-amazon.com/images/I/61EtgxaIWbL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6583509792?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6583509792?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Luminária LED 3D Leão de Judá / Cruz",
+                  "title": "Luminária Abajur LED 3D Acrílico Jesus & Leão de Judá",
+                  "img": "https://m.media-amazon.com/images/I/61CJ8FAxNdL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=luminaria%20led%203d%20jesus%20cruz%20leao%20de%20juda&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6552650272",
                   "category": "Bíblia de Estudo NVI / NAA",
                   "title": "Bíblia Solas Reformata",
                   "img": "https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Capa Protetora de Bíblia Luxo",
+                  "title": "Capa Bolsa Protetora para Bíblia com Zíper e Alça Luxo",
+                  "img": "https://m.media-amazon.com/images/I/51l-goTK6XL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=capa%20para%20biblia%20couro%20sintetico%20ziper&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "1680430009",
                   "category": "Devocional Clássico",
                   "title": "Dia a dia com Spurgeon - Devocional Diário - Luxo: Manhã e noite",
                   "img": "https://m.media-amazon.com/images/I/51DgwkHYiRL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/1680430009?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/1680430009?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Kit Canetas Marca-Texto Bíblico (Não Mancha)",
+                  "title": "Kit 6 Marca-Texto em Gel para Bíblia (Não Mancha a Folha Fina)",
+                  "img": "https://m.media-amazon.com/images/I/61zO5T-WhfL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=kit%20marca%20texto%20biblia%20gel%20pastel%20nao%20mancha&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "857860184X",
                   "category": "Livro Cristão Best-Seller",
                   "title": "Cartas de um diabo a seu aprendiz",
                   "img": "https://m.media-amazon.com/images/I/91w74bA251L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/857860184X?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/857860184X?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Quadro Mosaico Leão de Judá",
+                  "title": "Quadro Decorativo Leão da Tribo de Judá Sala e Escritório",
+                  "img": "https://m.media-amazon.com/images/I/61h3+2rMFlL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=quadro%20decorativo%20leao%20de%20juda&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "0000188654",
                   "category": "Box / Teologia & História",
                   "title": "Coleção Grandes Sucesso de C.S. Lewis",
                   "img": "https://m.media-amazon.com/images/I/71YikhmqKKL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/0000188654?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/0000188654?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Abas Adesivas para Bíblia Sagrada",
+                  "title": "Cartela Abas Adesivas Divisórias para Bíblia (Antigo e Novo Testamento)",
+                  "img": "https://m.media-amazon.com/images/I/81rtcSQHj9L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=abas%20adesivas%20divisoria%20biblia&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B087K9P25C",
                   "category": "Harpa & Hinário / Louvor",
                   "title": "Biblia Slim Harpa Grande Luxo (Vinho)",
                   "img": "https://m.media-amazon.com/images/I/51IS6QBXdeL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B087K9P25C?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B087K9P25C?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Caneca Cristã Versículo Bíblico",
+                  "title": "Caneca Porcelana Cristã Fé & Versículos Bíblicos Presente",
+                  "img": "https://m.media-amazon.com/images/I/71iSu7rGn5L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=caneca%20crista%20evangelica%20versiculo&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0FGLZNB66",
                   "category": "Quadro Decorativo Sacro",
                   "title": "Kit 3 Quadro Decorativo Sala Quarto Leão Judá Nunca Foi Sorte Motivacional (15)",
                   "img": "https://m.media-amazon.com/images/I/61Hqd4xPh9L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0FGLZNB66?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0FGLZNB66?tag=vorticemidia-20",
+                  "store": "amazon"
             },
             {
                   "asin": "B09PSM4SHN",
                   "category": "Caneca Cristã Fé",
                   "title": "Caneca evangelica Salmos 23",
                   "img": "https://m.media-amazon.com/images/I/71iSu7rGn5L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B09PSM4SHN?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B09PSM4SHN?tag=vorticemidia-20",
+                  "store": "amazon"
             }
       ],
       "neon-asher": [
@@ -5454,35 +5617,104 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Luminária LED / Neon Gamer",
                   "title": "Quntis Light Bar PRO+, Barra de Luz para Monitor com Controle Remoto, Compatível com Monitores Curvos e Planos, Proteção Ocular, Brilho Ajustável com Escurecimento Automático, Sem Reflexo",
                   "img": "https://m.media-amazon.com/images/I/61ZPUe0nvkL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0B6P9J3J5?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0B6P9J3J5?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Fita LED RGB 5 Metros com Controle",
+                  "title": "Rolo Fita LED RGB 5 Metros com Controle Remoto e Fonte Setup",
+                  "img": "https://m.media-amazon.com/images/I/71GI2-F+unL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=fita%20led%20rgb%205050%205m%20controle%20remoto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0FCB2VKVR",
                   "category": "Headphone Over-Ear",
                   "title": "Basike Fone de Ouvido Bluetooth, ANC Cancelamento de Ruído, LE29 (Rosa) | Headphone com Bluetooth 5.4, Headset com Microfone, Certificação Hi-Res Audio, 30 horas reprodução, Carregamento USB-C",
                   "img": "https://m.media-amazon.com/images/I/51n+edKvBPL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0FCB2VKVR?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0FCB2VKVR?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Barra de Luz LED Rítmica RGB (Sensor de Som)",
+                  "title": "Barra de Luz LED RGB Rítmica Ativada por Som/Música para Setup",
+                  "img": "https://m.media-amazon.com/images/I/51Ynd09+JsL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=barra%20led%20rgb%20ritmica%20sensor%20voz%20som&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0H7MR969P",
                   "category": "Violino Acústico Clássico",
                   "title": "VEDO Conjunto de Violino 4/4 Tamanho Normal Fosco | Adequado para Iniciantes e Adultos, Inclui Estoj...",
                   "img": "https://m.media-amazon.com/images/I/712FpgIjTzL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H7MR969P?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0H7MR969P?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Suporte de Mesa para Headset / Fone",
+                  "title": "Suporte de Mesa para Fone de Ouvido Headphone Gamer/Estúdio",
+                  "img": "https://m.media-amazon.com/images/I/51TCume0IZL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=suporte%20headphone%20fone%20ouvido%20mesa%20rgb&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0H5WQPQXR",
                   "category": "Caneca Preta Fosca",
                   "title": "Caneca Térmica 360ml Aço Inoxidável com Tampa Hermética Antivazamento Quente e Gelado (Preto)",
                   "img": "https://m.media-amazon.com/images/I/61IrDWv-nfL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H5WQPQXR?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0H5WQPQXR?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Relógio Digital LED de Mesa Espelhado",
+                  "title": "Relógio Digital de Mesa LED Moderno Minimalista Preto",
+                  "img": "https://m.media-amazon.com/images/I/61v98uPthvL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=relogio%20digital%20led%20mesa%20despertador&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B09JG62KDJ",
                   "category": "Microfone Condensador USB",
                   "title": "FIFINE A6V Microfone USB Para Jogos Para PS5 PC Para Twitch Podcasts | Microfone Condensador Com Mud...",
                   "img": "https://m.media-amazon.com/images/I/61ciiEJ7HRL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B09JG62KDJ?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B09JG62KDJ?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Braço Articulado + Pop Filter para Microfone",
+                  "title": "Suporte Braço Articulado de Mesa para Microfone + Pop Filter",
+                  "img": "https://m.media-amazon.com/images/I/51iwlWH8v0L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=braco%20articulado%20microfone%20pop%20filter&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Kit Espuma Acústica Isolamento Estúdio",
+                  "title": "Kit Placas Espuma Acústica Tratamento de Som para Quarto/Estúdio",
+                  "img": "https://m.media-amazon.com/images/I/51W3AKxljQL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=espuma%20acustica%20estudio%20parede&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Mousepad Deskmat Grande Preto Minimalista",
+                  "title": "Mousepad Gamer / Estúdio Extra Grande 80x30cm Preto Costurado",
+                  "img": "https://m.media-amazon.com/images/I/61CZ5Y60DKL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=mousepad%20grande%2090x40%20preto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Luminária de Mesa Pôr do Sol (Sunset Lamp)",
+                  "title": "Projetor Luminária LED Pôr do Sol (Sunset Lamp) 16 Cores com Controle",
+                  "img": "https://m.media-amazon.com/images/I/51wqvORzAML._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=luminaria%20por%20do%20sol%20sunset%20lamp%20led&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             }
       ],
       "iago-cordeiro": [
@@ -5491,56 +5723,128 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Bíblia da Família Letra Gigante",
                   "title": "Bíblia Solas Reformata",
                   "img": "https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Capotraste de Violão Aço/Alumínio",
+                  "title": "Capotraste Profissional em Alumínio para Violão Aço e Nylon",
+                  "img": "https://m.media-amazon.com/images/I/61fgsUa5BfL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=capotraste%20violao%20guitarra%20aluminio&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6555843179",
                   "category": "Devocional Café com Deus Pai",
                   "title": "Café com Deus Pai - Teens",
                   "img": "https://m.media-amazon.com/images/I/51mcGQ8D0dL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6555843179?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6555843179?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Afinador Digital de Clip para Violão",
+                  "title": "Afinador Digital Cromático de Clip Rotativo 360º para Violão",
+                  "img": "https://m.media-amazon.com/images/I/51Oa3Ql5pzL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=afinador%20digital%20clip%20violao%20guitarra&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0GNBBDJ4Q",
                   "category": "Diário / Caderno de Oração",
                   "title": "Caderno Devocional Em Sintonia com Deus | Diário de Oração e Reflexão - Capa Dura, 238 páginas, Pape...",
                   "img": "https://m.media-amazon.com/images/I/61MT-osDF+L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0GNBBDJ4Q?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0GNBBDJ4Q?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Encordoamento Violão Aço / Nylon",
+                  "title": "Jogo de Cordas Encordoamento Completo para Violão Acústico",
+                  "img": "https://m.media-amazon.com/images/I/61-AMzjSorL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=encordoamento%20cordas%20violao%20giannini%20nig&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6552174721",
                   "category": "Livro Casamento & Família",
                   "title": "As Cinco Linguagens do Amor Contadas às Crianças, Gary Chapman - Thomas Nelson",
                   "img": "https://m.media-amazon.com/images/I/71UB-2RliyL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6552174721?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6552174721?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Correia / Alça Bordada para Violão",
+                  "title": "Correia Alça Confortável Ajustável com Ponteira em Couro para Violão",
+                  "img": "https://m.media-amazon.com/images/I/717SDdbQW6L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=correia%20alca%20violao%20guitarra%20couro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B079ZJMZCS",
                   "category": "Violão Sertanejo / Louvor",
                   "title": "Violão Eletroacústico Dreadnought Folk Cutaway Aço GF-1D CEQ Translucent",
                   "img": "https://m.media-amazon.com/images/I/51X2uc9iU+L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B079ZJMZCS?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B079ZJMZCS?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Capa Bag Acolchoada para Violão",
+                  "title": "Capa Bag Violão Clássico/Folk Impermeável com Alça Dupla",
+                  "img": "https://m.media-amazon.com/images/I/51T-kkw1iiL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=capa%20violao%20acolchoada%20mochila&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B087K9P25C",
                   "category": "Harpa & Hinário / Louvor",
                   "title": "Biblia Slim Harpa Grande Luxo (Vinho)",
                   "img": "https://m.media-amazon.com/images/I/51IS6QBXdeL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B087K9P25C?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B087K9P25C?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Caneca Esmaltada Estilo Fazenda / Café",
+                  "title": "Caneca Estilo Rústico / Porcelana Café com Fé & Gratidão",
+                  "img": "https://m.media-amazon.com/images/I/51ZEYHFLIWL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=caneca%20esmaltada%20cafe%20fazenda%20cristao&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "1680430009",
                   "category": "Devocional Clássico",
                   "title": "Dia a dia com Spurgeon - Devocional Diário - Luxo: Manhã e noite",
                   "img": "https://m.media-amazon.com/images/I/51DgwkHYiRL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/1680430009?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/1680430009?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Suporte de Chão Dobrável para Violão",
+                  "title": "Suporte de Chão Universal Dobrável em Aço para Violão",
+                  "img": "https://m.media-amazon.com/images/I/71GXgGjwdIL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=suporte%20chao%20violao%20guitarra%20dobravel&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6584956393",
                   "category": "Clássico Cristão — Edição de Luxo",
                   "title": "Confissões de Santo Agostinho - Edição de Luxo Almofadada",
                   "img": "https://m.media-amazon.com/images/I/91mYAMQ785L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6584956393?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6584956393?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Caderno Diário de Oração e Louvor",
+                  "title": "Caderno Devocional Diário de Oração e Gratidão Capa Dura",
+                  "img": "https://m.media-amazon.com/images/I/61MT-osDF+L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=caderno%20devocional%20diario%20de%20oracao&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             }
       ],
       "patinhas-e-cancoes": [
@@ -5549,56 +5853,128 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Caminha Pet Nuvem Macia",
                   "title": "Cama Pet Sofá Gigante 120x80cm Cachorro Porte Grande Lavável Borda Alta Confortável Marrom",
                   "img": "https://m.media-amazon.com/images/I/61h+9ewmAUL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HFQ53P8M?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HFQ53P8M?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Escova a Vapor 3 em 1 Tira-Pelos Pet",
+                  "title": "Escova a Vapor Elétrica 3 em 1 Massageadora e Tira-Pelos Cães e Gatos",
+                  "img": "https://m.media-amazon.com/images/I/61til0rhdDL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=escova%20a%20vapor%20pet%20gato%20cachorro%20tira%20pelos&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B07KCLC6J3",
                   "category": "Fonte Bebedouro Água Pet",
                   "title": "Fonte Bebedouro de Água Portátil Amicus 1,2L para Gatos e Cães",
                   "img": "https://m.media-amazon.com/images/I/71gUUBWN9SL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B07KCLC6J3?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B07KCLC6J3?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Garrafa Bebedouro Portátil Passeio Pet",
+                  "title": "Garrafa Bebedouro Portátil 2 em 1 Água e Ração para Passeio Pet",
+                  "img": "https://m.media-amazon.com/images/I/51O74ihUSxL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=garrafa%20agua%20portatil%20passeio%20cachorro%20pet&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0H4HTZGRF",
                   "category": "Comedouro Automático / Duplo",
                   "title": "Mordedor Center Cut Branqueado Bovino PETSKO 100% Natural Para Cães - 2 Unidades",
                   "img": "https://m.media-amazon.com/images/I/61iQq3+quCL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H4HTZGRF?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0H4HTZGRF?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Comedouro Lento Interativo Cães e Gatos",
+                  "title": "Comedouro Lento Anti-Engasgo e Ansiedade para Cães e Gatos",
+                  "img": "https://m.media-amazon.com/images/I/51vPApBWldS._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=comedouro%20lento%20cachorro%20gato%20pet&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0FPBV6GN2",
                   "category": "Peitoral & Guia Passeio",
                   "title": "Peitoral H para Cães, Antipuxão com 2 Pontos de Engate, Ajustável Tamanhos P/M/G, para Passeio e Ade...",
                   "img": "https://m.media-amazon.com/images/I/71qo1OtVhTL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0FPBV6GN2?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0FPBV6GN2?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Brinquedo Corda + Mordedor Limpa Dentes",
+                  "title": "Kit Brinquedos Mordedor Corda Dental Resistente para Cães",
+                  "img": "https://m.media-amazon.com/images/I/61QunShO2VL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=brinquedo%20mordedor%20corda%20cachorro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0HGMDBSQ1",
                   "category": "Tapete Higiênico / Impermeável",
                   "title": "Tapete Higiênico para Cães Mozão Aroma Neutro 50x60cm 30 Unidades 6 Camadas Super Absorvente com Gel Anti Vazamento e Controle de Odores - TOICE",
                   "img": "https://m.media-amazon.com/images/I/61YkQKdS6BL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HGMDBSQ1?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HGMDBSQ1?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Luva Tira-Pelos Magnética Massageadora",
+                  "title": "Luva Tira-Pelos de Silicone Massageadora para Cães e Gatos",
+                  "img": "https://m.media-amazon.com/images/I/71-NctnlViL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=luva%20tira%20pelos%20cachorro%20gato%20pet&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0795T91YP",
                   "category": "Arranhador Torre para Gatos",
                   "title": "Feandrea Árvore para Gatos, 84 cm, Tamanho G, para Gatos Grandes até 7 kg, Poleiro Amplo, 2 Tocas, Poste Arranhador, Cinza Claro BRPCT61WV2",
                   "img": "https://m.media-amazon.com/images/I/81Jo-RtW8RL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0795T91YP?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0795T91YP?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Tapete Gelado Refrescante para Pets",
+                  "title": "Tapete Gelado Térmico Refrescante de Verão para Cães e Gatos",
+                  "img": "https://m.media-amazon.com/images/I/81XcxYHrx1L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=tapete%20gelado%20refrescante%20pet%20cachorro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B07YBNLXH6",
                   "category": "Brinquedo Interativo Cães",
                   "title": "Mordedor Pet Games Monstrinho Azul, Tamanho Médio",
                   "img": "https://m.media-amazon.com/images/I/71CnYh8YNNL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B07YBNLXH6?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B07YBNLXH6?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Coleira Peitoral Respirável com Guia",
+                  "title": "Conjunto Peitoral Respirável Anti-Puxão com Guia para Cães e Gatos",
+                  "img": "https://m.media-amazon.com/images/I/61r6mxG6mzL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=peitoral%20guia%20cachorro%20gato%20respiravel&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0CKT43D9Q",
                   "category": "Mochila / Bolsa Transporte Pet",
                   "title": "Bolsa Transporte Pet Ventilação em 4 lados 42 * 26 * 27 cm Não Se Deforma Facilmente Bolsa Transport...",
                   "img": "https://m.media-amazon.com/images/I/71TsGRxSLVL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0CKT43D9Q?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0CKT43D9Q?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Rolo Removedor de Pelos Reutilizável",
+                  "title": "Rolo Removedor de Pelos Pet Reutilizável para Sofá e Roupas",
+                  "img": "https://m.media-amazon.com/images/I/519YTWmZLTL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=rolo%20tira%20pelos%20pet%20reutilizavel%20sofa%20roupa&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             }
       ],
       "aguas-de-descanso": [
@@ -5607,56 +5983,128 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Difusor de Aromas Ultrassônico",
                   "title": "Umidificador de Ar Difusor de Ambiente Ultrassônico 700ml LED | Aromas Óleo Essencial com Controle R...",
                   "img": "https://m.media-amazon.com/images/I/613g5n0gTwL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HKLPW4VJ?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HKLPW4VJ?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Fonte de Água Decorativa Relaxante de Mesa",
+                  "title": "Fonte de Água Cascata de Mesa Iluminada Som Relaxante de Água",
+                  "img": "https://m.media-amazon.com/images/I/71ax+TAqcxL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=fonte%20de%20agua%20decorativa%20mesa%20relaxante%20feng%20shui&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0CM4NT481",
                   "category": "Kit Óleos Essenciais Lavanda",
                   "title": "Óleo de Rosa Mosqueta - Puro, Uniformizador, Hidratante e Antioxidante - Para Manchas, Rugas, Estrias e Melhor Elasticidade - Uso Facial, Oleo Corporal e Cabelos - 100% Pura Natural Vegano - 30 mL Beauts",
                   "img": "https://m.media-amazon.com/images/I/81IHn4DCtnL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0CM4NT481?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0CM4NT481?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Umidificador Difusor Efeito Chama / Lareira",
+                  "title": "Difusor de Aromas e Umidificador Ultrassônico com Luz Efeito Chama",
+                  "img": "https://m.media-amazon.com/images/I/61Aaz8L5vHL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=umidificador%20difusor%20aroma%20efeito%20chama%20vulcao&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "655265040X",
                   "category": "Bíblia Salmos Letra Gigante",
                   "title": "Bíblia Trindade - Marrom - Heziom - Letra Grande",
                   "img": "https://m.media-amazon.com/images/I/81DYHIHkrlL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/655265040X?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/655265040X?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Kit Essências Aromáticas Relaxantes (Lavanda/Camomila)",
+                  "title": "Kit 5 Essências / Óleos Aromáticos Hidrossolúveis (Lavanda, Camomila, Alecrim)",
+                  "img": "https://m.media-amazon.com/images/I/81IHn4DCtnL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=kit%20oleo%20essencial%20lavanda%20difusor&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0C3Q7152B",
                   "category": "Luminária Lua Cheia Cabeceira",
                   "title": "Luminatti by Danuri Luminária Pixar E27 30W - Preto | Articulada de Mesa para Escritório, Estudo, Le...",
                   "img": "https://m.media-amazon.com/images/I/51dh3ERsgdL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0C3Q7152B?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0C3Q7152B?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Luminária Lua Cheia 3D de Cabeceira",
+                  "title": "Luminária Abajur Lua Cheia 3D Recarregável Touch com Suporte Madeira",
+                  "img": "https://m.media-amazon.com/images/I/61cXMG2EF-L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=luminaria%20lua%20cheia%203d%20touch%20abajur&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0HG6HT49F",
                   "category": "Chá Relaxante / Infusor",
                   "title": "Garrafa Térmica 2000ml Aço Inoxidável com Alça e Canudo - Preto | Bico Duplo, Gancho Incluso, Capacidade 2L, Tampa com Trava, Uso Esportivo",
                   "img": "https://m.media-amazon.com/images/I/71s0y7YgSZL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HG6HT49F?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HG6HT49F?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Máscara de Dormir 3D Anatômica Blackout",
+                  "title": "Máscara de Dormir 3D Contorno Anatômico 100% Blackout Conforto",
+                  "img": "https://m.media-amazon.com/images/I/61VkPCqH7xL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=mascara%20de%20dormir%203d%20tapa%20olho%20blackout&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0CRGR2TS5",
                   "category": "Máscara de Dormir Conforto",
                   "title": "soundcore Sleep A20 da Anker Fone para Dormir Bluetooth 5.3 Antirruído ANC | 80H, Conforto Superior , Compacto e Confortável para Dormir de Lado, Áudio com IA, Monitor de Sono e Alarme Personalizado",
                   "img": "https://m.media-amazon.com/images/I/418EcYAOCbL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0CRGR2TS5?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0CRGR2TS5?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Vela Aromática Perfumada Lavanda em Vidro",
+                  "title": "Vela Aromática Perfumada Relaxante Lavanda com Pote de Vidro",
+                  "img": "https://m.media-amazon.com/images/I/61SKAp0kzHL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=vela%20aromatica%20lavanda%20vidro%20relaxante&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0GH17SBYW",
                   "category": "Travesseiro Nasa / Ortopédico",
                   "title": "TOKE DIN DON 1 Kit Travesseiro Nasa de Verdade Viscoelástico Ajustável | Antialérgico, com Capa 50x7...",
                   "img": "https://m.media-amazon.com/images/I/717sedux3SL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0GH17SBYW?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0GH17SBYW?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Infusor de Chá em Inox + Caneca de Vidro",
+                  "title": "Infusor de Chá de Folhas Soltas em Aço Inox com Pegador",
+                  "img": "https://m.media-amazon.com/images/I/517qqEW0uOL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=infusor%20de%20cha%20inox%20caneca%20vidro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0HCDQBVHB",
                   "category": "Caixa de Som Ruído Branco",
                   "title": "Aparelho Ruído Branco Bebês e Adultos com Luz Noturna, Sons Relaxantes Sono | Maquina de som 20 son...",
                   "img": "https://m.media-amazon.com/images/I/616Re1xmAaL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HCDQBVHB?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HCDQBVHB?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Projetor de Ondas do Oceano / Luz Noturna",
+                  "title": "Luminária Projetor Ondas do Mar e Aurora Boreal com Controle Remoto",
+                  "img": "https://m.media-amazon.com/images/I/71NY2P0MRmL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=projetor%20luz%20oceano%20aurora%20quarto%20relaxante&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             }
       ],
       "trono-da-promessa": [
@@ -5665,56 +6113,128 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Bíblia Infantil Ilustrada",
                   "title": "Bíblia Aventura para crianças NVI, Capa dura com fechamento em ímã, Leão, Leitura Perfeita",
                   "img": "https://m.media-amazon.com/images/I/81azmSNhAuL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/655217201X?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/655217201X?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Pelúcia Ovelhinha / Leãozinho Infantil Macia",
+                  "title": "Pelúcia Infantil Super Macia Antialérgica Ovelhinha / Leãozinho",
+                  "img": "https://m.media-amazon.com/images/I/71-T7JhLNgL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=pelucia%20ovelha%20leaozinho%20bebe%20infantil&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8595200629",
                   "category": "365 Histórias Bíblicas",
                   "title": "365 Historias Bíblicas",
                   "img": "https://m.media-amazon.com/images/I/81m74G-S1fL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8595200629?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8595200629?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Lousa Mágica Digital LCD Infantil 8.5 Polegadas",
+                  "title": "Lousa Mágica Tablet LCD Colorido 8.5\" para Desenhar e Aprender",
+                  "img": "https://m.media-amazon.com/images/I/61IauYYYZFL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=lousa%20magica%20lcd%20tablet%20infantil%20desenhar&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6555001992",
                   "category": "Livros de Colorir Cristão Kids",
                   "title": "365 Desenhos da Bíblia para colorir",
                   "img": "https://m.media-amazon.com/images/I/71mfwkzNXHL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6555001992?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6555001992?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Maleta Kit Pintura Infantil 150 Peças",
+                  "title": "Maleta Completa de Pintura e Desenho Infantil Escolar 150 Peças",
+                  "img": "https://m.media-amazon.com/images/I/71oHh5j2KBL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=maleta%20kit%20pintura%20desenho%20infantil%20150%20pecas&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0G2SWWR5V",
                   "category": "Pelúcia Ovelhinha / Leãozinho",
                   "title": "LEGO Creator 3 em 1 Animais da Floresta: Lobo-cinzento; Brinquedo 31393",
                   "img": "https://m.media-amazon.com/images/I/81HF3FdNjyL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0G2SWWR5V?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0G2SWWR5V?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Luminária Noturna Infantil Silicone (Toque Macio)",
+                  "title": "Luminária Abajur Noturno Infantil LED Recarregável para Quarto Kids",
+                  "img": "https://m.media-amazon.com/images/I/515MxAyeyYL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=luminaria%20infantil%20silicone%20led%20quarto%20bebe&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B077PLFYWF",
                   "category": "Jogo Educativo Família",
                   "title": "Jogo Imagem e Ação 2 Grow, Multicor",
                   "img": "https://m.media-amazon.com/images/I/51XF78npGsL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B077PLFYWF?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B077PLFYWF?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Quebra-Cabeça Infantil Bíblico Arca de Noé",
+                  "title": "Quebra-Cabeça Educativo em Madeira Infantil Arca de Noé e Animais",
+                  "img": "https://m.media-amazon.com/images/I/61JrfkF5-hL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=quebra%20cabeca%20infantil%20arca%20de%20noe%20madeira&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0DSXYB3PD",
                   "category": "Projetor de Estrelas Quarto Kids",
                   "title": "Projetor Luminaria de luz da galáxia do astronauta Luz Noturna LED com Céu Estrelado, Aurora, Contro...",
                   "img": "https://m.media-amazon.com/images/I/61WQ7fpHs1L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0DSXYB3PD?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0DSXYB3PD?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Garrafinha Infantil com Canudo de Silicone e Alça",
+                  "title": "Garrafinha Infantil Antivazamento com Canudo de Silicone, Alça e Adesivos",
+                  "img": "https://m.media-amazon.com/images/I/61f+dKRuDIL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=garrafinha%20agua%20infantil%20canudo%20silicone%20alca&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0G2T4739R",
                   "category": "Blocos de Montar Criativos",
                   "title": "LEGO NINJAGO Pack de Combate Dragão Meca do Lloyd 71862 | Brinquedos De Construção, Meninos E Meninas, Anos 6+, Figuras De Ação, 3 Minifiguras, 81 Peças",
                   "img": "https://m.media-amazon.com/images/I/81zcdle7-cL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0G2T4739R?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0G2T4739R?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Kit Livros de Colorir com Água (Water Magic Book)",
+                  "title": "Kit Livros Mágicos de Colorir com Caneta de Água Reutilizável Kids",
+                  "img": "https://m.media-amazon.com/images/I/61RjxtQXkzL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=livro%20magico%20colorir%20com%20agua%20infantil&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0FXZVDG74",
                   "category": "Garrafinha Infantil Escola",
                   "title": "MODUS Garrafa Térmica Esportiva De Inox Com Isolamento A Vácuo 950ML | Azul",
                   "img": "https://m.media-amazon.com/images/I/61AWuRvjq+L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0FXZVDG74?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0FXZVDG74?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Blocos de Montar Criativos Grande Infantil",
+                  "title": "Conjunto Blocos de Montar Educativo Infantil Criativo com Maleta",
+                  "img": "https://m.media-amazon.com/images/I/81UfurFxTSL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=blocos%20de%20montar%20infantil%20educativo%20pecas&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             }
       ],
       "incorruptivel": [
@@ -5723,77 +6243,152 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Olavo de Carvalho — Best-Seller",
                   "title": "O mínimo que você precisa saber para não ser um idiota — Olavo de Carvalho",
                   "img": "https://m.media-amazon.com/images/I/718qyVMPR7L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8501402516?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8501402516?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Luminária de Leitura Clip Recarregável para Livro",
+                  "title": "Mini Luminária LED de Leitura com Clip para Livros Recarregável USB",
+                  "img": "https://m.media-amazon.com/images/I/71+SivQQm7L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=luminaria%20leitura%20clip%20livro%20recarregavel%20led&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6587138691",
                   "category": "Olavo de Carvalho — Clássico",
                   "title": "O Imbecil Coletivo — Atualidades inculturais brasileiras (Olavo de Carvalho)",
                   "img": "https://m.media-amazon.com/images/I/71g22PdHYrL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6587138691?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6587138691?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Suporte Apoio de Mesa Ajustável para Leitura de Livros",
+                  "title": "Suporte de Mesa Ergonômico Ajustável para Leitura de Livros e Estudos",
+                  "img": "https://m.media-amazon.com/images/I/716zMbO7RiL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=suporte%20apoio%20leitura%20livro%20mesa%20ajustavel&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8567394511",
                   "category": "Olavo de Carvalho — Filosofia",
                   "title": "O Jardim das Aflições — Olavo de Carvalho",
                   "img": "https://m.media-amazon.com/images/I/619dC2skyQL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8567394511?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8567394511?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Aparador de Livros em Metal para Estante",
+                  "title": "Par de Aparador organizador de Livros em Aço Carbono para Estante",
+                  "img": "https://m.media-amazon.com/images/I/71Ro6EfatgL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=aparador%20de%20livros%20metal%20estante&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8595074186",
                   "category": "Olavo de Carvalho — Antologia",
                   "title": "O Essencial de Olavo de Carvalho",
                   "img": "https://m.media-amazon.com/images/I/51d7QNeh8gL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8595074186?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8595074186?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Bandeira do Brasil de Mesa + Bandeira Grande",
+                  "title": "Bandeira do Brasil de Mesa com Mastro para Escritório e Estante",
+                  "img": "https://m.media-amazon.com/images/I/51WUOZkgjML._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=bandeira%20do%20brasil%20de%20mesa%20escritorio&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8567394260",
                   "category": "Olavo de Carvalho — Cultura & Política",
                   "title": "A Nova Era e a Revolução Cultural: Fritjof Capra e Antonio Gramsci — Olavo de Carvalho",
                   "img": "https://m.media-amazon.com/images/I/51AqekpukSL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8567394260?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8567394260?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Caneta Tinteiro / Esferográfica Executiva Metal",
+                  "title": "Caneta Executiva em Metal Preto Fosco com Detalhes Dourados",
+                  "img": "https://m.media-amazon.com/images/I/514KrotMQYL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=caneta%20executiva%20metal%20preta%20luxo&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8595071217",
                   "category": "Olavo de Carvalho — Geopolítica",
                   "title": "O Foro de São Paulo: A ascensão do comunismo latino-americano — Olavo de Carvalho",
                   "img": "https://m.media-amazon.com/images/I/61IW0oP4b4L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8595071217?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8595071217?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Caderno Inteligente / Moleskine Capa Dura Preto",
+                  "title": "Caderno Executivo Tipo Moleskine Capa Dura Couro Sintético com Elástico",
+                  "img": "https://m.media-amazon.com/images/I/51Ifp8TIoAL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=caderno%20capa%20dura%20moleskine%20executivo%20preto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8593751253",
                   "category": "As Seis Lições - Mises",
                   "title": "As seis lições",
                   "img": "https://m.media-amazon.com/images/I/71M-fsD472L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8593751253?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8593751253?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Copo / Caneca Térmica Inox Café para Leitura",
+                  "title": "Copo / Caneca Térmica em Aço Inox Parede Dupla com Tampa para Café",
+                  "img": "https://m.media-amazon.com/images/I/315cfywfO2L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=copo%20termico%20inox%20tampa%20cafe%20preto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6586029724",
                   "category": "O Caminho da Servidão - Hayek",
                   "title": "O caminho da servidão: 2ª Edição",
                   "img": "https://m.media-amazon.com/images/I/61XgkB3IDBL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6586029724?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6586029724?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Organizador de Mesa Acrílico / Aramado Escritório",
+                  "title": "Organizador de Mesa em Metal Aramado Preto Porta-Canetas e Notas",
+                  "img": "https://m.media-amazon.com/images/I/41nFcc2fUZL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=organizador%20de%20mesa%20escritorio%20aramado%20preto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8562409715",
                   "category": "A Lei - Frédéric Bastiat",
                   "title": "A lei: por que a esquerda não funciona",
                   "img": "https://m.media-amazon.com/images/I/81l+1yVENCL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8562409715?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8562409715?tag=vorticemidia-20",
+                  "store": "amazon"
             },
             {
                   "asin": "B08ZK6N3XZ",
                   "category": "1984 - George Orwell (Edição Especial)",
                   "title": "As obras revolucionárias de George Orwell - Box com 3 livros",
                   "img": "https://m.media-amazon.com/images/I/61F-KPiT4KL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B08ZK6N3XZ?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B08ZK6N3XZ?tag=vorticemidia-20",
+                  "store": "amazon"
             },
             {
                   "asin": "B0HD8MW2J8",
                   "category": "Bandeira do Brasil de Mesa",
                   "title": "2 Bandeiras do Brasil em Poliéster para Decoração (150 Cm x 90 cm) Kit 2 Bandeiras Do Brasil)",
                   "img": "https://m.media-amazon.com/images/I/61I3zsS7uML._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HD8MW2J8?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HD8MW2J8?tag=vorticemidia-20",
+                  "store": "amazon"
             }
       ],
       "aliens-da-biblia": [
@@ -5802,56 +6397,128 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "O Livro de Enoque",
                   "title": "O livro de Enoque: Inclui – O testamento de Salomão",
                   "img": "https://m.media-amazon.com/images/I/71XC87bA64L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6559579611?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6559579611?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Luminária Projetor Astronauta Galáxia e Nebulosa",
+                  "title": "Projetor Luminária Astronauta Galáxia e Estrelas com Controle Remoto",
+                  "img": "https://m.media-amazon.com/images/I/71sFv2AzfbL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=projetor%20astronauta%20galaxia%20nebulosa%20led%20controle&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6555393971",
                   "category": "Eram os Deuses Astronautas",
                   "title": "Eram os deuses astronautas? (Edição comemorativa - 50 anos)",
                   "img": "https://m.media-amazon.com/images/I/71-OO+glHtL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6555393971?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6555393971?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Luminária Bola de Cristal 3D Sistema Solar / Galáxia",
+                  "title": "Luminária Esfera de Cristal 3D Gravada a Laser Sistema Solar / Via Láctea",
+                  "img": "https://m.media-amazon.com/images/I/41r0Q8rTIGL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=luminaria%20bola%20de%20cristal%203d%20sistema%20solar%20galaxia&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "6552650272",
                   "category": "Bíblia de Estudo Arqueológica",
                   "title": "Bíblia Solas Reformata",
                   "img": "https://m.media-amazon.com/images/I/81AisEw3RjL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/6552650272?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Telescópio Monóculo Luneta Astronômica Portátil",
+                  "title": "Monóculo Luneta Telescópica de Longo Alcance HD com Suporte Celular e Tripé",
+                  "img": "https://m.media-amazon.com/images/I/61DcjiQE-xL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=monoculo%20luneta%20telescopio%20longo%20alcance%20trip%C3%A9&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8537642673",
                   "category": "Atlas Histórico da Bíblia",
                   "title": "Atlas Bíblico Ilustrado",
                   "img": "https://m.media-amazon.com/images/I/71t3RjohqaL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8537642673?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8537642673?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Globo Terrestre Decorativo de Mesa Giratório",
+                  "title": "Globo Terrestre Político e Geográfico Giratório de Mesa para Estante",
+                  "img": "https://m.media-amazon.com/images/I/61yjMGOEuZL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=globo%20terrestre%20decorativo%20mesa%20escritorio&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0HK1HQTBP",
                   "category": "Telescópio / Luneta Astronômica",
                   "title": "Kit Telescópio e Microscópio Infantil 2 em 1 com Tripé | Ampliação até 450x, A partir de 8 anos, Mat...",
                   "img": "https://m.media-amazon.com/images/I/61S2W7rFcuL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HK1HQTBP?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HK1HQTBP?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Ampulheta de Vidro / Relógio de Areia Vintage",
+                  "title": "Ampulheta Decorativa de Vidro e Metal Estilo Antigo / Arqueologia",
+                  "img": "https://m.media-amazon.com/images/I/71S2d3jmo6L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=ampulheta%20vidro%20decorativa%20retro%20escritorio&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0H7NSWW95",
                   "category": "Luminária Projetor Galáxia",
                   "title": "Projetor Astronauta Galáxia com Nebulosa e Estrelas | Controle Remoto, Timer, Cabeça Ajustável, Luz ...",
                   "img": "https://m.media-amazon.com/images/I/61mFMGAtNiL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H7NSWW95?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0H7NSWW95?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Lupa de Mão Estilo Antigo para Leitura de Mapas",
+                  "title": "Lupa de Mão Clássica com Lente de Vidro Óptico para Leitura Detalhada",
+                  "img": "https://m.media-amazon.com/images/I/61TVYWWgRmL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=lupa%20de%20mao%20leitura%20metal%20vidro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B076H4QDNN",
                   "category": "Globo Terrestre Iluminado",
                   "title": "Globo Terrestre Studio Politico, ProCalc, Multicor",
                   "img": "https://m.media-amazon.com/images/I/61OHQBgOMoL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B076H4QDNN?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B076H4QDNN?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Quadro Decorativo Mapa Antigo / Constelações",
+                  "title": "Quadro Decorativo Mapa Astronômico & Civilizações Antigas",
+                  "img": "https://m.media-amazon.com/images/I/71sqP6PAEfL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=quadro%20decorativo%20mapa%20mundi%20antigo%20astronomia&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "8572441786",
                   "category": "Livro Mistérios da Antiguidade",
                   "title": "As primeiras civilizações",
                   "img": "https://m.media-amazon.com/images/I/71jk7fDJINL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/8572441786?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/8572441786?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Bússola de Bolso em Metal Estilo Retrô",
+                  "title": "Bússola de Bolso Clássica em Metal Dourado Estilo Explorador",
+                  "img": "https://m.media-amazon.com/images/I/61-iOot8hBL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=bussola%20metal%20bolso%20vintage&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             }
       ],
       "aquario-dos-felinos": [
@@ -5860,69 +6527,144 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                   "category": "Arranhador Torre para Gatos",
                   "title": "Feandrea Árvore para Gatos, 84 cm, Tamanho G, para Gatos Grandes até 7 kg, Poleiro Amplo, 2 Tocas, Poste Arranhador, Cinza Claro BRPCT61WV2",
                   "img": "https://m.media-amazon.com/images/I/81Jo-RtW8RL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0795T91YP?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0795T91YP?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-1",
+                  "store": "shopee",
+                  "category": "Peixe Elétrico Interativo USB que se Mexe para Gatos",
+                  "title": "Peixe Elétrico Realista Recarregável USB que se Mexe Sozinho + Catnip",
+                  "img": "https://m.media-amazon.com/images/I/71iH5gdq7qL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=peixe%20eletrico%20brinquedo%20gato%20mexe%20usb%20catnip&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B07KCLC6J3",
                   "category": "Fonte de Água Inox para Gatos",
                   "title": "Fonte Bebedouro de Água Portátil Amicus 1,2L para Gatos e Cães",
                   "img": "https://m.media-amazon.com/images/I/71gUUBWN9SL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B07KCLC6J3?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B07KCLC6J3?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-2",
+                  "store": "shopee",
+                  "category": "Bolinha Inteligente Automática LED para Gatos",
+                  "title": "Bolinha Interativa Automática Recarregável que Rola Sozinha para Gatos",
+                  "img": "https://m.media-amazon.com/images/I/51wABF4a5EL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=bolinha%20inteligente%20automatica%20brinquedo%20gato%20usb&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0HH5TJNV6",
                   "category": "Brinquedo Peixe Elétrico / Interativo",
                   "title": "Bola Interativa para Gatos Automática com Movimento e Cordão | Brinquedo interativo com movimento qu...",
                   "img": "https://m.media-amazon.com/images/I/51a49NUqjOL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0HH5TJNV6?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0HH5TJNV6?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-3",
+                  "store": "shopee",
+                  "category": "Fonte Bebedouro Água Corrente com Filtro para Gatos",
+                  "title": "Fonte Bebedouro Automática Silenciosa com Filtro de Carvão para Gatos",
+                  "img": "https://m.media-amazon.com/images/I/71QjlPJmBuL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=fonte%20bebedouro%20gato%20agua%20corrente%20filtro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0H4HP5XPW",
                   "category": "Túnel Dobrável para Gatos",
                   "title": "Tunel para Gatos em Poliester Colorido Formato T | Uso recomendado para interacao de pets combater o...",
                   "img": "https://m.media-amazon.com/images/I/51tjuK9s-VL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H4HP5XPW?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0H4HP5XPW?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-4",
+                  "store": "shopee",
+                  "category": "Escova de Canto de Parede Massageadora com Catnip",
+                  "title": "Escova Massageadora de Canto de Parede com Compartimento Catnip para Gatos",
+                  "img": "https://m.media-amazon.com/images/I/71HPq27GukL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=escova%20canto%20parede%20gato%20massageador%20catnip&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0GS7MBF5C",
                   "category": "Rede de Janela para Gatos",
                   "title": "Caminha Suspensa para Gatos com Ventosas | Cama de Janela para Gato | Rede para Janela Super Resiste...",
                   "img": "https://m.media-amazon.com/images/I/418fEAmfw+L._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0GS7MBF5C?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0GS7MBF5C?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-5",
+                  "store": "shopee",
+                  "category": "Varinha Interativa com Ventosa, Penas e Guizo",
+                  "title": "Varinha Flexível com Ventosa Fixa no Chão, Penas e Sininho para Gatos",
+                  "img": "https://m.media-amazon.com/images/I/51dhtvVbtVL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=varinha%20brinquedo%20gato%20ventosa%20pena%20sininho&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0H2XL7SL7",
                   "category": "Caixa de Areia Fechada / Furba",
                   "title": "Caixa de Areia Fechada para Gatos, Aço Inoxidável, Extra Grande, 62x38x34cm | Três formas de uso",
                   "img": "https://m.media-amazon.com/images/I/71pkJ59BIKL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H2XL7SL7?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0H2XL7SL7?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-6",
+                  "store": "shopee",
+                  "category": "Túnel Dobrável com Bolinha Suspensa para Gatos",
+                  "title": "Túnel Dobrável Interativo 25x50cm com Bolinha Suspensa para Gatos",
+                  "img": "https://m.media-amazon.com/images/I/61fhyzQw2uL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=tunel%20dobravel%20brinquedo%20gato&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0G4HLLKP7",
                   "category": "Varinha com Penas e Guizo",
                   "title": "Kit 3 Brinquedo Gato Varinha Pássaro Com Ventosa Fixa Chao Parede Janela Bolinha Catnip",
                   "img": "https://m.media-amazon.com/images/I/51NLJWfycvL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0G4HLLKP7?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0G4HLLKP7?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-7",
+                  "store": "shopee",
+                  "category": "Tapete Arranhador de Sisal Protetor de Sofá",
+                  "title": "Tapete Arranhador em Sisal Natural para Gatos e Proteção de Sofá",
+                  "img": "https://m.media-amazon.com/images/I/71ooeA5wmiL._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=arranhador%20gato%20sisal%20tapete%20sofa&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             },
             {
                   "asin": "B0DS6HFWKQ",
                   "category": "Caneca Gateiros / Gatinho",
                   "title": "Caneca de Gato Fofa 325ml | Presente Criativo para Quem Ama Gatos | Caneca Engraçada para Café | Ide...",
                   "img": "https://m.media-amazon.com/images/I/61rvZDSGVOL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0DS6HFWKQ?tag=vorticemidia-20"
+                  "url": "https://www.amazon.com.br/dp/B0DS6HFWKQ?tag=vorticemidia-20",
+                  "store": "amazon"
+            },
+            {
+                  "asin": "SHP-8",
+                  "store": "shopee",
+                  "category": "Rede Caminha de Janela com Ventosas para Gatos",
+                  "title": "Caminha Rede Suspensa de Janela com 4 Ventosas Super Fortes para Gatos",
+                  "img": "https://m.media-amazon.com/images/I/418fEAmfw+L._AC_UL600_.jpg",
+                  "url": "https://shopee.com.br/search?keyword=rede%20cama%20janela%20gato%20ventosa%20resistente&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
             }
       ]
 };
 
-    function trackStoreProductClick(prodTitle, chId, chName, url) {
+    function trackStoreProductClick(prodTitle, chId, chName, url, storeType) {
+      const isShopee = (storeType === 'shopee') || (url && url.indexOf('shopee.com.br') !== -1);
+      const storeLabel = isShopee ? '🧡 Shopee' : '🛒 Amazon';
+      const defaultCh = isShopee ? 'loja-shopee' : 'loja-amazon';
       try {
         fetch('https://vortice-cloud-bot.onrender.com/api/site/track', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             type: 'click',
-            channel: chId || 'loja-amazon',
-            label: '🛒 Amazon (' + (chName || 'Loja') + '): ' + prodTitle,
+            channel: chId || defaultCh,
+            label: storeLabel + ' (' + (chName || 'Loja') + '): ' + prodTitle,
             path: window.location.pathname
           }),
           keepalive: true
@@ -5954,12 +6696,15 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
       const items = CHANNEL_STORE_CATALOG[ch.id] || CHANNEL_STORE_CATALOG['rock-incorruptivel'];
       storeContainer.innerHTML = items.map(prod => {
-        const safeTitle = (prod.title || '').replace(/'/g, "\'").replace(/"/g, '&quot;');
-        const safeChName = (ch.name || '').replace(/'/g, "\'").replace(/"/g, '&quot;');
+        const safeTitle = (prod.title || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        const safeChName = (ch.name || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        const isShopee = prod.store === 'shopee' || (prod.url && prod.url.indexOf('shopee.com.br') !== -1);
+        const btnLabel = isShopee ? 'Ver Oferta na Shopee' : 'Ver Oferta na Amazon';
+        const sType = isShopee ? 'shopee' : 'amazon';
         return `
         <div class="store-product-card">
           <div>
-            <div class="store-prod-visual" onclick="trackStoreProductClick('${safeTitle}', '${ch.id}', '${safeChName}', '${prod.url}')" title="Ver oferta oficial na Amazon">
+            <div class="store-prod-visual" onclick="trackStoreProductClick('${safeTitle}', '${ch.id}', '${safeChName}', '${prod.url}', '${sType}')" title="${btnLabel}">
               <img src="${prod.img}" alt="${safeTitle}" class="store-prod-real-img" loading="lazy">
             </div>
             <div class="store-prod-body">
@@ -5967,8 +6712,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             </div>
           </div>
           <div class="store-prod-actions">
-            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="store-btn-buy" onclick="trackStoreProductClick('${safeTitle}', '${ch.id}', '${safeChName}', '')">
-              Ver Oferta na Amazon
+            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="store-btn-buy" onclick="trackStoreProductClick('${safeTitle}', '${ch.id}', '${safeChName}', '', '${sType}')">
+              ${btnLabel}
             </a>
           </div>
         </div>
@@ -6014,12 +6759,15 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       const loopList = [...allProducts, ...allProducts];
 
       track.innerHTML = loopList.map(prod => {
-        const safeTitle = (prod.title || '').replace(/'/g, "\'").replace(/"/g, '&quot;');
-        const safeChName = (prod.chName || '').replace(/'/g, "\'").replace(/"/g, '&quot;');
+        const safeTitle = (prod.title || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        const safeChName = (prod.chName || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        const isShopee = prod.store === 'shopee' || (prod.url && prod.url.indexOf('shopee.com.br') !== -1);
+        const btnLabel = isShopee ? 'Ver Oferta na Shopee' : 'Ver Oferta na Amazon';
+        const sType = isShopee ? 'shopee' : 'amazon';
         return `
         <div class="store-product-card">
           <div>
-            <div class="store-prod-visual" onclick="trackStoreProductClick('${safeTitle}', '${prod.chId}', '${safeChName}', '${prod.url}')" title="Ver oferta oficial na Amazon">
+            <div class="store-prod-visual" onclick="trackStoreProductClick('${safeTitle}', '${prod.chId}', '${safeChName}', '${prod.url}', '${sType}')" title="${btnLabel}">
               <img src="${prod.img}" alt="${safeTitle}" class="store-prod-real-img" loading="lazy">
             </div>
             <div class="store-prod-body">
@@ -6027,8 +6775,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             </div>
           </div>
           <div class="store-prod-actions">
-            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="store-btn-buy" onclick="trackStoreProductClick('${safeTitle}', '${prod.chId}', '${safeChName}', '')">
-              Ver Oferta na Amazon
+            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="store-btn-buy" onclick="trackStoreProductClick('${safeTitle}', '${prod.chId}', '${safeChName}', '', '${sType}')">
+              ${btnLabel}
             </a>
             <button type="button" class="store-btn-channel" onclick="openChannelStoreDirect('${prod.chId}')" title="Ir para a Loja de ${safeChName}">
               Loja do Canal
@@ -6219,16 +6967,17 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       gridBlend += (targetBlend - gridBlend) * (isGridAligned ? 0.13 : 0.08);
       if (Math.abs(targetBlend - gridBlend) < 0.001) gridBlend = targetBlend;
 
-      const orbitCenterX = W * 0.54;
-      const orbitCenterY = H * 0.51;
-      const baseRadiusX = Math.min(W * 0.37, 545);
-      const baseRadiusY = Math.min(H * 0.13, 115);
+      const isMobile = W < 768;
+      const orbitCenterX = isMobile ? (W * 0.50) : (W * 0.54);
+      const orbitCenterY = isMobile ? (H * 0.58) : (H * 0.51);
+      const baseRadiusX = isMobile ? Math.min(W * 0.34, 150) : Math.min(W * 0.37, 545);
+      const baseRadiusY = isMobile ? Math.min(H * 0.10, 75) : Math.min(H * 0.13, 115);
 
-      /* Geometria da Grade Alinhada (5 colunas x 2 fileiras abaixo da logo) */
+      /* Geometria da Grade Alinhada (5 colunas x 2 fileiras no Desktop / 2x5 compacto no Celular) */
       const cols = W < 900 ? 2 : 5;
-      const colStep = cols === 5 ? Math.min(282, (W - 60) / 5) : Math.min(280, (W - 36) / 2);
-      const rowStep = cols === 5 ? Math.min(146, H * 0.20) : 132;
-      const gridStartY = cols === 5 ? Math.max(255, H * 0.44) : 230;
+      const colStep = cols === 5 ? Math.min(282, (W - 60) / 5) : (isMobile ? Math.min(176, (W - 16) / 2) : Math.min(280, (W - 36) / 2));
+      const rowStep = cols === 5 ? Math.min(146, H * 0.20) : (isMobile ? Math.min(86, (H - 250) / 5.2) : 132);
+      const gridStartY = cols === 5 ? Math.max(255, H * 0.44) : (isMobile ? 228 : 230);
 
       for (const st of cardStates) {
         if (!st.hovered && gridBlend < 0.98) {
@@ -6253,8 +7002,11 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         const depth = st.depth;
         const normDepth = (depth + 1) * 0.5;
 
-        const orbitX = Math.max(150, Math.min(W - 150, st.screenX));
-        const orbitY = Math.max(82, Math.min(H - 82, st.screenY));
+        const padX = isMobile ? 88 : 150;
+        const minY = isMobile ? 220 : 82;
+        const maxY = isMobile ? (H - 68) : (H - 82);
+        const orbitX = Math.max(padX, Math.min(W - padX, st.screenX));
+        const orbitY = Math.max(minY, Math.min(maxY, st.screenY));
 
         /* Posição Alvo na Grade Alinhada abaixo da Logo */
         const col = st.idx % cols;
@@ -6273,7 +7025,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           st.el.style.transform = `translate3d(${(finalX - 134).toFixed(1)}px, ${(finalY - 62.5).toFixed(1)}px, 130px) scale(1.10) rotateZ(0deg) rotateY(0deg) rotateX(0deg)`;
         } else {
           /* Valores da Órbita do Vórtice */
-          const orbitScale = 0.08 + Math.pow(normDepth, 1.65) * 0.86;
+          const mobileScaleFactor = isMobile ? 0.62 : 1.0;
+          const orbitScale = (0.08 + Math.pow(normDepth, 1.65) * 0.86) * mobileScaleFactor;
           let orbitOpacity;
           if (depth < -0.55) {
             const backFade = (depth + 1) / 0.45;
@@ -6290,7 +7043,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
           const orbitZ = depth * 90;
 
           /* Valores do Modo Alinhado de Frente (com leve movimento vivo!) */
-          const alignScale = cols === 5 ? Math.min(1.0, (W - 70) / (5 * 276)) : 0.92;
+          const alignScale = cols === 5 ? Math.min(1.0, (W - 70) / (5 * 276)) : (isMobile ? Math.min(0.62, (W - 20) / (2 * 274)) : 0.92);
           const alignOpacity = 1.0;
           const alignRotZ = Math.sin(timeTick * 1.6 + st.idx * 0.9) * 1.5;
           const alignRotY = Math.cos(timeTick * 1.8 + st.idx * 0.6) * 3.8;

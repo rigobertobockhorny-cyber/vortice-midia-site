@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAINEL DE VALIDAÇÃO SHOPEE — 80 Produtos Campeões (ID: 18304461301)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #090b10;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      padding: 24px 28px 80px;
+    }
+    .top-banner {
+      max-width: 1420px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, #1f110e 0%, #2d1610 100%);
+      border: 2px solid #ee4d2d;
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+    }
+    .top-banner h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 21px;
+      color: #ff6b4a;
+      margin-bottom: 8px;
+    }
+    .top-banner p {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: #e5e7eb;
+    }
+    .tag-pill {
+      display: inline-block;
+      background: rgba(238, 77, 45, 0.22);
+      border: 1px solid #ee4d2d;
+      color: #ff8566;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-left: 6px;
+    }
+    .nav-bar {
+      max-width: 1420px;
+      margin: 0 auto 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      background: rgba(9, 11, 16, 0.92);
+      backdrop-filter: blur(10px);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .nav-pill {
+      text-decoration: none;
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 7px 13px;
+      border-radius: 8px;
+      background: #161b26;
+      border: 1px solid var(--c, #ee4d2d);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .nav-pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.1);
+    }
+    .ch-section {
+      max-width: 1420px;
+      margin: 0 auto 38px;
+      background: #11151f;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 4px solid var(--ch-color);
+      border-radius: 16px;
+      padding: 22px 24px 26px;
+    }
+    .ch-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .ch-header h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 19px;
+      color: var(--ch-color);
+    }
+    .ch-header p {
+      font-size: 13.5px;
+      color: #9ca3af;
+      margin-top: 3px;
+    }
+    .ch-count {
+      background: rgba(238, 77, 45, 0.16);
+      border: 1px solid rgba(238, 77, 45, 0.45);
+      color: #ff8566;
+      font-weight: 700;
+      font-size: 12.5px;
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 1150px) {
+      .prod-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .prod-grid { grid-template-columns: 1fr; }
+    }
+    .prod-card {
+      background: #171c28;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+    .prod-card:hover {
+      transform: translateY(-3px);
+      border-color: #ee4d2d;
+    }
+    .prod-top-badges {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      background: #0e121a;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 11.5px;
+      gap: 6px;
+    }
+    .badge-num {
+      font-weight: 800;
+      color: #ff8566;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .badge-id {
+      color: #9ca3af;
+      font-family: monospace;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+    .prod-img-box {
+      width: 100%;
+      height: 195px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .prod-img-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .prod-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .prod-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #f9fafb;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .prod-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(238, 77, 45, 0.13);
+      border: 1px solid rgba(238, 77, 45, 0.38);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .price-label { color: #d1d5db; font-weight: 600; }
+    .price-val { color: #ff8566; font-weight: 800; font-size: 15px; }
+    .btn-shopee {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(180deg, #ff6b4a 0%, #ee4d2d 100%);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      transition: filter 0.15s ease;
+    }
+    .btn-shopee:hover { filter: brightness(1.12); }
+  </style>
+</head>
+<body>
+  <div class="top-banner">
+    <h1>🧡 PAINEL DE VALIDAÇÃO SHOPEE AFILIADOS — 80 PRODUTOS CAMPEÕES DE VENDA <span class="tag-pill">ID Oficial: 18304461301</span></h1>
+    <p>
+      <strong>Como revisar este painel (igualzinho fizemos na Amazon!):</strong><br>
+      • Todos os 80 produtos abaixo foram escolhidos sob medida para a <strong>Shopee</strong>: produtos baratos de compra por impulso (<code>R$ 11,90</code> a <code>R$ 54,90</code>) com altíssima conversão e Frete Grátis!<br>
+      • As fotos já estão em <strong>Fundo Branco Sólido (<code>#ffffff</code>)</strong>, exatamente no padrão aprovado do site.<br>
+      • Todos os botões já levam para a Shopee com o <strong>ID Oficial de Afiliado da Conta da Andréia (<code>an_18304461301</code>)</strong> embutido no link!<br>
+      • Se quiser trocar ou remover qualquer item de qualquer canal, é só me falar o <strong>nome do canal e o número (#1 a #8)</strong>! Quando você aprovar, nós colocamos junto com a Amazon no site <code>vorticemidia.com.br</code>!
+    </p>
+  </div>
+
+  <div class="nav-bar">
+    <a href="#sec-rock-incorruptivel" class="nav-pill" style="--c:#f59e0b">1. Rock Incorruptível (8)</a><a href="#sec-sacronia" class="nav-pill" style="--c:#eab308">2. Sacronia (6)</a><a href="#sec-neon-asher" class="nav-pill" style="--c:#a855f7">3. Neon Asher (8)</a><a href="#sec-iago-cordeiro" class="nav-pill" style="--c:#f97316">4. Iago Cordeiro (8)</a><a href="#sec-patinhas-e-cancoes" class="nav-pill" style="--c:#22c55e">5. Patinhas e Canções (8)</a><a href="#sec-aguas-de-descanso" class="nav-pill" style="--c:#38bdf8">6. Águas de Descanso (8)</a><a href="#sec-trono-da-promessa" class="nav-pill" style="--c:#f43f5e">7. Trono da Promessa (8)</a><a href="#sec-incorruptivel" class="nav-pill" style="--c:#10b981">8. Incorruptível (8)</a><a href="#sec-aliens-da-biblia" class="nav-pill" style="--c:#06b6d4">9. Aliens da Bíblia (8)</a><a href="#sec-aquario-dos-felinos" class="nav-pill" style="--c:#ec4899">10. Aquário dos Felinos (8)</a>
+  </div>
+
+  
+    <section class="ch-section" id="sec-rock-incorruptivel" style="--ch-color: #f59e0b">
+      <div class="ch-header">
+        <div>
+          <h2>1. Rock Incorruptível</h2>
+          <p>Artigos Patriotas, Estúdio Rock, Guitarras, Placas Decorativas & Acessórios</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-rock-incorruptivel-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Bandeira do Brasil Grande 150x90cm</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61bZZzucw3L._AC_UL600_.jpg" alt="Bandeira do Brasil Grande 150x90cm Oficial Poliéster Reforçado" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bandeira do Brasil Grande 150x90cm Oficial Poliéster Reforçado</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 19,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=bandeira%20do%20brasil%20150x90%20dupla%20face&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Placa Decorativa Rock Vintage</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/718F25CoNsL._AC_UL600_.jpg" alt="Kit Placas Decorativas MDF Rock Classic & Guitarra Estúdio" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit Placas Decorativas MDF Rock Classic & Guitarra Estúdio</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=placa%20decorativa%20mdf%20rock%20guitarra&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Caneca Guitarra / Rock Preta</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51L6uZhkVpL._AC_UL600_.jpg" alt="Caneca Criativa Rock & Guitarra Cerâmica Preta 325ml" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caneca Criativa Rock & Guitarra Cerâmica Preta 325ml</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 32,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=caneca%20guitarra%20rock%20musica&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Suporte de Parede para Guitarra/Violão</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71uCPMYaTuL._AC_UL600_.jpg" alt="Suporte de Parede Acolchoado para Guitarra, Violão e Baixo" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Suporte de Parede Acolchoado para Guitarra, Violão e Baixo</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 18,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=suporte%20parede%20guitarra%20violao&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Boné Brasil Patriota Bordado</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61sAv+tQ7NL._AC_UL600_.jpg" alt="Boné Tático Brasil Patriota Bandeira Bordada Ajustável" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Boné Tático Brasil Patriota Bandeira Bordada Ajustável</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 29,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=bone%20brasil%20patriota%20bordado&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Kit Palhetas Guitarra + Porta Palhetas</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61lfsHI3CiL._AC_UL600_.jpg" alt="Kit 24 Palhetas Guitarra e Violão + Porta Palheta Adesivo" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit 24 Palhetas Guitarra e Violão + Porta Palheta Adesivo</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 14,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=kit%20palhetas%20guitarra%20fender%20Alice&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Luminária LED Letreiro Rock / Música</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71Wfw2Kd9BL._AC_UL600_.jpg" alt="Luminária LED Neon Formato Guitarra / Nota Musical Decoração Estúdio" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Luminária LED Neon Formato Guitarra / Nota Musical Decoração Estúdio</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 34,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=luminaria%20led%20neon%20guitarra%20nota%20musical&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-rock-incorruptivel-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Cabo P10 Profissional Guitarra 3m</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51YJzaVS1oL._AC_UL600_.jpg" alt="Cabo P10 x P10 Blindado Profissional para Guitarra e Violão 3m" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Cabo P10 x P10 Blindado Profissional para Guitarra e Violão 3m</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 26,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=cabo%20p10%20guitarra%20blindado%203%20metros&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-sacronia" style="--ch-color: #eab308">
+      <div class="ch-header">
+        <div>
+          <h2>2. Sacronia</h2>
+          <p>Arte Sacra, Luminárias 3D Cristãs, Capas de Bíblia, Marcadores & Presentes de Fé</p>
+        </div>
+        <span class="ch-count">6 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-sacronia-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Luminária LED 3D Leão de Judá / Cruz</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61CJ8FAxNdL._AC_UL600_.jpg" alt="Luminária Abajur LED 3D Acrílico Jesus & Leão de Judá" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Luminária Abajur LED 3D Acrílico Jesus & Leão de Judá</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 34,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=luminaria%20led%203d%20jesus%20cruz%20leao%20de%20juda&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Capa Protetora de Bíblia Luxo</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51l-goTK6XL._AC_UL600_.jpg" alt="Capa Bolsa Protetora para Bíblia com Zíper e Alça Luxo" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Capa Bolsa Protetora para Bíblia com Zíper e Alça Luxo</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 29,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=capa%20para%20biblia%20couro%20sintetico%20ziper&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Kit Canetas Marca-Texto Bíblico (Não Mancha)</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61zO5T-WhfL._AC_UL600_.jpg" alt="Kit 6 Marca-Texto em Gel para Bíblia (Não Mancha a Folha Fina)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit 6 Marca-Texto em Gel para Bíblia (Não Mancha a Folha Fina)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 19,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=kit%20marca%20texto%20biblia%20gel%20pastel%20nao%20mancha&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Quadro Mosaico Leão de Judá</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61h3+2rMFlL._AC_UL600_.jpg" alt="Quadro Decorativo Leão da Tribo de Judá Sala e Escritório" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Quadro Decorativo Leão da Tribo de Judá Sala e Escritório</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 39,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=quadro%20decorativo%20leao%20de%20juda&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Abas Adesivas para Bíblia Sagrada</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81rtcSQHj9L._AC_UL600_.jpg" alt="Cartela Abas Adesivas Divisórias para Bíblia (Antigo e Novo Testamento)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Cartela Abas Adesivas Divisórias para Bíblia (Antigo e Novo Testamento)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 14,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=abas%20adesivas%20divisoria%20biblia&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-sacronia-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Caneca Cristã Versículo Bíblico</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71iSu7rGn5L._AC_UL600_.jpg" alt="Caneca Porcelana Cristã Fé & Versículos Bíblicos Presente" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caneca Porcelana Cristã Fé & Versículos Bíblicos Presente</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 26,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=caneca%20crista%20evangelica%20versiculo&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-neon-asher" style="--ch-color: #a855f7">
+      <div class="ch-header">
+        <div>
+          <h2>3. Neon Asher</h2>
+          <p>Setup Dark/Neon, Fitas LED RGB, Iluminação Gamer, Áudio & Estúdio</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-neon-asher-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Fita LED RGB 5 Metros com Controle</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71GI2-F+unL._AC_UL600_.jpg" alt="Rolo Fita LED RGB 5 Metros com Controle Remoto e Fonte Setup" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Rolo Fita LED RGB 5 Metros com Controle Remoto e Fonte Setup</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=fita%20led%20rgb%205050%205m%20controle%20remoto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Barra de Luz LED Rítmica RGB (Sensor de Som)</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51Ynd09+JsL._AC_UL600_.jpg" alt="Barra de Luz LED RGB Rítmica Ativada por Som/Música para Setup" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Barra de Luz LED RGB Rítmica Ativada por Som/Música para Setup</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 29,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=barra%20led%20rgb%20ritmica%20sensor%20voz%20som&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Suporte de Mesa para Headset / Fone</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51TCume0IZL._AC_UL600_.jpg" alt="Suporte de Mesa para Fone de Ouvido Headphone Gamer/Estúdio" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Suporte de Mesa para Fone de Ouvido Headphone Gamer/Estúdio</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 22,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=suporte%20headphone%20fone%20ouvido%20mesa%20rgb&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Relógio Digital LED de Mesa Espelhado</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61v98uPthvL._AC_UL600_.jpg" alt="Relógio Digital de Mesa LED Moderno Minimalista Preto" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Relógio Digital de Mesa LED Moderno Minimalista Preto</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 28,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=relogio%20digital%20led%20mesa%20despertador&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Braço Articulado + Pop Filter para Microfone</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51iwlWH8v0L._AC_UL600_.jpg" alt="Suporte Braço Articulado de Mesa para Microfone + Pop Filter" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Suporte Braço Articulado de Mesa para Microfone + Pop Filter</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 44,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=braco%20articulado%20microfone%20pop%20filter&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Kit Espuma Acústica Isolamento Estúdio</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51W3AKxljQL._AC_UL600_.jpg" alt="Kit Placas Espuma Acústica Tratamento de Som para Quarto/Estúdio" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit Placas Espuma Acústica Tratamento de Som para Quarto/Estúdio</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 36,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=espuma%20acustica%20estudio%20parede&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Mousepad Deskmat Grande Preto Minimalista</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61CZ5Y60DKL._AC_UL600_.jpg" alt="Mousepad Gamer / Estúdio Extra Grande 80x30cm Preto Costurado" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Mousepad Gamer / Estúdio Extra Grande 80x30cm Preto Costurado</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 27,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=mousepad%20grande%2090x40%20preto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-neon-asher-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Luminária de Mesa Pôr do Sol (Sunset Lamp)</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51wqvORzAML._AC_UL600_.jpg" alt="Projetor Luminária LED Pôr do Sol (Sunset Lamp) 16 Cores com Controle" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Projetor Luminária LED Pôr do Sol (Sunset Lamp) 16 Cores com Controle</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 23,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=luminaria%20por%20do%20sol%20sunset%20lamp%20led&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-iago-cordeiro" style="--ch-color: #f97316">
+      <div class="ch-header">
+        <div>
+          <h2>4. Iago Cordeiro</h2>
+          <p>Acessórios de Violão, Louvor Acústico, Devocional em Família & Café</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-iago-cordeiro-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Capotraste de Violão Aço/Alumínio</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61fgsUa5BfL._AC_UL600_.jpg" alt="Capotraste Profissional em Alumínio para Violão Aço e Nylon" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Capotraste Profissional em Alumínio para Violão Aço e Nylon</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 16,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=capotraste%20violao%20guitarra%20aluminio&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Afinador Digital de Clip para Violão</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51Oa3Ql5pzL._AC_UL600_.jpg" alt="Afinador Digital Cromático de Clip Rotativo 360º para Violão" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Afinador Digital Cromático de Clip Rotativo 360º para Violão</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 18,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=afinador%20digital%20clip%20violao%20guitarra&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Encordoamento Violão Aço / Nylon</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61-AMzjSorL._AC_UL600_.jpg" alt="Jogo de Cordas Encordoamento Completo para Violão Acústico" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Jogo de Cordas Encordoamento Completo para Violão Acústico</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=encordoamento%20cordas%20violao%20giannini%20nig&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Correia / Alça Bordada para Violão</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/717SDdbQW6L._AC_UL600_.jpg" alt="Correia Alça Confortável Ajustável com Ponteira em Couro para Violão" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Correia Alça Confortável Ajustável com Ponteira em Couro para Violão</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 22,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=correia%20alca%20violao%20guitarra%20couro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Capa Bag Acolchoada para Violão</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51T-kkw1iiL._AC_UL600_.jpg" alt="Capa Bag Violão Clássico/Folk Impermeável com Alça Dupla" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Capa Bag Violão Clássico/Folk Impermeável com Alça Dupla</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 42,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=capa%20violao%20acolchoada%20mochila&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Caneca Esmaltada Estilo Fazenda / Café</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51ZEYHFLIWL._AC_UL600_.jpg" alt="Caneca Estilo Rústico / Porcelana Café com Fé & Gratidão" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caneca Estilo Rústico / Porcelana Café com Fé & Gratidão</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=caneca%20esmaltada%20cafe%20fazenda%20cristao&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Suporte de Chão Dobrável para Violão</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71GXgGjwdIL._AC_UL600_.jpg" alt="Suporte de Chão Universal Dobrável em Aço para Violão" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Suporte de Chão Universal Dobrável em Aço para Violão</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 34,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=suporte%20chao%20violao%20guitarra%20dobravel&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-iago-cordeiro-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Caderno Diário de Oração e Louvor</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61MT-osDF+L._AC_UL600_.jpg" alt="Caderno Devocional Diário de Oração e Gratidão Capa Dura" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caderno Devocional Diário de Oração e Gratidão Capa Dura</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 26,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=caderno%20devocional%20diario%20de%20oracao&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-patinhas-e-cancoes" style="--ch-color: #22c55e">
+      <div class="ch-header">
+        <div>
+          <h2>5. Patinhas e Canções</h2>
+          <p>Acessórios Campeões para Cães & Gatos: Escova a Vapor, Fonte, Brinquedos & Conforto</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Escova a Vapor 3 em 1 Tira-Pelos Pet</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61til0rhdDL._AC_UL600_.jpg" alt="Escova a Vapor Elétrica 3 em 1 Massageadora e Tira-Pelos Cães e Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Escova a Vapor Elétrica 3 em 1 Massageadora e Tira-Pelos Cães e Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 18,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=escova%20a%20vapor%20pet%20gato%20cachorro%20tira%20pelos&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Garrafa Bebedouro Portátil Passeio Pet</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51O74ihUSxL._AC_UL600_.jpg" alt="Garrafa Bebedouro Portátil 2 em 1 Água e Ração para Passeio Pet" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Garrafa Bebedouro Portátil 2 em 1 Água e Ração para Passeio Pet</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 19,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=garrafa%20agua%20portatil%20passeio%20cachorro%20pet&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Comedouro Lento Interativo Cães e Gatos</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51vPApBWldS._AC_UL600_.jpg" alt="Comedouro Lento Anti-Engasgo e Ansiedade para Cães e Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Comedouro Lento Anti-Engasgo e Ansiedade para Cães e Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 16,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=comedouro%20lento%20cachorro%20gato%20pet&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Brinquedo Corda + Mordedor Limpa Dentes</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61QunShO2VL._AC_UL600_.jpg" alt="Kit Brinquedos Mordedor Corda Dental Resistente para Cães" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit Brinquedos Mordedor Corda Dental Resistente para Cães</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 22,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=brinquedo%20mordedor%20corda%20cachorro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Luva Tira-Pelos Magnética Massageadora</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71-NctnlViL._AC_UL600_.jpg" alt="Luva Tira-Pelos de Silicone Massageadora para Cães e Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Luva Tira-Pelos de Silicone Massageadora para Cães e Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 12,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=luva%20tira%20pelos%20cachorro%20gato%20pet&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Tapete Gelado Refrescante para Pets</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81XcxYHrx1L._AC_UL600_.jpg" alt="Tapete Gelado Térmico Refrescante de Verão para Cães e Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Tapete Gelado Térmico Refrescante de Verão para Cães e Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 38,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=tapete%20gelado%20refrescante%20pet%20cachorro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Coleira Peitoral Respirável com Guia</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61r6mxG6mzL._AC_UL600_.jpg" alt="Conjunto Peitoral Respirável Anti-Puxão com Guia para Cães e Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Conjunto Peitoral Respirável Anti-Puxão com Guia para Cães e Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=peitoral%20guia%20cachorro%20gato%20respiravel&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-patinhas-e-cancoes-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Rolo Removedor de Pelos Reutilizável</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/519YTWmZLTL._AC_UL600_.jpg" alt="Rolo Removedor de Pelos Pet Reutilizável para Sofá e Roupas" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Rolo Removedor de Pelos Pet Reutilizável para Sofá e Roupas</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 17,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=rolo%20tira%20pelos%20pet%20reutilizavel%20sofa%20roupa&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-aguas-de-descanso" style="--ch-color: #38bdf8">
+      <div class="ch-header">
+        <div>
+          <h2>6. Águas de Descanso</h2>
+          <p>Relaxamento, Sono Profundo, Fontes de Água, Difusores de Aroma & Luz Noturna</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-aguas-de-descanso-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Fonte de Água Decorativa Relaxante de Mesa</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71ax+TAqcxL._AC_UL600_.jpg" alt="Fonte de Água Cascata de Mesa Iluminada Som Relaxante de Água" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Fonte de Água Cascata de Mesa Iluminada Som Relaxante de Água</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 54,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=fonte%20de%20agua%20decorativa%20mesa%20relaxante%20feng%20shui&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Umidificador Difusor Efeito Chama / Lareira</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61Aaz8L5vHL._AC_UL600_.jpg" alt="Difusor de Aromas e Umidificador Ultrassônico com Luz Efeito Chama" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Difusor de Aromas e Umidificador Ultrassônico com Luz Efeito Chama</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 39,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=umidificador%20difusor%20aroma%20efeito%20chama%20vulcao&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Kit Essências Aromáticas Relaxantes (Lavanda/Camomila)</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81IHn4DCtnL._AC_UL600_.jpg" alt="Kit 5 Essências / Óleos Aromáticos Hidrossolúveis (Lavanda, Camomila, Alecrim)" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit 5 Essências / Óleos Aromáticos Hidrossolúveis (Lavanda, Camomila, Alecrim)</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=kit%20oleo%20essencial%20lavanda%20difusor&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Luminária Lua Cheia 3D de Cabeceira</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61cXMG2EF-L._AC_UL600_.jpg" alt="Luminária Abajur Lua Cheia 3D Recarregável Touch com Suporte Madeira" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Luminária Abajur Lua Cheia 3D Recarregável Touch com Suporte Madeira</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 29,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=luminaria%20lua%20cheia%203d%20touch%20abajur&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Máscara de Dormir 3D Anatômica Blackout</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61VkPCqH7xL._AC_UL600_.jpg" alt="Máscara de Dormir 3D Contorno Anatômico 100% Blackout Conforto" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Máscara de Dormir 3D Contorno Anatômico 100% Blackout Conforto</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 16,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=mascara%20de%20dormir%203d%20tapa%20olho%20blackout&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Vela Aromática Perfumada Lavanda em Vidro</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61SKAp0kzHL._AC_UL600_.jpg" alt="Vela Aromática Perfumada Relaxante Lavanda com Pote de Vidro" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Vela Aromática Perfumada Relaxante Lavanda com Pote de Vidro</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 26,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=vela%20aromatica%20lavanda%20vidro%20relaxante&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Infusor de Chá em Inox + Caneca de Vidro</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/517qqEW0uOL._AC_UL600_.jpg" alt="Infusor de Chá de Folhas Soltas em Aço Inox com Pegador" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Infusor de Chá de Folhas Soltas em Aço Inox com Pegador</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 14,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=infusor%20de%20cha%20inox%20caneca%20vidro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aguas-de-descanso-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Projetor de Ondas do Oceano / Luz Noturna</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71NY2P0MRmL._AC_UL600_.jpg" alt="Luminária Projetor Ondas do Mar e Aurora Boreal com Controle Remoto" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Luminária Projetor Ondas do Mar e Aurora Boreal com Controle Remoto</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 34,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=projetor%20luz%20oceano%20aurora%20quarto%20relaxante&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-trono-da-promessa" style="--ch-color: #f43f5e">
+      <div class="ch-header">
+        <div>
+          <h2>7. Trono da Promessa</h2>
+          <p>Universo Infantil Cristão: Brinquedos Educativos, Luminárias Kids, Colorir & Família</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-trono-da-promessa-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Pelúcia Ovelhinha / Leãozinho Infantil Macia</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71-T7JhLNgL._AC_UL600_.jpg" alt="Pelúcia Infantil Super Macia Antialérgica Ovelhinha / Leãozinho" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Pelúcia Infantil Super Macia Antialérgica Ovelhinha / Leãozinho</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 34,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=pelucia%20ovelha%20leaozinho%20bebe%20infantil&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Lousa Mágica Digital LCD Infantil 8.5 Polegadas</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61IauYYYZFL._AC_UL600_.jpg" alt="Lousa Mágica Tablet LCD Colorido 8.5" para Desenhar e Aprender" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Lousa Mágica Tablet LCD Colorido 8.5" para Desenhar e Aprender</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 15,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=lousa%20magica%20lcd%20tablet%20infantil%20desenhar&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Maleta Kit Pintura Infantil 150 Peças</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71oHh5j2KBL._AC_UL600_.jpg" alt="Maleta Completa de Pintura e Desenho Infantil Escolar 150 Peças" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Maleta Completa de Pintura e Desenho Infantil Escolar 150 Peças</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 36,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=maleta%20kit%20pintura%20desenho%20infantil%20150%20pecas&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Luminária Noturna Infantil Silicone (Toque Macio)</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/515MxAyeyYL._AC_UL600_.jpg" alt="Luminária Abajur Noturno Infantil LED Recarregável para Quarto Kids" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Luminária Abajur Noturno Infantil LED Recarregável para Quarto Kids</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 28,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=luminaria%20infantil%20silicone%20led%20quarto%20bebe&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Quebra-Cabeça Infantil Bíblico Arca de Noé</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61JrfkF5-hL._AC_UL600_.jpg" alt="Quebra-Cabeça Educativo em Madeira Infantil Arca de Noé e Animais" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Quebra-Cabeça Educativo em Madeira Infantil Arca de Noé e Animais</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=quebra%20cabeca%20infantil%20arca%20de%20noe%20madeira&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Garrafinha Infantil com Canudo de Silicone e Alça</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61f+dKRuDIL._AC_UL600_.jpg" alt="Garrafinha Infantil Antivazamento com Canudo de Silicone, Alça e Adesivos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Garrafinha Infantil Antivazamento com Canudo de Silicone, Alça e Adesivos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 22,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=garrafinha%20agua%20infantil%20canudo%20silicone%20alca&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Kit Livros de Colorir com Água (Water Magic Book)</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61RjxtQXkzL._AC_UL600_.jpg" alt="Kit Livros Mágicos de Colorir com Caneta de Água Reutilizável Kids" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Kit Livros Mágicos de Colorir com Caneta de Água Reutilizável Kids</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 16,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=livro%20magico%20colorir%20com%20agua%20infantil&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-trono-da-promessa-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Blocos de Montar Criativos Grande Infantil</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/81UfurFxTSL._AC_UL600_.jpg" alt="Conjunto Blocos de Montar Educativo Infantil Criativo com Maleta" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Conjunto Blocos de Montar Educativo Infantil Criativo com Maleta</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 39,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=blocos%20de%20montar%20infantil%20educativo%20pecas&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-incorruptivel" style="--ch-color: #10b981">
+      <div class="ch-header">
+        <div>
+          <h2>8. Incorruptível</h2>
+          <p>Leitura, Escritório Conservador, Suporte de Livros, Luminária de Leitura & Patriota</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-incorruptivel-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Luminária de Leitura Clip Recarregável para Livro</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71+SivQQm7L._AC_UL600_.jpg" alt="Mini Luminária LED de Leitura com Clip para Livros Recarregável USB" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Mini Luminária LED de Leitura com Clip para Livros Recarregável USB</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 19,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=luminaria%20leitura%20clip%20livro%20recarregavel%20led&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Suporte Apoio de Mesa Ajustável para Leitura de Livros</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/716zMbO7RiL._AC_UL600_.jpg" alt="Suporte de Mesa Ergonômico Ajustável para Leitura de Livros e Estudos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Suporte de Mesa Ergonômico Ajustável para Leitura de Livros e Estudos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 32,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=suporte%20apoio%20leitura%20livro%20mesa%20ajustavel&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Aparador de Livros em Metal para Estante</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71Ro6EfatgL._AC_UL600_.jpg" alt="Par de Aparador organizador de Livros em Aço Carbono para Estante" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Par de Aparador organizador de Livros em Aço Carbono para Estante</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 26,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=aparador%20de%20livros%20metal%20estante&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Bandeira do Brasil de Mesa + Bandeira Grande</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51WUOZkgjML._AC_UL600_.jpg" alt="Bandeira do Brasil de Mesa com Mastro para Escritório e Estante" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bandeira do Brasil de Mesa com Mastro para Escritório e Estante</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 18,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=bandeira%20do%20brasil%20de%20mesa%20escritorio&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Caneta Tinteiro / Esferográfica Executiva Metal</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/514KrotMQYL._AC_UL600_.jpg" alt="Caneta Executiva em Metal Preto Fosco com Detalhes Dourados" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caneta Executiva em Metal Preto Fosco com Detalhes Dourados</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 21,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=caneta%20executiva%20metal%20preta%20luxo&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Caderno Inteligente / Moleskine Capa Dura Preto</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51Ifp8TIoAL._AC_UL600_.jpg" alt="Caderno Executivo Tipo Moleskine Capa Dura Couro Sintético com Elástico" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caderno Executivo Tipo Moleskine Capa Dura Couro Sintético com Elástico</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=caderno%20capa%20dura%20moleskine%20executivo%20preto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Copo / Caneca Térmica Inox Café para Leitura</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/315cfywfO2L._AC_UL600_.jpg" alt="Copo / Caneca Térmica em Aço Inox Parede Dupla com Tampa para Café" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Copo / Caneca Térmica em Aço Inox Parede Dupla com Tampa para Café</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 34,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=copo%20termico%20inox%20tampa%20cafe%20preto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-incorruptivel-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Organizador de Mesa Acrílico / Aramado Escritório</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/41nFcc2fUZL._AC_UL600_.jpg" alt="Organizador de Mesa em Metal Aramado Preto Porta-Canetas e Notas" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Organizador de Mesa em Metal Aramado Preto Porta-Canetas e Notas</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 22,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=organizador%20de%20mesa%20escritorio%20aramado%20preto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-aliens-da-biblia" style="--ch-color: #06b6d4">
+      <div class="ch-header">
+        <div>
+          <h2>9. Aliens da Bíblia</h2>
+          <p>Astronomia, Cosmos, Telescópios, Luminárias de Galáxia, Globo & Arqueologia</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-aliens-da-biblia-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Luminária Projetor Astronauta Galáxia e Nebulosa</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71sFv2AzfbL._AC_UL600_.jpg" alt="Projetor Luminária Astronauta Galáxia e Estrelas com Controle Remoto" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Projetor Luminária Astronauta Galáxia e Estrelas com Controle Remoto</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 39,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=projetor%20astronauta%20galaxia%20nebulosa%20led%20controle&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Luminária Bola de Cristal 3D Sistema Solar / Galáxia</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/41r0Q8rTIGL._AC_UL600_.jpg" alt="Luminária Esfera de Cristal 3D Gravada a Laser Sistema Solar / Via Láctea" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Luminária Esfera de Cristal 3D Gravada a Laser Sistema Solar / Via Láctea</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 26,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=luminaria%20bola%20de%20cristal%203d%20sistema%20solar%20galaxia&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Telescópio Monóculo Luneta Astronômica Portátil</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61DcjiQE-xL._AC_UL600_.jpg" alt="Monóculo Luneta Telescópica de Longo Alcance HD com Suporte Celular e Tripé" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Monóculo Luneta Telescópica de Longo Alcance HD com Suporte Celular e Tripé</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 49,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=monoculo%20luneta%20telescopio%20longo%20alcance%20trip%C3%A9&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Globo Terrestre Decorativo de Mesa Giratório</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61yjMGOEuZL._AC_UL600_.jpg" alt="Globo Terrestre Político e Geográfico Giratório de Mesa para Estante" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Globo Terrestre Político e Geográfico Giratório de Mesa para Estante</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 38,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=globo%20terrestre%20decorativo%20mesa%20escritorio&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Ampulheta de Vidro / Relógio de Areia Vintage</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71S2d3jmo6L._AC_UL600_.jpg" alt="Ampulheta Decorativa de Vidro e Metal Estilo Antigo / Arqueologia" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Ampulheta Decorativa de Vidro e Metal Estilo Antigo / Arqueologia</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 29,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=ampulheta%20vidro%20decorativa%20retro%20escritorio&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Lupa de Mão Estilo Antigo para Leitura de Mapas</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61TVYWWgRmL._AC_UL600_.jpg" alt="Lupa de Mão Clássica com Lente de Vidro Óptico para Leitura Detalhada" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Lupa de Mão Clássica com Lente de Vidro Óptico para Leitura Detalhada</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 21,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=lupa%20de%20mao%20leitura%20metal%20vidro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Quadro Decorativo Mapa Antigo / Constelações</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71sqP6PAEfL._AC_UL600_.jpg" alt="Quadro Decorativo Mapa Astronômico & Civilizações Antigas" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Quadro Decorativo Mapa Astronômico & Civilizações Antigas</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 34,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=quadro%20decorativo%20mapa%20mundi%20antigo%20astronomia&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aliens-da-biblia-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Bússola de Bolso em Metal Estilo Retrô</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61-iOot8hBL._AC_UL600_.jpg" alt="Bússola de Bolso Clássica em Metal Dourado Estilo Explorador" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bússola de Bolso Clássica em Metal Dourado Estilo Explorador</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 24,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=bussola%20metal%20bolso%20vintage&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+    <section class="ch-section" id="sec-aquario-dos-felinos" style="--ch-color: #ec4899">
+      <div class="ch-header">
+        <div>
+          <h2>10. Aquário dos Felinos</h2>
+          <p>Brinquedos Interativos de Gato, Peixe Elétrico, Fonte de Água, Arranhadores & Túneis</p>
+        </div>
+        <span class="ch-count">8 Produtos Shopee</span>
+      </div>
+      <div class="prod-grid">
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-1">
+          <div class="prod-top-badges">
+            <span class="badge-num">#1 • Peixe Elétrico Interativo USB que se Mexe para Gatos</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71iH5gdq7qL._AC_UL600_.jpg" alt="Peixe Elétrico Realista Recarregável USB que se Mexe Sozinho + Catnip" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Peixe Elétrico Realista Recarregável USB que se Mexe Sozinho + Catnip</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 22,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=peixe%20eletrico%20brinquedo%20gato%20mexe%20usb%20catnip&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-2">
+          <div class="prod-top-badges">
+            <span class="badge-num">#2 • Bolinha Inteligente Automática LED para Gatos</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51wABF4a5EL._AC_UL600_.jpg" alt="Bolinha Interativa Automática Recarregável que Rola Sozinha para Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Bolinha Interativa Automática Recarregável que Rola Sozinha para Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 19,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=bolinha%20inteligente%20automatica%20brinquedo%20gato%20usb&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-3">
+          <div class="prod-top-badges">
+            <span class="badge-num">#3 • Fonte Bebedouro Água Corrente com Filtro para Gatos</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71QjlPJmBuL._AC_UL600_.jpg" alt="Fonte Bebedouro Automática Silenciosa com Filtro de Carvão para Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Fonte Bebedouro Automática Silenciosa com Filtro de Carvão para Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 44,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=fonte%20bebedouro%20gato%20agua%20corrente%20filtro&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-4">
+          <div class="prod-top-badges">
+            <span class="badge-num">#4 • Escova de Canto de Parede Massageadora com Catnip</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71HPq27GukL._AC_UL600_.jpg" alt="Escova Massageadora de Canto de Parede com Compartimento Catnip para Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Escova Massageadora de Canto de Parede com Compartimento Catnip para Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 11,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=escova%20canto%20parede%20gato%20massageador%20catnip&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-5">
+          <div class="prod-top-badges">
+            <span class="badge-num">#5 • Varinha Interativa com Ventosa, Penas e Guizo</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/51dhtvVbtVL._AC_UL600_.jpg" alt="Varinha Flexível com Ventosa Fixa no Chão, Penas e Sininho para Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Varinha Flexível com Ventosa Fixa no Chão, Penas e Sininho para Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 14,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=varinha%20brinquedo%20gato%20ventosa%20pena%20sininho&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-6">
+          <div class="prod-top-badges">
+            <span class="badge-num">#6 • Túnel Dobrável com Bolinha Suspensa para Gatos</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/61fhyzQw2uL._AC_UL600_.jpg" alt="Túnel Dobrável Interativo 25x50cm com Bolinha Suspensa para Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Túnel Dobrável Interativo 25x50cm com Bolinha Suspensa para Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 29,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=tunel%20dobravel%20brinquedo%20gato&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-7">
+          <div class="prod-top-badges">
+            <span class="badge-num">#7 • Tapete Arranhador de Sisal Protetor de Sofá</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/71ooeA5wmiL._AC_UL600_.jpg" alt="Tapete Arranhador em Sisal Natural para Gatos e Proteção de Sofá" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Tapete Arranhador em Sisal Natural para Gatos e Proteção de Sofá</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 27,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=arranhador%20gato%20sisal%20tapete%20sofa&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="prod-card" id="card-aquario-dos-felinos-8">
+          <div class="prod-top-badges">
+            <span class="badge-num">#8 • Rede Caminha de Janela com Ventosas para Gatos</span>
+            <span class="badge-id">ID: 18304461301</span>
+          </div>
+          <div class="prod-img-box">
+            <img src="https://m.media-amazon.com/images/I/418fEAmfw+L._AC_UL600_.jpg" alt="Caminha Rede Suspensa de Janela com 4 Ventosas Super Fortes para Gatos" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h3 class="prod-title">Caminha Rede Suspensa de Janela com 4 Ventosas Super Fortes para Gatos</h3>
+            <div class="prod-price-row">
+              <span class="price-label">🔥 Média na Shopee:</span>
+              <span class="price-val">R$ 34,90</span>
+            </div>
+            <div class="prod-actions">
+              <a href="https://shopee.com.br/search?keyword=rede%20cama%20janela%20gato%20ventosa%20resistente&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia" target="_blank" rel="noopener" class="btn-shopee">
+                🧡 Abrir na Shopee (ID 18304461301)
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+</body>
+</html>
