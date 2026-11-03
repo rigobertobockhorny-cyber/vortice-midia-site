@@ -2965,6 +2965,46 @@
       .momentos-photo-grid, .universos-grid, .studio-cards-3col, .ivory-grid-inputs, .mvv-corporate-grid, .flying-signs-platforms-grid, .ch-chronicles-grid, .ch-tracks-grid, .ch-faq-grid-2col, .vortice-store-grid {
         grid-template-columns: 1fr;
       }
+      /* Loja Oficial Vórtice na Página Inicial no Celular:
+         - Os 10 botões dos canais ficam em 2 colunas x 5 linhas (100% visíveis e sem cortar texto!)
+         - Cada bloco de produto na esteira tem largura generosa (260px) passando 1 bloco nítido por vez! */
+      .store-channels-nav-bar {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        max-width: 100%;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .store-channel-ShortcutBtn {
+        min-height: 44px;
+        padding: 8px 6px;
+        font-size: 10.5px;
+        letter-spacing: 0.03em;
+      }
+      .store-conveyor-outer {
+        width: 100%;
+        max-width: 100%;
+      }
+      .store-conveyor-track {
+        gap: 14px;
+      }
+      .store-conveyor-track .store-product-card {
+        width: 260px;
+        min-width: 260px;
+        max-width: 260px;
+      }
+      .store-conveyor-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        background: rgba(10, 12, 18, 0.88);
+      }
+      .store-conveyor-arrow.prev {
+        left: 4px;
+      }
+      .store-conveyor-arrow.next {
+        right: 4px;
+      }
       #hero-stage {
         min-height: 100svh;
         padding: 10px 12px;
