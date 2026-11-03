@@ -2955,44 +2955,144 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
       }
     }
 
-    @media (max-width: 720px) {
+    .store-btn-buy.shopee-btn {
+      border-color: rgba(238, 77, 45, 0.65);
+      background: linear-gradient(180deg, rgba(45, 18, 14, 0.82) 0%, rgba(18, 10, 10, 0.88) 100%);
+    }
+    .store-btn-buy.shopee-btn:hover {
+      border-color: #ff6b4a;
+      background: linear-gradient(180deg, rgba(238, 77, 45, 0.92) 0%, rgba(180, 45, 20, 0.95) 100%);
+    }
+
+    @media (max-width: 768px) {
       .momentos-photo-grid, .universos-grid, .studio-cards-3col, .ivory-grid-inputs, .mvv-corporate-grid, .flying-signs-platforms-grid, .ch-chronicles-grid, .ch-tracks-grid, .ch-faq-grid-2col, .vortice-store-grid {
         grid-template-columns: 1fr;
       }
       #hero-stage {
         min-height: 100svh;
-        overflow-x: hidden;
+        padding: 10px 12px;
+        overflow: hidden;
       }
-      .top-brand-bar {
-        top: 8px;
-        gap: 2px;
+      /* Logo Vórtice Mídia no canto superior esquerdo no celular (compacta para NUNCA encostar na placa da Rádio!) */
+      .hero-left-wing {
+        top: 6px;
+        left: 8px;
       }
-      .logo-3d-frame {
-        padding: 4px 10px 2px;
+      .vortice-logo-free {
+        height: 62px;
+        max-width: 146px;
       }
-      .logo-3d-img {
+      .logo-align-hint-pill {
+        font-size: 7px;
+        letter-spacing: 0.12em;
+        margin-top: -3px;
+      }
+      /* Placa Amarela "Voltar ao Portal" no canto superior esquerdo dentro dos canais (compacta e sem sobrepor a Rádio!) */
+      .ch-sticky-navbar {
+        top: 6px;
+        left: 6px;
+      }
+      .ch-vortice-logo-return {
+        width: calc(50vw - 10px);
+        min-width: 142px;
+        max-width: 166px;
+        height: 48px;
+        border-radius: 6px;
+      }
+      .hazard-zebra-bar {
+        height: 4.5px;
+      }
+      .hazard-plate-middle {
+        padding: 0 4px;
+        gap: 3px;
+      }
+      .ch-yellow-plate-official-logo {
+        height: 26px;
+        max-width: 84px;
+      }
+      .hazard-col-divider {
+        height: 20px;
+      }
+      .hazard-return-line1 {
+        font-size: 7.5px;
+        letter-spacing: 0.03em;
+      }
+      .hazard-return-line2 {
+        font-size: 6.8px;
+        letter-spacing: 0.02em;
+      }
+      /* Placa Mercosul "Rádio Vórtice" no canto superior direito (compacta para caber ao lado da Placa Amarela com folga!) */
+      #vortice-radio-widget {
+        top: 6px;
+        right: 6px;
+        width: calc(50vw - 10px);
+        min-width: 142px;
+        max-width: 166px;
+        height: 48px;
+        border-radius: 6px;
+      }
+      .mercosul-top-bar {
+        height: 14px;
+        padding: 0 5px;
+      }
+      .mercosul-left-emblem svg {
+        width: 13px;
+        height: 10px;
+      }
+      .mercosul-country-title {
+        font-size: 7px;
+        letter-spacing: 0.12em;
+      }
+      .mercosul-br-flag {
+        width: 14px;
+        height: 10px;
+      }
+      .mercosul-plate-body {
+        padding: 2px 5px 3px 5px;
+        gap: 4px;
+      }
+      .radio-speaker-btn {
+        width: 20px;
+        height: 20px;
+      }
+      .radio-speaker-btn svg {
+        width: 11px;
+        height: 11px;
+      }
+      .radio-title-badge {
+        font-size: 8px;
+        letter-spacing: 0.02em;
+      }
+      .radio-eq-bars {
+        display: none;
+      }
+      .radio-now-playing {
+        font-size: 7.8px;
+        max-width: 92px;
+      }
+      .radio-next-btn {
+        width: 16px;
+        height: 16px;
+        font-size: 8px;
+      }
+      /* Hero da Página de cada Canal no Celular: garante espaço livre no topo para as 2 placas */
+      .ch-page-hero {
+        height: auto;
+        min-height: 100svh;
+        max-height: none;
+        padding: 74px 16px 42px;
+        margin-bottom: 48px;
+      }
+      .ch-page-logo {
+        width: 82px;
         height: 82px;
+        border-radius: 16px;
       }
-      .logo-subtitle-pill {
-        margin-top: -12px;
+      .ch-page-hero-content {
+        gap: 14px;
       }
-      .logo-subtitle-pill span {
-        font-size: 9px;
-        letter-spacing: 0.14em;
-      }
-      .radio-plate-wrapper {
-        left: 50%;
-        top: 112px;
-        transform: translateX(-50%) scale(0.76);
-        transform-origin: center top;
-      }
-      .scroll-down-hint {
-        bottom: 10px;
-        padding: 6px 14px;
-        font-size: 9.5px;
-      }
-      .section-block {
-        padding: 80px 16px 80px;
+      .ch-section-block {
+        padding: 64px 16px 64px;
       }
     }
   </style>
@@ -6699,7 +6799,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         const safeTitle = (prod.title || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
         const safeChName = (ch.name || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
         const isShopee = prod.store === 'shopee' || (prod.url && prod.url.indexOf('shopee.com.br') !== -1);
-        const btnLabel = isShopee ? 'Ver Oferta na Shopee' : 'Ver Oferta na Amazon';
+        const btnLabel = isShopee ? '🧡 Ver Oferta na Shopee' : '🛒 Ver Oferta na Amazon';
+        const btnClass = isShopee ? 'store-btn-buy shopee-btn' : 'store-btn-buy';
         const sType = isShopee ? 'shopee' : 'amazon';
         return `
         <div class="store-product-card">
@@ -6712,7 +6813,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             </div>
           </div>
           <div class="store-prod-actions">
-            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="store-btn-buy" onclick="trackStoreProductClick('${safeTitle}', '${ch.id}', '${safeChName}', '', '${sType}')">
+            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="${btnClass}" onclick="trackStoreProductClick('${safeTitle}', '${ch.id}', '${safeChName}', '', '${sType}')">
               ${btnLabel}
             </a>
           </div>
@@ -6739,20 +6840,30 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         `).join('');
       }
 
-      /* Junta todos os produtos de todos os canais na esteira intercalando para variedade máxima */
-      const allProducts = [];
+      /* Junta todos os produtos intercalando estritamente 1 Amazon e 1 Shopee desde o 1º card da esteira! */
+      const amzPool = [];
+      const shpPool = [];
       const maxLen = Math.max(...VORTICE_CHANNELS.map(ch => (CHANNEL_STORE_CATALOG[ch.id] || []).length));
       for (let i = 0; i < maxLen; i++) {
         VORTICE_CHANNELS.forEach(ch => {
           const prods = CHANNEL_STORE_CATALOG[ch.id] || [];
-          if (prods[i]) {
-            allProducts.push({
-              ...prods[i],
-              chId: ch.id,
-              chName: ch.name
-            });
+          const item = prods[i];
+          if (item) {
+            const enriched = { ...item, chId: ch.id, chName: ch.name };
+            const isShp = item.store === 'shopee' || (item.url && item.url.indexOf('shopee.com.br') !== -1);
+            if (isShp) {
+              shpPool.push(enriched);
+            } else {
+              amzPool.push(enriched);
+            }
           }
         });
+      }
+      const allProducts = [];
+      const maxPool = Math.max(amzPool.length, shpPool.length);
+      for (let i = 0; i < maxPool; i++) {
+        if (amzPool[i]) allProducts.push(amzPool[i]);
+        if (shpPool[i]) allProducts.push(shpPool[i]);
       }
 
       /* Duplica a lista na esteira para permitir rolagem infinita contínua */
@@ -6762,7 +6873,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         const safeTitle = (prod.title || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
         const safeChName = (prod.chName || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
         const isShopee = prod.store === 'shopee' || (prod.url && prod.url.indexOf('shopee.com.br') !== -1);
-        const btnLabel = isShopee ? 'Ver Oferta na Shopee' : 'Ver Oferta na Amazon';
+        const btnLabel = isShopee ? '🧡 Ver Oferta na Shopee' : '🛒 Ver Oferta na Amazon';
+        const btnClass = isShopee ? 'store-btn-buy shopee-btn' : 'store-btn-buy';
         const sType = isShopee ? 'shopee' : 'amazon';
         return `
         <div class="store-product-card">
@@ -6775,7 +6887,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             </div>
           </div>
           <div class="store-prod-actions">
-            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="store-btn-buy" onclick="trackStoreProductClick('${safeTitle}', '${prod.chId}', '${safeChName}', '', '${sType}')">
+            <a href="${prod.url}" target="_blank" rel="noopener noreferrer" class="${btnClass}" onclick="trackStoreProductClick('${safeTitle}', '${prod.chId}', '${safeChName}', '', '${sType}')">
               ${btnLabel}
             </a>
             <button type="button" class="store-btn-channel" onclick="openChannelStoreDirect('${prod.chId}')" title="Ir para a Loja de ${safeChName}">
