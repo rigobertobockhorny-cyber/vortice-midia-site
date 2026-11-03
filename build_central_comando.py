@@ -1,0 +1,1707 @@
+import os
+
+HTML_CONTENT = r"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CENTRAL DE COMANDO VÓRTICE MÍDIA — Gestão de Afiliados, Canais, OFFstep & Streaming</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #06080e;
+      --bg-card: #0e131f;
+      --bg-card-hover: #141c2e;
+      --border-subtle: rgba(255, 255, 255, 0.12);
+      --border-bright: rgba(255, 255, 255, 0.34);
+      --gold: #f59e0b;
+      --emerald: #10b981;
+      --cyan: #06b6d4;
+      --shopee: #ee4d2d;
+      --amazon: #ff9900;
+      --meli: #ffe600;
+      --spotify: #1db954;
+      --deezer: #a855f7;
+      --apple: #fa243c;
+      --youtube: #ff0000;
+      --facebook: #1877f2;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 0%, #131c31 0%, #06080e 65%);
+      color: var(--text-main);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 18px 22px 80px;
+      line-height: 1.45;
+    }
+
+    .container {
+      max-width: 1680px;
+      margin: 0 auto;
+    }
+
+    /* TOPBAR / HEADER */
+    .master-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 18px 24px;
+      background: rgba(14, 19, 31, 0.92);
+      border: 1.5px solid rgba(245, 158, 11, 0.45);
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+      margin-bottom: 16px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-badge-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+      flex-shrink: 0;
+    }
+
+    .brand-titles h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .brand-titles p {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-top: 2px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-input {
+      width: 290px;
+      padding: 10px 14px 10px 36px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      background: rgba(6, 8, 14, 0.85);
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 600;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: #f59e0b;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    .top-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.24);
+      background: rgba(20, 28, 46, 0.9);
+      color: #ffffff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .top-action-btn:hover {
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      background: rgba(30, 41, 66, 1);
+    }
+
+    .top-action-btn.primary {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #ffffff;
+    }
+
+    /* BARRA DE FILTRO RÁPIDO (SEM ESCONDER NADA POR PADRÃO) */
+    .filter-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 12px 16px;
+      background: rgba(14, 19, 31, 0.88);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      margin-bottom: 22px;
+      position: sticky;
+      top: 8px;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .filter-btn {
+      padding: 8px 14px;
+      border-radius: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .filter-btn:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #000000;
+      border-color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    }
+
+    /* SEÇÕES */
+    .cmd-section {
+      margin-bottom: 30px;
+    }
+
+    .sec-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .sec-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .sec-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* GRIDS */
+    .affiliates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+      gap: 16px;
+    }
+
+    .aff-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .aff-card:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .aff-card.amazon-card { border-top: 4px solid #ff9900; }
+    .aff-card.shopee-card { border-top: 4px solid #ee4d2d; }
+    .aff-card.meli-card   { border-top: 4px solid #ffe600; }
+    .aff-card.penca-card  { border-top: 4px solid #10b981; }
+    .aff-card.digital-card { border-top: 4px solid #38bdf8; }
+
+    .aff-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .aff-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-pill.active {
+      background: rgba(16, 185, 129, 0.18);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.45);
+    }
+
+    .status-pill.next {
+      background: rgba(245, 158, 11, 0.18);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+    }
+
+    /* CREDENTIAL PILLS COM BOTÃO COPIAR */
+    .cred-box {
+      background: rgba(6, 8, 14, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 11px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .cred-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12.5px;
+    }
+
+    .cred-label {
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .cred-val-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cred-val {
+      font-family: monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #f8fafc;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .copy-mini-btn {
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .copy-mini-btn:hover {
+      background: #f59e0b;
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    .gold-rule-banner {
+      background: rgba(238, 77, 45, 0.14);
+      border: 1px solid rgba(238, 77, 45, 0.45);
+      color: #ffbfa8;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* BOTÕES DIRETOS DE AÇÃO */
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .btn-grid.single-col {
+      grid-template-columns: 1fr;
+    }
+
+    .direct-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 12px;
+      border-radius: 10px;
+      background: rgba(20, 28, 46, 0.95);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+    }
+
+    .direct-btn:hover {
+      transform: translateY(-2px);
+      border-color: #ffffff;
+      background: rgba(34, 47, 74, 1);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.75);
+    }
+
+    .direct-btn.full-span {
+      grid-column: 1 / -1;
+    }
+
+    .direct-btn.amz-main {
+      background: linear-gradient(135deg, #ff9900 0%, #cc7a00 100%);
+      color: #000000;
+      font-weight: 800;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .direct-btn.shp-main {
+      background: linear-gradient(135deg, #ee4d2d 0%, #c23315 100%);
+      color: #ffffff;
+      font-weight: 800;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .direct-btn.meli-main {
+      background: linear-gradient(135deg, #ffe600 0%, #ccb800 100%);
+      color: #000000;
+      font-weight: 800;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .direct-btn.penca-main {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      font-weight: 800;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* STREAMING HUB BAR */
+    .streaming-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .stream-portal-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .stream-portal-card:hover {
+      border-color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .stream-portal-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stream-portal-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* MATRIZ DOS 10 CANAIS */
+    .channels-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 16px;
+    }
+
+    .ch-command-card {
+      background: var(--bg-card);
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+      transition: border-color 0.2s;
+    }
+
+    .ch-command-card:hover {
+      border-color: rgba(245, 158, 11, 0.65);
+    }
+
+    .ch-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ch-head-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ch-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      background: #000;
+      flex-shrink: 0;
+    }
+
+    .ch-title-col h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ch-num-badge {
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: #fbbf24;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+
+    .ch-niche-sub {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .ch-type-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 9px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .ch-type-tag.music {
+      background: rgba(168, 85, 247, 0.2);
+      color: #d8b4fe;
+      border: 1px solid rgba(168, 85, 247, 0.45);
+    }
+
+    .ch-type-tag.series {
+      background: rgba(6, 182, 212, 0.18);
+      color: #67e8f9;
+      border: 1px solid rgba(6, 182, 212, 0.45);
+    }
+
+    .ch-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(6, 8, 14, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 11px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .ch-btns-group-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #94a3b8;
+      margin-bottom: -4px;
+    }
+
+    .ch-btns-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+      gap: 7px;
+    }
+
+    .ch-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 9px;
+      border-radius: 8px;
+      background: rgba(20, 28, 46, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .ch-btn:hover {
+      transform: translateY(-2px);
+      border-color: #ffffff;
+      filter: brightness(1.15);
+    }
+
+    .ch-btn.yt       { background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%); border-color: rgba(255,255,255,0.35); }
+    .ch-btn.ytstudio { background: linear-gradient(180deg, #7f1d1d 0%, #450a0a 100%); }
+    .ch-btn.site     { background: linear-gradient(180deg, #d97706 0%, #92400e 100%); }
+    .ch-btn.store    { background: linear-gradient(180deg, #059669 0%, #065f46 100%); }
+    .ch-btn.spotify  { background: linear-gradient(180deg, #16a34a 0%, #14532d 100%); }
+    .ch-btn.deezer   { background: linear-gradient(180deg, #9333ea 0%, #581c87 100%); }
+    .ch-btn.apple    { background: linear-gradient(180deg, #e11d48 0%, #881337 100%); }
+    .ch-btn.amazonm  { background: linear-gradient(180deg, #0284c7 0%, #0c4a6e 100%); }
+    .ch-btn.ytmusic  { background: linear-gradient(180deg, #b91c1c 0%, #7f1d1d 100%); }
+    .ch-btn.offstep  { background: linear-gradient(180deg, #4f46e5 0%, #312e81 100%); }
+    .ch-btn.fb       { background: linear-gradient(180deg, #2563eb 0%, #1e3a8a 100%); }
+    .ch-btn.ig       { background: linear-gradient(180deg, #db2777 0%, #831843 100%); }
+    .ch-btn.tk       { background: linear-gradient(180deg, #334155 0%, #0f172a 100%); }
+
+    /* TOAST DE FEEDBACK */
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10b981;
+      color: #000000;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+      border: 2px solid #ffffff;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.22s ease;
+      z-index: 9999;
+    }
+
+    .toast-popup.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MODAL PARA EDITAR / SALVAR LINKS NOVOS */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #0e131f;
+      border: 1.5px solid #f59e0b;
+      border-radius: 18px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 22px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+    }
+
+    .modal-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 17px;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #cbd5e1;
+      margin-bottom: 4px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: #06080e;
+      color: #ffffff;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 12px 10px 60px; }
+      .channels-matrix-grid, .affiliates-grid { grid-template-columns: 1fr; }
+      .btn-grid { grid-template-columns: 1fr; }
+      .search-input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- CABEÇALHO MESTRE -->
+  <header class="master-header">
+    <div class="brand-left">
+      <div class="brand-badge-icon">🌪️</div>
+      <div class="brand-titles">
+        <h1>Central de Comando • Vórtice Mídia</h1>
+        <p>Todos os seus Painéis de Afiliados, Lojas, OFFstep, Streaming Musical, 10 Canais, Fanpages e Nuvem em 1 Clique</p>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="global-search" class="search-input" placeholder="Buscar canal, loja, plataforma, ID..." oninput="filterEverything(this.value)">
+      </div>
+      <a href="https://vorticemidia.com.br" target="_blank" class="top-action-btn primary">🌐 Abrir Site Vórtice Mídia</a>
+      <a href="https://vorticemidia.com.br/painel.html" target="_blank" class="top-action-btn">📊 Audiência & Cliques do Site</a>
+    </div>
+  </header>
+
+  <!-- BARRA DE NAVEGAÇÃO RÁPIDA (MOSTRA TUDO NA TELA POR PADRÃO!) -->
+  <nav class="filter-nav">
+    <button class="filter-btn active" onclick="showSection('all', this)">🌟 MOSTRAR TUDO NA TELA</button>
+    <button class="filter-btn" onclick="showSection('sec-afiliados', this)">💰 1. Afiliados & Lojas (Amazon, Shopee, ML)</button>
+    <button class="filter-btn" onclick="showSection('sec-streaming', this)">🎵 2. OFFstep & Portais de Artista (Spotify, Deezer...)</button>
+    <button class="filter-btn" onclick="showSection('sec-canais', this)">📺 3. Os 10 Canais (YouTube, Streaming, Redes & E-mails)</button>
+    <button class="filter-btn" onclick="showSection('sec-fanpages', this)">📱 4. Fanpages & Ferramentas Locais</button>
+    <button class="filter-btn" onclick="showSection('sec-nuvem', this)">☁️ 5. Domínio, Render, GitHub & Bots</button>
+  </nav>
+
+  <!-- =====================================================================
+       SEÇÃO 1: CENTRAL DE AFILIADOS & LOJAS OFICIAIS
+       ===================================================================== -->
+  <section class="cmd-section" id="sec-afiliados">
+    <div class="sec-header">
+      <div>
+        <h2 class="sec-title">💰 1. Central de Afiliados, Lojas & Comissões</h2>
+        <p class="sec-subtitle">Clique em qualquer botão para abrir direto o painel de vendas, gerador de links ou vitrine de validação</p>
+      </div>
+    </div>
+
+    <div class="affiliates-grid">
+
+      <!-- CARD 1: AMAZON ASSOCIADOS -->
+      <div class="aff-card amazon-card searchable-item">
+        <div>
+          <div class="aff-top">
+            <div class="aff-title">🛒 Amazon Associados Brasil</div>
+            <span class="status-pill active">🟢 100% Ativo (80 Produtos)</span>
+          </div>
+
+          <div class="cred-box" style="margin-top:12px;">
+            <div class="cred-row">
+              <span class="cred-label">Tag Oficial de Afiliado:</span>
+              <div class="cred-val-wrap">
+                <span class="cred-val">vorticemidia-20</span>
+                <button class="copy-mini-btn" onclick="copyText('vorticemidia-20', 'Tag Amazon vorticemidia-20')">📋 Copiar</button>
+              </div>
+            </div>
+            <div class="cred-row">
+              <span class="cred-label">E-mail de Login:</span>
+              <div class="cred-val-wrap">
+                <span class="cred-val">rigobertobockhorny@gmail.com</span>
+                <button class="copy-mini-btn" onclick="copyText('rigobertobockhorny@gmail.com', 'E-mail Login Amazon')">📋 Copiar</button>
+              </div>
+            </div>
+            <div class="cred-row">
+              <span class="cred-label">Banco / Fiscal:</span>
+              <span style="color:#34d399; font-weight:700; font-size:12px;">Itaú (Ag 3727 / CC ****636) • 0.0% Retenção</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-grid">
+          <a href="https://associados.amazon.com.br/home" target="_blank" class="direct-btn amz-main full-span">
+            🚀 Abrir Painel Amazon Associados
+          </a>
+          <a href="https://associados.amazon.com.br/p/reporting/earnings" target="_blank" class="direct-btn">
+            📊 Relatório de Ganhos & Cliques
+          </a>
+          <a href="https://associados.amazon.com.br/home/account/payment/history" target="_blank" class="direct-btn">
+            🏦 Histórico de Pagamentos
+          </a>
+          <a href="https://www.amazon.com.br" target="_blank" class="direct-btn">
+            🔍 Buscar Produto (SiteStripe)
+          </a>
+          <a href="./validacao_amazon.html" target="_blank" class="direct-btn">
+            🛍️ Ver 80 Produtos no Catálogo
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 2: SHOPEE AFILIADOS -->
+      <div class="aff-card shopee-card searchable-item">
+        <div>
+          <div class="aff-top">
+            <div class="aff-title">🧡 Shopee Afiliados Brasil</div>
+            <span class="status-pill active">🟢 100% Ativo (78 Produtos)</span>
+          </div>
+
+          <div class="gold-rule-banner" style="margin-top:10px;">
+            🔑 <strong>COMO LOGAR:</strong> No Chrome da Andréia, clique SEMPRE no botão azul <strong>"Facebook"</strong>!
+          </div>
+
+          <div class="cred-box" style="margin-top:8px;">
+            <div class="cred-row">
+              <span class="cred-label">ID Oficial de Afiliado:</span>
+              <div class="cred-val-wrap">
+                <span class="cred-val">18304461301</span>
+                <button class="copy-mini-btn" onclick="copyText('18304461301', 'ID Afiliado Shopee 18304461301')">📋 Copiar</button>
+              </div>
+            </div>
+            <div class="cred-row">
+              <span class="cred-label">Conta / Usuário:</span>
+              <div class="cred-val-wrap">
+                <span class="cred-val">Andreia (w207vjqax_)</span>
+                <button class="copy-mini-btn" onclick="copyText('w207vjqax_', 'Usuário Shopee')">📋 Copiar</button>
+              </div>
+            </div>
+            <div class="cred-row">
+              <span class="cred-label">E-mail / Telefone:</span>
+              <div class="cred-val-wrap">
+                <span class="cred-val">andriasbock@gmail.com</span>
+                <button class="copy-mini-btn" onclick="copyText('andriasbock@gmail.com', 'E-mail Andréia')">📋 Copiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-grid">
+          <a href="https://affiliate.shopee.com.br/dashboard" target="_blank" class="direct-btn shp-main full-span">
+            🧡 Abrir Painel Shopee Afiliados
+          </a>
+          <a href="https://affiliate.shopee.com.br/custom_link" target="_blank" class="direct-btn">
+            🔗 Gerar Link Personalizado
+          </a>
+          <a href="https://affiliate.shopee.com.br/report/conversion_report" target="_blank" class="direct-btn">
+            📈 Relatório de Vendas & Cliques
+          </a>
+          <a href="https://affiliate.shopee.com.br/payment_setting" target="_blank" class="direct-btn">
+            🏦 Dados Bancários & Fiscais
+          </a>
+          <a href="./validacao_shopee.html" target="_blank" class="direct-btn">
+            🛍️ Ver 78 Produtos no Catálogo
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 3: MERCADO LIVRE AFILIADOS -->
+      <div class="aff-card meli-card searchable-item">
+        <div>
+          <div class="aff-top">
+            <div class="aff-title">🤝 Mercado Livre Afiliados</div>
+            <span class="status-pill next">🟡 Etapa 3 • Pronto p/ Ativar</span>
+          </div>
+
+          <div class="cred-box" style="margin-top:12px;">
+            <div class="cred-row">
+              <span class="cred-label">Recebimento:</span>
+              <span class="cred-val">Conta Mercado Pago</span>
+            </div>
+            <div class="cred-row">
+              <span class="cred-label">Site p/ Vincular:</span>
+              <div class="cred-val-wrap">
+                <span class="cred-val">https://vorticemidia.com.br</span>
+                <button class="copy-mini-btn" onclick="copyText('https://vorticemidia.com.br', 'Link do Site Vórtice')">📋 Copiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-grid">
+          <a href="https://www.mercadolivre.com.br/afiliados" target="_blank" class="direct-btn meli-main full-span">
+            🤝 Abrir Painel Mercado Livre Afiliados
+          </a>
+          <a href="https://www.mercadolivre.com.br/afiliados/link-builder" target="_blank" class="direct-btn">
+            🔗 Gerador de Links ML
+          </a>
+          <a href="https://www.mercadolivre.com.br/afiliados/metrics" target="_blank" class="direct-btn">
+            📊 Métricas & Comissões ML
+          </a>
+          <a href="https://www.mercadopago.com.br/home" target="_blank" class="direct-btn full-span">
+            💳 Abrir Carteira Mercado Pago
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 4: UMA PENCA & KIWIFY / HOTMART -->
+      <div class="aff-card penca-card searchable-item">
+        <div>
+          <div class="aff-top">
+            <div class="aff-title">👕 Uma Penca + Kiwify & Hotmart</div>
+            <span class="status-pill next">🟡 Etapas 4 e 5 • Produtos Próprios</span>
+          </div>
+
+          <div class="cred-box" style="margin-top:12px;">
+            <div class="cred-row">
+              <span class="cred-label">Uma Penca (Fábrica):</span>
+              <span class="cred-val">Camisetas e Canecas (Estoque Zero)</span>
+            </div>
+            <div class="cred-row">
+              <span class="cred-label">Kiwify / Hotmart:</span>
+              <span class="cred-val">E-books, Devocionais e Kits EBD</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-grid">
+          <a href="https://umapenca.com" target="_blank" class="direct-btn penca-main full-span">
+            👕 Abrir Uma Penca (Fábrica Sob Demanda)
+          </a>
+          <a href="https://dashboard.kiwify.com.br" target="_blank" class="direct-btn">
+            🥝 Abrir Painel Kiwify
+          </a>
+          <a href="https://app.hotmart.com" target="_blank" class="direct-btn">
+            🔥 Abrir Painel Hotmart
+          </a>
+          <a href="https://montink.com" target="_blank" class="direct-btn full-span">
+            🎨 Abrir Montink (Alternativa Print-on-Demand)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SEÇÃO 2: DISTRIBUIDORA OFFSTEP & PORTAIS DE ARTISTA (STREAMING)
+       ===================================================================== -->
+  <section class="cmd-section" id="sec-streaming">
+    <div class="sec-header">
+      <div>
+        <h2 class="sec-title">🎵 2. Central Musical: OFFstep & Painéis de Artista (Streaming)</h2>
+        <p class="sec-subtitle">Acesso direto à distribuidora OFFstep e aos painéis oficiais de artista (Spotify, Deezer, Amazon Music, Apple Music e YouTube OAC)</p>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:12px; color:#cbd5e1;">E-mail Mestre Streaming: <strong>rigobertobockhorny@gmail.com</strong></span>
+        <button class="copy-mini-btn" onclick="copyText('rigobertobockhorny@gmail.com', 'E-mail Mestre Streaming')">📋 Copiar E-mail</button>
+      </div>
+    </div>
+
+    <div class="streaming-hub-grid">
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #6366f1;">
+        <div>
+          <div class="stream-portal-title">🎛️ OFFstep (Distribuidora)</div>
+          <p class="stream-portal-desc">Subir músicas WAV + Capa 3000x3000, pegar códigos UPC/ISRC e acompanhar lançamentos.</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://dashboard.offstep.com" target="_blank" class="direct-btn" style="background:linear-gradient(135deg,#4f46e5,#3730a3);">
+            🚀 Abrir Painel OFFstep
+          </a>
+          <a href="http://dashboard.offstep.com/daily-stats-marketing/youtube-official-artist-channel" target="_blank" class="direct-btn">
+            ♪ Pedir Selo Artista YouTube (OAC)
+          </a>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #1db954;">
+        <div>
+          <div class="stream-portal-title">🟢 Spotify for Artists</div>
+          <p class="stream-portal-desc">Reivindicar perfis, trocar avatar/banner e fazer Pitch Editorial 7 dias antes do lançamento.</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://artists.spotify.com" target="_blank" class="direct-btn" style="background:linear-gradient(135deg,#16a34a,#15803d);">
+            🟢 Abrir Spotify for Artists
+          </a>
+          <a href="https://open.spotify.com" target="_blank" class="direct-btn">
+            🎧 Abrir Spotify Web Player
+          </a>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #a855f7;">
+        <div>
+          <div class="stream-portal-title">🟣 Deezer for Creators</div>
+          <p class="stream-portal-desc">Reivindicar artistas usando o código UPC da música lançada na OFFstep + link do YouTube.</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://creators.deezer.com" target="_blank" class="direct-btn" style="background:linear-gradient(135deg,#9333ea,#6b21a8);">
+            🟣 Abrir Deezer for Creators
+          </a>
+          <a href="https://www.deezer.com/br/" target="_blank" class="direct-btn">
+            🎧 Abrir Deezer Web
+          </a>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #00b4f5;">
+        <div>
+          <div class="stream-portal-title">📦 Amazon Music for Artists</div>
+          <p class="stream-portal-desc">Reivindicar perfis na Amazon Music e configurar foto de artista e pitch para Alexa.</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://artists.amazonmusic.com" target="_blank" class="direct-btn" style="background:linear-gradient(135deg,#0284c7,#0369a1);">
+            📦 Abrir Amazon Music Artists
+          </a>
+          <a href="https://music.amazon.com.br" target="_blank" class="direct-btn">
+            🎧 Abrir Amazon Music Web
+          </a>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #fa243c;">
+        <div>
+          <div class="stream-portal-title">🍎 Apple Music for Artists</div>
+          <p class="stream-portal-desc">Gerenciar perfil oficial de artista no Apple Music e iTunes (com Apple ID).</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://artists.apple.com" target="_blank" class="direct-btn" style="background:linear-gradient(135deg,#e11d48,#be123c);">
+            🍎 Abrir Apple Music Artists
+          </a>
+          <a href="https://music.apple.com/br/new" target="_blank" class="direct-btn">
+            🎧 Abrir Apple Music Web
+          </a>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #f59e0b;">
+        <div>
+          <div class="stream-portal-title">🎹 Suno AI & Google Flow</div>
+          <p class="stream-portal-desc">Estúdios de geração de músicas masterizadas e cenas cinematográficas em 3D/8K.</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://suno.com/create" target="_blank" class="direct-btn" style="background:linear-gradient(135deg,#d97706,#b45309);">
+            🎵 Abrir Suno AI (Estúdio)
+          </a>
+          <a href="https://labs.google/fx/pt/tools/flow" target="_blank" class="direct-btn">
+            🎬 Abrir Google Flow (Vídeos)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SEÇÃO 3: MATRIZ COMPLETA DOS 10 CANAIS VÓRTICE MÍDIA
+       ===================================================================== -->
+  <section class="cmd-section" id="sec-canais">
+    <div class="sec-header">
+      <div>
+        <h2 class="sec-title">📺 3. Matriz Completa dos 10 Canais Vórtice Mídia</h2>
+        <p class="sec-subtitle">Clique direto para abrir o YouTube, YouTube Studio, Página e Loja no Site, Spotify, Deezer, Apple Music, Amazon Music, OFFstep e Redes Sociais de cada canal</p>
+      </div>
+    </div>
+
+    <div class="channels-matrix-grid" id="channels-matrix-container"></div>
+  </section>
+
+  <!-- =====================================================================
+       SEÇÃO 4: FANPAGES INTERNACIONAIS & FERRAMENTAS LOCAIS
+       ===================================================================== -->
+  <section class="cmd-section" id="sec-fanpages">
+    <div class="sec-header">
+      <div>
+        <h2 class="sec-title">📱 4. Fanpages (Facebook / Meta Business) & Ferramentas de Produção</h2>
+        <p class="sec-subtitle">Acesso rápido ao Meta Business Suite, Fanpages Internacionais (Uplifted Living Daily / Ageless Passion) e painéis de trabalho</p>
+      </div>
+    </div>
+
+    <div class="affiliates-grid">
+      <div class="aff-card searchable-item" style="border-top: 4px solid #1877f2;">
+        <div>
+          <div class="aff-top">
+            <div class="aff-title">📘 Meta Business Suite & Fanpages</div>
+            <span class="status-pill active">Facebook & Instagram</span>
+          </div>
+          <p style="font-size:12.5px; color:#94a3b8; margin-top:8px;">
+            Gerencie todas as Fanpages dos canais, agende Reels 9:16 e acompanhe comentários e mensagens (Uplifted Living Daily, Ageless Passion e Fanpages dos 10 canais).
+          </p>
+        </div>
+        <div class="btn-grid">
+          <a href="https://business.facebook.com/latest/home" target="_blank" class="direct-btn full-span" style="background:linear-gradient(135deg,#1877f2,#1d4ed8);">
+            📘 Abrir Meta Business Suite (Painel de Fanpages)
+          </a>
+          <a href="https://www.facebook.com/pages/?category=your_pages" target="_blank" class="direct-btn">
+            📄 Ver Todas as Suas Fanpages
+          </a>
+          <a href="https://business.facebook.com/latest/content_calendar" target="_blank" class="direct-btn">
+            📅 Calendário de Agendamentos Meta
+          </a>
+          <a href="https://app.manychat.com" target="_blank" class="direct-btn">
+            🤖 Abrir ManyChat (Automações)
+          </a>
+          <a href="https://www.instagram.com" target="_blank" class="direct-btn">
+            📸 Abrir Instagram Web
+          </a>
+        </div>
+      </div>
+
+      <div class="aff-card searchable-item" style="border-top: 4px solid #a855f7;">
+        <div>
+          <div class="aff-top">
+            <div class="aff-title">🛠️ Painéis Locais do Ecossistema</div>
+            <span class="status-pill active">Acesso Direto</span>
+          </div>
+          <p style="font-size:12.5px; color:#94a3b8; margin-top:8px;">
+            Atalhos diretos para os painéis de validação de produtos e ferramentas da bancada Vórtice.
+          </p>
+        </div>
+        <div class="btn-grid">
+          <a href="./validacao_amazon.html" target="_blank" class="direct-btn">
+            🛒 Catálogo 80 Produtos Amazon
+          </a>
+          <a href="./validacao_shopee.html" target="_blank" class="direct-btn">
+            🧡 Catálogo 78 Produtos Shopee
+          </a>
+          <a href="https://vorticemidia.com.br/#loja-vortice" target="_blank" class="direct-btn">
+            🛍️ Esteira da Loja no Site Oficial
+          </a>
+          <a href="https://mail.google.com" target="_blank" class="direct-btn">
+            ✉️ Abrir Gmail (Caixa de Entrada)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SEÇÃO 5: NUVEM, DOMÍNIO REGISTRO.BR, RENDER, GITHUB & BOTS TELEGRAM
+       ===================================================================== -->
+  <section class="cmd-section" id="sec-nuvem">
+    <div class="sec-header">
+      <div>
+        <h2 class="sec-title">☁️ 5. Domínio Registro.br, Servidores Render, GitHub & Bots Telegram</h2>
+        <p class="sec-subtitle">Controle técnico do site vorticemidia.com.br, estatísticas de visitantes e robôs 24h</p>
+      </div>
+    </div>
+
+    <div class="streaming-hub-grid">
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #10b981;">
+        <div>
+          <div class="stream-portal-title">🌐 Site Oficial & Painel de Audiência</div>
+          <p class="stream-portal-desc">Veja o site no ar e acompanhe em tempo real quantos visitantes e cliques nas lojas aconteceram hoje.</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://vorticemidia.com.br" target="_blank" class="direct-btn penca-main">
+            🌪️ Abrir vorticemidia.com.br
+          </a>
+          <a href="https://vorticemidia.com.br/painel.html" target="_blank" class="direct-btn">
+            📊 Abrir Painel de Audiência e Cliques
+          </a>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #22c55e;">
+        <div>
+          <div class="stream-portal-title">🇧🇷 Registro.br (Domínio Oficial)</div>
+          <p class="stream-portal-desc">Usuário: <strong>RIBOC12</strong> (ou CPF 043.325.189-18) • E-mail: rigobertobockhorny@gmail.com</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://registro.br/painel/" target="_blank" class="direct-btn">
+            🇧🇷 Abrir Painel Registro.br
+          </a>
+          <button class="direct-btn" onclick="copyText('RIBOC12', 'Usuário Registro.br RIBOC12')">
+            📋 Copiar ID: RIBOC12
+          </button>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #38bdf8;">
+        <div>
+          <div class="stream-portal-title">⚡ Render.com (Servidores 24h)</div>
+          <p class="stream-portal-desc">Hospedagem gratuita 24h do site Vórtice Mídia e do Robô de API/Telegram.</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://dashboard.render.com/static/srv-dbjqmenf3r2c73cseohg/settings" target="_blank" class="direct-btn">
+            🌐 Painel Render do Site
+          </a>
+          <a href="https://dashboard.render.com/web/srv-db4njlnf3r2c7390skfg" target="_blank" class="direct-btn">
+            🤖 Painel Render do Robô
+          </a>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #94a3b8;">
+        <div>
+          <div class="stream-portal-title">💻 GitHub (Cofre de Código)</div>
+          <p class="stream-portal-desc">Conta: <strong>rigobertobockhorny-cyber</strong> (Login via botão "Continue with Google").</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://github.com/rigobertobockhorny-cyber/vortice-midia-site" target="_blank" class="direct-btn">
+            💻 Repositório do Site Oficial
+          </a>
+          <a href="https://github.com/rigobertobockhorny-cyber/vortice-cloud-bot" target="_blank" class="direct-btn">
+            🤖 Repositório do Robô Nuvem
+          </a>
+        </div>
+      </div>
+
+      <div class="stream-portal-card searchable-item" style="border-top: 3px solid #06b6d4;">
+        <div>
+          <div class="stream-portal-title">✈️ Bots no Telegram</div>
+          <p class="stream-portal-desc">Envie <strong>/site</strong> no Vórtice Vox para receber o relatório de acessos e cliques no celular!</p>
+        </div>
+        <div class="btn-grid single-col">
+          <a href="https://t.me/VorticeVox_bot" target="_blank" class="direct-btn">
+            ⚡ Abrir @VorticeVox_bot
+          </a>
+          <a href="https://t.me/TeacherGrace_English_bot" target="_blank" class="direct-btn">
+            🇬🇧 Abrir @TeacherGrace_English_bot
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- MODAL DE EDIÇÃO DE LINKS / E-MAIL DO CANAL -->
+<div class="modal-backdrop" id="edit-channel-modal">
+  <div class="modal-card">
+    <h3 id="modal-ch-title">Editar Links & E-mail do Canal</h3>
+    <p style="font-size:12.5px; color:#94a3b8; margin-bottom:14px;">
+      Personalize o e-mail específico deste canal ou cole os links diretos assim que novas páginas (Fanpage, Instagram, Spotify, etc.) forem criadas. Fica salvo automaticamente neste navegador!
+    </p>
+    <input type="hidden" id="modal-ch-id">
+    <div class="form-group">
+      <label>E-mail do Canal / Login Google:</label>
+      <input type="text" id="inp-ch-email" placeholder="Ex: patinhasecancoes@gmail.com">
+    </div>
+    <div class="form-group">
+      <label>Link do Canal no YouTube:</label>
+      <input type="text" id="inp-ch-youtube">
+    </div>
+    <div class="form-group">
+      <label>Link da Fanpage no Facebook:</label>
+      <input type="text" id="inp-ch-fb">
+    </div>
+    <div class="form-group">
+      <label>Link do Instagram:</label>
+      <input type="text" id="inp-ch-ig">
+    </div>
+    <div class="form-group">
+      <label>Link do TikTok:</label>
+      <input type="text" id="inp-ch-tk">
+    </div>
+    <div class="form-group">
+      <label>Link do Perfil no Spotify:</label>
+      <input type="text" id="inp-ch-spotify">
+    </div>
+    <div class="form-group">
+      <label>Link do Perfil no Deezer:</label>
+      <input type="text" id="inp-ch-deezer">
+    </div>
+    <div class="form-group">
+      <label>Link do Perfil na Apple Music:</label>
+      <input type="text" id="inp-ch-apple">
+    </div>
+    <div class="form-group">
+      <label>Link do Perfil na Amazon Music:</label>
+      <input type="text" id="inp-ch-amazonm">
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+      <button class="top-action-btn" onclick="closeChannelModal()">Cancelar</button>
+      <button class="top-action-btn primary" onclick="saveChannelModal()">💾 Salvar Alterações</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-popup" id="toast-popup">✓ Copiado com sucesso!</div>
+
+<script>
+  const DEFAULT_CHANNELS = [
+    {
+      num: "01",
+      id: "rock-incorruptivel",
+      name: "Rock Incorruptível",
+      handle: "@RockIncorruptivel",
+      niche: "Crítica Política & Hard Rock de Arena 3D",
+      isMusic: true,
+      logo: "./assets/logos_color/rock_color.jpg",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@RockIncorruptivel",
+      ytmusic: "https://music.youtube.com/search?q=Rock+Incorrupt%C3%ADvel",
+      spotify: "https://open.spotify.com/search/Rock%20Incorrupt%C3%ADvel",
+      deezer: "https://www.deezer.com/search/Rock%20Incorrupt%C3%ADvel",
+      apple: "https://music.apple.com/br/search?term=Rock%20Incorrupt%C3%ADvel",
+      amazonm: "https://music.amazon.com.br/search/Rock+Incorrupt%C3%ADvel",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "02",
+      id: "sacronia",
+      name: "Sacronia",
+      handle: "@SacroniaMusic",
+      niche: "Gospel Sacro Contemporâneo & Rock Sinfônico",
+      isMusic: true,
+      logo: "./assets/logos_color/sacronia_color.png",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@SacroniaMusic",
+      ytmusic: "https://music.youtube.com/channel/UCbpf2WHDz57FW3QCcftc_2A",
+      spotify: "https://open.spotify.com/search/Sacronia",
+      deezer: "https://www.deezer.com/search/Sacronia",
+      apple: "https://music.apple.com/br/search?term=Sacronia",
+      amazonm: "https://music.amazon.com.br/search/Sacronia",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "03",
+      id: "neon-asher",
+      name: "Neon Asher",
+      handle: "@NeonAsherDarkRock",
+      niche: "Rock Gótico Melódico & Violinos Dramáticos",
+      isMusic: true,
+      logo: "./assets/logos_color/neon_color.jpg",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@NeonAsherDarkRock",
+      ytmusic: "https://music.youtube.com/channel/UCiVaYR4-N9BBmS9ORhDP4qg",
+      spotify: "https://open.spotify.com/search/Neon%20Asher",
+      deezer: "https://www.deezer.com/search/Neon%20Asher",
+      apple: "https://music.apple.com/br/artist/neon-asher/6819336396",
+      amazonm: "https://music.amazon.com.br/search/Neon+Asher",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "04",
+      id: "iago-cordeiro",
+      name: "Iago Cordeiro",
+      handle: "@iagocordeiromusic",
+      niche: "Louvor Congregacional, Piano & Violão Acústico",
+      isMusic: true,
+      logo: "./assets/logos_color/iago_color.png",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@iagocordeiromusic",
+      ytmusic: "https://music.youtube.com/channel/UCK5Sgoev9Uvf_dexv77GftQ",
+      spotify: "https://open.spotify.com/search/Iago%20Cordeiro",
+      deezer: "https://www.deezer.com/search/Iago%20Cordeiro",
+      apple: "https://music.apple.com/br/search?term=Iago%20Cordeiro",
+      amazonm: "https://music.amazon.com.br/search/Iago+Cordeiro",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "05",
+      id: "patinhas-e-cancoes",
+      name: "Patinhas e Canções",
+      handle: "@patinhasecancoes",
+      niche: "Músicas Emocionantes & Animação 3D de Pets",
+      isMusic: true,
+      logo: "./assets/logos_color/patinhas_color.png",
+      email: "patinhasecancoes@gmail.com",
+      youtube: "https://www.youtube.com/@patinhasecancoes",
+      ytmusic: "https://music.youtube.com/channel/UCBZPZYSwUmrEsWu4-E9OxPg",
+      spotify: "https://open.spotify.com/artist/3SEifUH8nuzlsklxiyVgGC",
+      deezer: "https://www.deezer.com/br/artist/4418835",
+      apple: "https://music.apple.com/br/artist/patinhas/6818166842",
+      amazonm: "https://music.amazon.com.br/search/Patinhas+%26+Can%C3%A7%C3%B5es",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "06",
+      id: "aguas-de-descanso",
+      name: "Águas de Descanso",
+      handle: "@AguasDeDescanso",
+      niche: "Leitura Pausada da Bíblia & Chuva Serena p/ Dormir",
+      isMusic: false,
+      logo: "./assets/logos_color/aguas_color.png",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@AguasDeDescanso",
+      ytmusic: "https://www.youtube.com/@AguasDeDescanso",
+      spotify: "https://open.spotify.com",
+      deezer: "https://www.deezer.com",
+      apple: "https://music.apple.com",
+      amazonm: "https://music.amazon.com.br",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "07",
+      id: "trono-da-promessa",
+      name: "Trono da Promessa",
+      handle: "@TronoDaPromessa",
+      niche: "Série Bíblica Infantil 3D com Vovô Nésio & App Kids",
+      isMusic: false,
+      logo: "./assets/logos_color/trono_color.png",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@TronoDaPromessa",
+      ytmusic: "https://www.youtube.com/@TronoDaPromessa",
+      spotify: "https://open.spotify.com",
+      deezer: "https://www.deezer.com",
+      apple: "https://music.apple.com",
+      amazonm: "https://music.amazon.com.br",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "08",
+      id: "incorruptivel",
+      name: "Incorruptível",
+      handle: "@CanalIncorruptivel",
+      niche: "Crítica Política, Fábulas da República & Dossiês 3D",
+      isMusic: false,
+      logo: "./assets/logos_color/incorruptivel_color.jpg",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@CanalIncorruptivel",
+      ytmusic: "https://www.youtube.com/@CanalIncorruptivel",
+      spotify: "https://open.spotify.com",
+      deezer: "https://www.deezer.com",
+      apple: "https://music.apple.com",
+      amazonm: "https://music.amazon.com.br",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "09",
+      id: "aliens-da-biblia",
+      name: "Aliens da Bíblia",
+      handle: "@AliensDaBiblia",
+      niche: "Documentários 8K • Mistérios de Ezequiel, Enoque & Cosmos",
+      isMusic: false,
+      logo: "./assets/logos_color/aliens_color.jpg",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@AliensDaBiblia",
+      ytmusic: "https://www.youtube.com/@AliensDaBiblia",
+      spotify: "https://open.spotify.com",
+      deezer: "https://www.deezer.com",
+      apple: "https://music.apple.com",
+      amazonm: "https://music.amazon.com.br",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    },
+    {
+      num: "10",
+      id: "aquario-dos-felinos",
+      name: "Aquário dos Felinos",
+      handle: "@AquarioDosFelinos",
+      niche: "Aventura Infantil 3D • Mike, Tufão, Penélope & Feijão",
+      isMusic: false,
+      logo: "./assets/logos_color/aquario_color.png",
+      email: "rigobertobockhorny@gmail.com",
+      youtube: "https://www.youtube.com/@AquarioDosFelinos",
+      ytmusic: "https://www.youtube.com/@AquarioDosFelinos",
+      spotify: "https://open.spotify.com",
+      deezer: "https://www.deezer.com",
+      apple: "https://music.apple.com",
+      amazonm: "https://music.amazon.com.br",
+      fb: "https://business.facebook.com/latest/home",
+      ig: "https://www.instagram.com",
+      tk: "https://www.tiktok.com"
+    }
+  ];
+
+  const STORAGE_KEY = "VORTICE_CENTRAL_COMANDO_V1";
+
+  function getChannelsData() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return DEFAULT_CHANNELS;
+      const parsed = JSON.parse(saved);
+      return DEFAULT_CHANNELS.map(def => {
+        const custom = parsed[def.id] || {};
+        return { ...def, ...custom };
+      });
+    } catch (e) {
+      return DEFAULT_CHANNELS;
+    }
+  }
+
+  function renderChannelsMatrix() {
+    const container = document.getElementById('channels-matrix-container');
+    const channels = getChannelsData();
+
+    container.innerHTML = channels.map(ch => {
+      const musicRow = ch.isMusic ? `
+        <div class="ch-btns-group-label">🎵 Plataformas de Música & Distribuição (${ch.name}):</div>
+        <div class="ch-btns-row">
+          <a href="${ch.spotify}" target="_blank" class="ch-btn spotify">🟢 Spotify</a>
+          <a href="${ch.deezer}" target="_blank" class="ch-btn deezer">🟣 Deezer</a>
+          <a href="${ch.apple}" target="_blank" class="ch-btn apple">🍎 Apple Music</a>
+          <a href="${ch.amazonm}" target="_blank" class="ch-btn amazonm">📦 Amazon Music</a>
+          <a href="${ch.ytmusic}" target="_blank" class="ch-btn ytmusic">🎵 YT Music</a>
+          <a href="https://dashboard.offstep.com" target="_blank" class="ch-btn offstep">🎛️ OFFstep</a>
+        </div>
+      ` : '';
+
+      return `
+        <div class="ch-command-card searchable-item">
+          <div class="ch-card-head">
+            <div class="ch-head-left">
+              <img src="${ch.logo}" alt="${ch.name}" class="ch-avatar" onerror="this.src='https://vorticemidia.com.br/assets/ui/vortice_midia_official_logo.png'">
+              <div class="ch-title-col">
+                <h3><span class="ch-num-badge">#${ch.num}</span> ${ch.name}</h3>
+                <div class="ch-niche-sub">${ch.niche}</div>
+              </div>
+            </div>
+            <span class="ch-type-tag ${ch.isMusic ? 'music' : 'series'}">
+              ${ch.isMusic ? '🎵 Canal Musical' : '🎬 Série / Doc'}
+            </span>
+          </div>
+
+          <div class="ch-meta-bar">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span style="color:#94a3b8;">Arroba:</span>
+              <strong style="color:#f8fafc; font-family:monospace;">${ch.handle}</strong>
+              <button class="copy-mini-btn" onclick="copyText('${ch.handle}', 'Arroba ${ch.handle}')">📋</button>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span style="color:#94a3b8;">E-mail:</span>
+              <strong style="color:#f8fafc; font-family:monospace;">${ch.email}</strong>
+              <button class="copy-mini-btn" onclick="copyText('${ch.email}', 'E-mail ${ch.name}')">📋</button>
+              <button class="copy-mini-btn" onclick="openChannelModal('${ch.id}')" title="Editar links ou e-mail deste canal">✏️ Editar</button>
+            </div>
+          </div>
+
+          <div class="ch-btns-group-label">📺 YouTube, Site Oficial & Loja do Canal:</div>
+          <div class="ch-btns-row">
+            <a href="${ch.youtube}" target="_blank" class="ch-btn yt">▶️ Canal YouTube</a>
+            <a href="https://studio.youtube.com" target="_blank" class="ch-btn ytstudio">⚙️ YouTube Studio</a>
+            <a href="https://vorticemidia.com.br/#/${ch.id}" target="_blank" class="ch-btn site">🌐 Página no Site</a>
+            <a href="https://vorticemidia.com.br/#/${ch.id}" target="_blank" class="ch-btn store">🛒 Loja do Canal</a>
+          </div>
+
+          ${musicRow}
+
+          <div class="ch-btns-group-label">📱 Redes Sociais & Fanpages:</div>
+          <div class="ch-btns-row">
+            <a href="${ch.fb}" target="_blank" class="ch-btn fb">📘 Fanpage / Meta</a>
+            <a href="${ch.ig}" target="_blank" class="ch-btn ig">📸 Instagram</a>
+            <a href="${ch.tk}" target="_blank" class="ch-btn tk">🎵 TikTok</a>
+            <a href="https://mail.google.com" target="_blank" class="ch-btn">✉️ Abrir Gmail</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function copyText(txt, label) {
+    navigator.clipboard.writeText(txt).then(() => {
+      showToast(`✓ ${label || txt} copiado!`);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast(`✓ ${label || txt} copiado!`);
+    });
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast-popup');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(() => {
+      t.classList.remove('show');
+    }, 2400);
+  }
+
+  function showSection(secId, btnEl) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btnEl) btnEl.classList.add('active');
+
+    document.querySelectorAll('.cmd-section').forEach(sec => {
+      if (secId === 'all' || sec.id === secId) {
+        sec.style.display = '';
+      } else {
+        sec.style.display = 'none';
+      }
+    });
+  }
+
+  function filterEverything(query) {
+    const q = (query || '').trim().toLowerCase();
+    document.querySelectorAll('.searchable-item').forEach(item => {
+      const text = item.innerText.toLowerCase();
+      item.style.display = (!q || text.includes(q)) ? '' : 'none';
+    });
+  }
+
+  function openChannelModal(chId) {
+    const channels = getChannelsData();
+    const ch = channels.find(c => c.id === chId);
+    if (!ch) return;
+
+    document.getElementById('modal-ch-id').value = ch.id;
+    document.getElementById('modal-ch-title').textContent = `✏️ Editar Links & E-mail • ${ch.name}`;
+    document.getElementById('inp-ch-email').value = ch.email || '';
+    document.getElementById('inp-ch-youtube').value = ch.youtube || '';
+    document.getElementById('inp-ch-fb').value = ch.fb || '';
+    document.getElementById('inp-ch-ig').value = ch.ig || '';
+    document.getElementById('inp-ch-tk').value = ch.tk || '';
+    document.getElementById('inp-ch-spotify').value = ch.spotify || '';
+    document.getElementById('inp-ch-deezer').value = ch.deezer || '';
+    document.getElementById('inp-ch-apple').value = ch.apple || '';
+    document.getElementById('inp-ch-amazonm').value = ch.amazonm || '';
+
+    document.getElementById('edit-channel-modal').classList.add('open');
+  }
+
+  function closeChannelModal() {
+    document.getElementById('edit-channel-modal').classList.remove('open');
+  }
+
+  function saveChannelModal() {
+    const chId = document.getElementById('modal-ch-id').value;
+    let saved = {};
+    try {
+      saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch (e) {}
+
+    saved[chId] = {
+      email: document.getElementById('inp-ch-email').value.trim(),
+      youtube: document.getElementById('inp-ch-youtube').value.trim(),
+      fb: document.getElementById('inp-ch-fb').value.trim(),
+      ig: document.getElementById('inp-ch-ig').value.trim(),
+      tk: document.getElementById('inp-ch-tk').value.trim(),
+      spotify: document.getElementById('inp-ch-spotify').value.trim(),
+      deezer: document.getElementById('inp-ch-deezer').value.trim(),
+      apple: document.getElementById('inp-ch-apple').value.trim(),
+      amazonm: document.getElementById('inp-ch-amazonm').value.trim()
+    };
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    closeChannelModal();
+    renderChannelsMatrix();
+    showToast('✓ Dados do canal salvos com sucesso!');
+  }
+
+  renderChannelsMatrix();
+</script>
+
+</body>
+</html>
+"""
+
+paths = [
+    r"C:\PROJETOS\5-FERRAMENTAS\SITE_VORTICE_MIDIA\central.html",
+    r"C:\PROJETOS\5-FERRAMENTAS\CENTRAL_COMANDO_VORTICE.html",
+    r"C:\PROJETOS\1-CANAIS\00_CENTRAL_COMANDO_VORTICE.html"
+]
+
+for p in paths:
+    # For copies outside SITE_VORTICE_MIDIA, point relative ./assets and ./validacao_* to https://vorticemidia.com.br or local absolute paths
+    content = HTML_CONTENT
+    if "SITE_VORTICE_MIDIA" not in p:
+        content = content.replace('src="./assets/', 'src="file:///C:/PROJETOS/5-FERRAMENTAS/SITE_VORTICE_MIDIA/assets/')
+        content = content.replace('href="./validacao_amazon.html"', 'href="file:///C:/PROJETOS/5-FERRAMENTAS/SITE_VORTICE_MIDIA/validacao_amazon.html"')
+        content = content.replace('href="./validacao_shopee.html"', 'href="file:///C:/PROJETOS/5-FERRAMENTAS/SITE_VORTICE_MIDIA/validacao_shopee.html"')
+    with open(p, "w", encoding="utf-8") as f:
+        f.write(content)
+    print("Saved:", p)
