@@ -2243,14 +2243,10 @@
     </div>
 
     <div class="esteira-wrapper" style="background:#050508;border-color:rgba(255,255,255,0.16);padding:8px 0;">
-        <div class="esteira-track" id="esteira-pods"></div>
+        <div class="esteira-track" id="esteira-pods" style="animation-duration:58s;"></div>
     </div>
 
     <div class="pods-controls-wrap">
-        <div class="pods-search-box">
-            <input type="text" id="pods-search-input" class="pods-search-input" placeholder="Buscar pod, essência, marca ou sabor (ex: Ignite, Elfbar, Mint, Grape)..." oninput="filterPodsBySearch()">
-        </div>
-
         <div class="pods-cat-bar">
             <button class="pods-cat-btn active" onclick="filterPodsCat('all', this)">Todos (62)</button>
             <button class="pods-cat-btn" onclick="filterPodsCat('pods', this)">Pods Descartáveis (29)</button>
@@ -3644,8 +3640,7 @@ let activeModalPodId = null;
 function initEsteiraPods() {
     const track = document.getElementById('esteira-pods');
     if (!track) return;
-    const showcasePods = PODS_LIST.slice(0, 18);
-    const html = showcasePods.map(item => {
+    const html = PODS_LIST.map(item => {
         const prStr = item.price.toFixed(2).replace('.', ',');
         return `
         <div class="esteira-prod-item" onclick="openPodDetailModal(${item.id})" title="${item.name}">
@@ -3660,17 +3655,10 @@ initEsteiraPods();
 function renderPods() {
     const grid = document.getElementById('pods-container');
     if (!grid) return;
-    const searchVal = (document.getElementById('pods-search-input')?.value || '').trim().toLowerCase();
     grid.innerHTML = '';
 
     const filtered = PODS_LIST.filter(item => {
-        const matchCat = (currentPodCat === 'all' || item.cat === currentPodCat);
-        if (!matchCat) return false;
-        if (!searchVal) return true;
-        const inName = item.name.toLowerCase().includes(searchVal);
-        const inBadge = item.badge.toLowerCase().includes(searchVal);
-        const inFlavs = (item.flavors || []).some(f => f.toLowerCase().includes(searchVal));
-        return inName || inBadge || inFlavs;
+        return (currentPodCat === 'all' || item.cat === currentPodCat);
     });
 
     if (filtered.length === 0) {
