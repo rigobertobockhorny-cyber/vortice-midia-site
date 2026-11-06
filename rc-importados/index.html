@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>RC Importados (rcimportados.com.br) — Pods, Essências, Perfumes & UniTV 4K | Cascavel e Região</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -542,7 +545,18 @@
     .esteira-track {
         display: flex; align-items: center; gap: 34px;
         width: max-content;
-        animation: scrollEsteira 32s linear infinite;
+        animation: scrollEsteira 32s linear infinite !important;
+        animation-play-state: running !important;
+        will-change: transform;
+    }
+    .esteira-track:hover,
+    .esteira-track:active,
+    .esteira-track:focus,
+    .esteira-track:focus-within,
+    .hero-3d-esteira-track:hover,
+    .hero-3d-esteira-track:active,
+    .hero-3d-esteira-track:focus {
+        animation-play-state: running !important;
     }
     .official-channel-logo {
         display: inline-flex; align-items: center; justify-content: center;
@@ -801,25 +815,25 @@
     }
 
     .perfume-filter-bar {
-        display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
-        margin-bottom: 18px;
+        display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+        margin-bottom: 20px;
     }
     .perfume-filter-btn {
-        background: linear-gradient(180deg, #27201C 0%, #120E0C 100%);
+        background: linear-gradient(180deg, #1E1E26 0%, #0A0A0E 100%);
         color: #FFFFFF;
         border: 1px solid rgba(255, 255, 255, 0.24);
-        padding: 7px 18px; border-radius: 30px;
+        padding: 7px 18px; border-radius: 999px;
         font-family: 'Montserrat', sans-serif;
-        font-weight: 800; font-size: 12px; letter-spacing: 0.8px;
+        font-weight: 800; font-size: 11.5px; letter-spacing: 0.7px;
         text-transform: uppercase;
-        box-shadow: 0 4px 0 #080605, 0 6px 14px rgba(0,0,0,0.7);
+        box-shadow: 0 4px 0 #000000, 0 6px 14px rgba(0,0,0,0.85);
         cursor: pointer; transition: all 0.2s ease;
     }
     .perfume-filter-btn.active, .perfume-filter-btn:hover {
-        background: linear-gradient(180deg, #44362E 0%, #1F1814 100%);
+        background: linear-gradient(180deg, #323240 0%, #14141C 100%);
         color: #FFFFFF;
-        border-color: #FDE68A;
-        box-shadow: 0 4px 0 #080605, 0 0 16px rgba(253, 230, 138, 0.45);
+        border-color: #FFFFFF;
+        box-shadow: 0 4px 0 #000000, 0 0 16px rgba(255, 255, 255, 0.32);
         transform: translateY(-2px);
     }
 
@@ -2423,7 +2437,7 @@
 
             <div class="pod-modal-flavors-section">
                 <span class="pod-modal-flavors-title">
-                    ESCOLHA O SABOR OU OPÇÃO DESEJADA: <strong id="pod-modal-selected-flav">PADRÃO</strong>
+                    <span id="pod-modal-flavors-label">ESCOLHA O SABOR OU OPÇÃO DESEJADA:</span> <strong id="pod-modal-selected-flav">PADRÃO</strong>
                 </span>
                 <div class="pod-modal-flavors-grid" id="pod-modal-flavors-grid"></div>
             </div>
@@ -3545,6 +3559,13 @@ const PERFUMES = [
 ];
 
 let lastSavedScrollY = null;
+let openedCartFromModal = false;
+
+function ensureEsteirasRunning() {
+    document.querySelectorAll('.esteira-track, .hero-3d-esteira-track').forEach(tr => {
+        tr.style.animationPlayState = 'running';
+    });
+}
 
 function initEsteiraPerfumes() {
     const track = document.getElementById('esteira-perfumes');
@@ -3558,6 +3579,7 @@ function initEsteiraPerfumes() {
         </div>`;
     }).join('');
     track.innerHTML = html + html;
+    ensureEsteirasRunning();
 }
 initEsteiraPerfumes();
 
@@ -3586,7 +3608,7 @@ function renderPerfumes(filterCat = 'all') {
             </div>
             <div class="movie-actions">
                 <button type="button" class="btn-black-sobreposto-1 btn-card-action" onclick="openPerfumeDetailModal(${p.id})">
-                    VER NOTAS
+                    VER DETALHES
                 </button>
                 <button type="button" class="btn-black-sobreposto-2 btn-card-action" onclick="openPerfumeDetailModal(${p.id})">
                     COMPRAR AGORA
@@ -3608,19 +3630,23 @@ function openPerfumeDetailModal(perfId) {
     document.getElementById('pod-modal-img').src = p.img;
     document.getElementById('pod-modal-badge').innerText = p.badge;
     document.getElementById('pod-modal-name').innerText = p.name;
-    document.getElementById('pod-modal-desc').innerText = 'Notas Olfativas: ' + p.notes + '. Fragrância de alta fixação com entrega rápida em Cascavel e região.';
+    document.getElementById('pod-modal-desc').innerText = 'Produto 100% original e lacrado. Notas Olfativas: ' + p.notes + '. Entrega rápida em Cascavel e região.';
     document.getElementById('pod-modal-price').innerText = 'R$ ' + prStr;
-    document.getElementById('pod-modal-selected-flav').innerText = `FRASCO ORIGINAL • EM ATÉ 6X DE R$ ${inst6x}`;
+    const flavLbl = document.getElementById('pod-modal-flavors-label');
+    if (flavLbl) flavLbl.innerText = 'NOTAS OLFATIVAS E ESPECIFICAÇÃO:';
+    document.getElementById('pod-modal-selected-flav').innerText = `FRASCO ORIGINAL • ATÉ 6X DE R$ ${inst6x}`;
     const gridEl = document.getElementById('pod-modal-flavors-grid');
     gridEl.innerHTML = `<button type="button" class="pod-modal-flavor-btn selected">${p.notes}</button>`;
     const addBtn = document.querySelector('#pod-detail-modal .btn-modal-add-sacola');
     if (addBtn) {
         addBtn.onclick = function() {
+            openedCartFromModal = true;
             document.getElementById('pod-detail-modal').style.display = 'none';
             addToCart(p.name, p.price);
         };
     }
     document.getElementById('pod-detail-modal').style.display = 'flex';
+    ensureEsteirasRunning();
 }
 
 function filterPerfumes(cat, btnEl) {
@@ -3649,6 +3675,7 @@ function initEsteiraPods() {
         </div>`;
     }).join('');
     track.innerHTML = html + html;
+    ensureEsteirasRunning();
 }
 initEsteiraPods();
 
@@ -3692,7 +3719,7 @@ function renderPods() {
             </div>
             <div class="movie-actions">
                 <button type="button" class="btn-black-sobreposto-1 btn-card-action" onclick="openPodDetailModal(${item.id})">
-                    ESCOLHER SABOR
+                    VER DETALHES
                 </button>
                 <button type="button" class="btn-black-sobreposto-2 btn-card-action" onclick="openPodDetailModal(${item.id})">
                     COMPRAR AGORA
@@ -3720,6 +3747,8 @@ function openPodDetailModal(podId) {
     document.getElementById('pod-modal-name').innerText = item.name;
     document.getElementById('pod-modal-desc').innerText = 'Produto 100% original e lacrado. Escolha o sabor desejado abaixo e adicione à sua sacola.';
     document.getElementById('pod-modal-price').innerText = 'R$ ' + item.price.toFixed(2).replace('.', ',');
+    const flavLbl = document.getElementById('pod-modal-flavors-label');
+    if (flavLbl) flavLbl.innerText = 'ESCOLHA O SABOR OU OPÇÃO DESEJADA:';
     document.getElementById('pod-modal-selected-flav').innerText = currentSelected;
 
     const gridEl = document.getElementById('pod-modal-flavors-grid');
@@ -3735,13 +3764,16 @@ function openPodDetailModal(podId) {
     }
 
     document.getElementById('pod-detail-modal').style.display = 'flex';
+    ensureEsteirasRunning();
 }
 
 function closePodDetailModal() {
     document.getElementById('pod-detail-modal').style.display = 'none';
     if (lastSavedScrollY !== null) {
         window.scrollTo({ top: lastSavedScrollY, behavior: 'instant' });
+        lastSavedScrollY = null;
     }
+    ensureEsteirasRunning();
 }
 
 function selectModalPodFlavor(podId, flavorName, btnEl) {
@@ -3761,6 +3793,7 @@ function addModalPodToCart() {
     if (!item) return;
     const flav = SELECTED_POD_FLAVORS[activeModalPodId] || (item.flavors && item.flavors[0]) || 'PADRÃO';
     const fullTitle = `${item.name} (Sabor: ${flav})`;
+    openedCartFromModal = true;
     document.getElementById('pod-detail-modal').style.display = 'none';
     addToCart(fullTitle, item.price);
 }
@@ -3829,7 +3862,10 @@ function toggleCart(open) {
     const dr = document.getElementById('cart-drawer');
     const bd = document.getElementById('cart-drawer-backdrop');
     if (open) {
-        if (lastSavedScrollY === null) lastSavedScrollY = window.scrollY;
+        if (!openedCartFromModal || lastSavedScrollY === null) {
+            lastSavedScrollY = window.scrollY;
+        }
+        openedCartFromModal = false;
         dr.classList.add('open');
         if (bd) bd.classList.add('open');
     } else {
@@ -3840,6 +3876,7 @@ function toggleCart(open) {
             lastSavedScrollY = null;
         }
     }
+    ensureEsteirasRunning();
 }
 function updatePaymentMethodHint() {
     const pay = document.getElementById('cli-pay')?.value || '';
