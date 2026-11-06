@@ -316,7 +316,6 @@
         width: max-content;
         animation: scrollEsteira 24s linear infinite;
     }
-    .hero-3d-esteira-track:hover { animation-play-state: paused; }
     .hero-3d-pedestal-item {
         display: inline-flex; flex-direction: column; align-items: center;
         text-decoration: none;
@@ -545,18 +544,12 @@
         width: max-content;
         animation: scrollEsteira 32s linear infinite;
     }
-    .esteira-track:hover { animation-play-state: paused; }
     .official-channel-logo {
         display: inline-flex; align-items: center; justify-content: center;
         height: 46px; padding: 0 10px;
         background: transparent;
-        cursor: pointer;
+        cursor: default;
         filter: drop-shadow(0 5px 12px rgba(0,0,0,0.92));
-        transition: transform 0.22s ease, filter 0.22s ease;
-    }
-    .official-channel-logo:hover {
-        transform: translateY(-2px) scale(1.15);
-        filter: drop-shadow(0 6px 16px rgba(56, 189, 248, 0.75));
     }
     .official-channel-logo img { height: 42px; width: auto; object-fit: contain; display: block; }
 
@@ -2652,9 +2645,9 @@ const CHANNEL_LOGOS_3D_LIST = [{"name": "Netflix", "cat": "series", "b64": "data
 function initEsteiraCanais() {
     const track = document.getElementById('esteira-canais');
     const itemsHTML = CHANNEL_LOGOS_3D_LIST.map(ch => `
-        <a href="#catalogo-unitv" class="official-channel-logo" title="Ver conteúdos de ${ch.name}" onclick="jumpToCategory('${ch.cat}')">
+        <div class="official-channel-logo">
             <img src="${ch.b64}" alt="${ch.name}">
-        </a>
+        </div>
     `).join('');
     track.innerHTML = itemsHTML + itemsHTML;
 }
@@ -3548,7 +3541,7 @@ function initEsteiraPerfumes() {
         { name: "LA VIE EST BELLE", sub: "Lancôme • R$ 469,90", cat: "fem" }
     ];
     const html = brands.map(b => `
-        <div class="brand-marquee-pill" onclick="filterPerfumes('${b.cat}', document.querySelector('#perfumes .perfume-filter-btn'))">
+        <div class="brand-marquee-pill" style="cursor:default;">
             <strong>${b.name}</strong> <span>• ${b.sub}</span>
         </div>
     `).join('');
@@ -3647,7 +3640,7 @@ function initEsteiraPods() {
         { name: "LIFE POD ECO II 10K", sub: "Refil e Kit • R$ 70,00", q: "Life Pod" }
     ];
     const html = highlights.map(h => `
-        <div class="brand-marquee-pill" onclick="document.getElementById('pods-search-input').value='${h.q}'; filterPodsBySearch();">
+        <div class="brand-marquee-pill" style="cursor:default;">
             <strong>${h.name}</strong> <span>• ${h.sub}</span>
         </div>
     `).join('');
