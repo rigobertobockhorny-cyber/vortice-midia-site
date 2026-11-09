@@ -533,7 +533,7 @@
     #catalogo-unitv {
         min-height: 100vh;
         scroll-margin-top: 56px;
-        padding: 22px 3% 64px;
+        padding: 64px 3% 78px;
         position: relative;
         background-image: linear-gradient(180deg, rgba(10, 15, 28, 0.64) 0%, rgba(7, 11, 20, 0.86) 100%),
                           url('https://image.tmdb.org/t/p/original/euYIwmwkmz95mnXvufEmbL6ovhZ.jpg');
@@ -615,11 +615,11 @@
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
         column-gap: 16px;
-        row-gap: 38px;
+        row-gap: 54px;
         max-width: 1400px; margin: 0 auto; width: 100%;
     }
     @media (max-width: 1200px) { .movies-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-    @media (max-width: 768px)  { .movies-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 768px)  { .movies-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 44px; } }
 
     .tmdb-movie-item {
         background: transparent;
@@ -684,7 +684,7 @@
         white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         text-shadow: 0 2px 6px rgba(0,0,0,0.95);
     }
-    .movie-actions { display: flex; flex-direction: column; gap: 6px; }
+    .movie-actions { display: flex; flex-direction: column; gap: 4px; }
     .btn-card-action {
         width: 100%; font-size: 11px; padding: 6.5px 8px;
         border-radius: 20px;
@@ -697,7 +697,7 @@
     #planos-unitv {
         min-height: 100vh;
         scroll-margin-top: 56px;
-        padding: 36px 4% 32px;
+        padding: 68px 4% 84px;
         display: flex; flex-direction: column; justify-content: center; align-items: center;
         position: relative;
         /* Roxo profundo sobre preto puro exatamente como na imagem BANNER-PRINCIPAL-COMPLETO-01 da pasta Ideias site! */
@@ -810,7 +810,7 @@
     #perfumes {
         min-height: 100vh;
         scroll-margin-top: 56px;
-        padding: 24px 3% 64px;
+        padding: 72px 3% 84px;
         position: relative;
         background-image: linear-gradient(180deg, rgba(18, 14, 11, 0.55) 0%, rgba(12, 9, 8, 0.82) 100%),
                           url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1920&q=85');
@@ -867,15 +867,15 @@
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
         column-gap: 16px;
-        row-gap: 36px;
+        row-gap: 54px;
         max-width: 1400px; margin: 0 auto; width: 100%;
     }
     @media (max-width: 1200px) { .perfumes-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-    @media (max-width: 768px)  { .perfumes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 768px)  { .perfumes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 44px; } }
 
     .perfume-unitv-item {
         background: transparent;
-        display: flex; flex-direction: column; justify-content: space-between;
+        display: flex; flex-direction: column; justify-content: flex-start;
         transition: transform 0.22s ease;
         min-width: 0; width: 100%; overflow: hidden;
     }
@@ -889,25 +889,25 @@
         box-shadow: 0 10px 22px rgba(0, 0, 0, 0.88);
         background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.16) 0%, rgba(15, 12, 10, 0.94) 78%);
         border: 1px solid rgba(255, 255, 255, 0.20);
-        margin-bottom: 7px;
+        margin-bottom: 4px;
         display: flex; align-items: center; justify-content: center;
         padding: 10px;
         cursor: pointer;
     }
     .perfume-poster-box img {
-        max-width: 86%; max-height: 90%; object-fit: contain;
+        max-width: 88%; max-height: 92%; object-fit: contain;
         filter: drop-shadow(0 8px 16px rgba(0,0,0,0.85));
         transition: transform 0.35s ease;
     }
     .perfume-unitv-item:hover .perfume-poster-box img { transform: scale(1.07); }
 
-    /* BLOCO DO MEIO (NOME DO PRODUTO + VALOR EM BRANCO) */
+    /* BLOCO DO MEIO (NOME DO PRODUTO + VALOR EM BRANCO — BEM JUNTO DO BLOCO DA IMAGEM E DOS BOTÕES!) */
     .product-mid-pill {
         background: linear-gradient(180deg, #16161D 0%, #09090D 100%);
         border: 1px solid rgba(255, 255, 255, 0.20);
         border-radius: 12px;
         padding: 6px 9px;
-        margin-bottom: 7px;
+        margin-bottom: 4px;
         box-shadow: 0 3px 0 #000000, 0 5px 12px rgba(0,0,0,0.8);
         display: flex; flex-direction: column; gap: 2px;
     }
@@ -1062,11 +1062,12 @@
     #central-garantia-vip {
         min-height: 100vh;
         scroll-margin-top: 56px;
-        padding: 22px 3% 18px;
+        padding: 72px 3% 68px;
         position: relative;
         background: #000000;
         border-top: 1px solid rgba(255, 255, 255, 0.16);
         display: flex; flex-direction: column; justify-content: space-between;
+        gap: 28px;
     }
     .vip-trust-grid {
         display: grid;
@@ -1658,7 +1659,7 @@
     #pods-essencias {
         min-height: 100vh;
         scroll-margin-top: 60px;
-        padding: 32px 3% 56px;
+        padding: 72px 3% 84px;
         position: relative;
         background: #000000;
         border-bottom: 1px solid rgba(255, 255, 255, 0.14);
@@ -1726,15 +1727,15 @@
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
         column-gap: 16px;
-        row-gap: 36px;
+        row-gap: 54px;
         max-width: 1400px; margin: 0 auto; width: 100%;
     }
     @media (max-width: 1200px) { .pods-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-    @media (max-width: 768px)  { .pods-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 768px)  { .pods-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 44px; } }
 
     .pod-unitv-item {
         background: transparent;
-        display: flex; flex-direction: column; justify-content: space-between;
+        display: flex; flex-direction: column; justify-content: flex-start;
         transition: transform 0.22s ease;
         min-width: 0; width: 100%; overflow: hidden;
     }
@@ -1749,13 +1750,13 @@
         box-shadow: 0 10px 22px rgba(0, 0, 0, 0.95);
         background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.11) 0%, #07070A 78%);
         border: 1px solid rgba(255, 255, 255, 0.20);
-        margin-bottom: 7px;
+        margin-bottom: 4px;
         display: flex; align-items: center; justify-content: center;
         padding: 10px;
         cursor: pointer;
     }
     .pod-poster-box img {
-        max-width: 86%; max-height: 90%; object-fit: contain;
+        max-width: 88%; max-height: 92%; object-fit: contain;
         filter: saturate(1.22) contrast(1.05) drop-shadow(0 8px 14px rgba(0,0,0,0.9));
         transition: transform 0.35s ease;
     }
@@ -2142,15 +2143,15 @@
             padding: 6px 13px;
         }
 
-        /* Grids de 2 colunas perfeitos no celular (UniTV, Pods e Perfumes) */
+        /* Grids de 2 colunas perfeitos no celular (UniTV, Pods e Perfumes — blocos juntos e suspiro grande para o produto de baixo!) */
         .movies-grid, .pods-grid, .perfumes-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            column-gap: 10px; row-gap: 20px;
+            column-gap: 12px; row-gap: 44px;
         }
         .tmdb-poster-box, .pod-poster-box, .perfume-poster-box {
-            height: 138px;
+            height: 142px;
             border-radius: 12px;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
         .movie-stream-tag, .pod-cat-badge {
             font-size: 7.5px; padding: 2px 6px; top: 5px; left: 5px;
@@ -2158,12 +2159,12 @@
         .movie-rating, .pod-price-badge-top {
             font-size: 8.5px; padding: 2px 6px; top: 5px; right: 5px;
         }
-        .movie-title { font-size: 11.5px; margin-bottom: 5px; }
-        .product-mid-pill { padding: 5px 7px; margin-bottom: 5px; border-radius: 10px; }
+        .movie-title { font-size: 11.5px; margin-bottom: 4px; }
+        .product-mid-pill { padding: 5px 7px; margin-bottom: 3px; border-radius: 10px; }
         .product-mid-name { font-size: 11px; }
         .product-mid-price { font-size: 12px; }
         .product-mid-sub { font-size: 8.5px; }
-        .movie-actions { gap: 5px; }
+        .movie-actions { gap: 3.5px; }
         .btn-card-action {
             font-size: 10px;
             padding: 7px 6px;
@@ -3985,8 +3986,6 @@ function renderPerfumes(filterCat = 'all') {
         <div class="perfume-unitv-item" id="perfume-card-${p.id}">
             <div>
                 <div class="perfume-poster-box" onclick="openPerfumeDetailModal(${p.id})">
-                    <span class="pod-cat-badge">${p.badge}</span>
-                    <span class="pod-price-badge-top">R$ ${prStr}</span>
                     <img src="${p.img}" alt="${p.name}" loading="lazy">
                 </div>
                 <div class="product-mid-pill" onclick="openPerfumeDetailModal(${p.id})" style="cursor:pointer;">
@@ -4096,8 +4095,6 @@ function renderPods() {
         <div class="pod-unitv-item" id="pod-card-${item.id}">
             <div>
                 <div class="pod-poster-box" onclick="openPodDetailModal(${item.id})">
-                    <span class="pod-cat-badge">${item.badge}</span>
-                    <span class="pod-price-badge-top">R$ ${prStr}</span>
                     <img src="${item.img}" alt="${item.name}" loading="lazy">
                 </div>
                 <div class="product-mid-pill" onclick="openPodDetailModal(${item.id})" style="cursor:pointer;">
