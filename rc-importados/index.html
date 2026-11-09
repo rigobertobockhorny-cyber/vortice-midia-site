@@ -2817,15 +2817,19 @@
             <input type="text" id="cli-name" placeholder="Digite seu nome">
         </div>
         <div class="cart-field">
-            <label>Bairro / Cidade (ou WhatsApp):</label>
-            <input type="text" id="cli-cep" placeholder="Ex: Centro - Cascavel">
+            <label>Seu WhatsApp / Celular:</label>
+            <input type="tel" id="cli-phone" placeholder="(45) 99999-9999">
+        </div>
+        <div class="cart-field" id="cart-address-field-wrap">
+            <label>Endereço / Bairro (para Entrega):</label>
+            <input type="text" id="cli-cep" placeholder="Ex: Rua / Bairro - Cascavel">
         </div>
         <div class="cart-field">
             <label>Forma de Pagamento Preferida:</label>
             <select id="cli-pay" onchange="updatePaymentMethodHint()">
                 <option value="PIX (Liberação / Envio Imediato)">PIX (Chave / QR Code no Atendimento)</option>
                 <option value="Cartão em até 6x (Link Seguro)">Cartão em até 6x (Link Seguro)</option>
-                <option value="Pagar na Entrega (Cascavel - PIX ou Cartão)">Pagar na Entrega (Exclusivo Cascavel)</option>
+                <option value="Pagar na Entrega (Cascavel - PIX ou Cartão)" id="opt-pay-delivery">Pagar na Entrega (Exclusivo Cascavel)</option>
             </select>
             <div id="cart-pay-hint" style="margin-top:6px;padding:8px 10px;background:#0A0A0E;border:1px solid rgba(255,255,255,0.14);border-radius:8px;font-size:11px;color:#94A3B8;line-height:1.45;font-weight:600;">
                 Você envia o pedido pronto para o WhatsApp da RC Importados e recebe a Chave PIX ou QR Code oficial para liberação imediata.
@@ -4239,6 +4243,23 @@ function updateCartUI() {
     });
     const totStr = 'R$ ' + total.toFixed(2).replace('.', ',');
     document.getElementById('cart-total-val').innerText = totStr;
+
+    // Mostra o campo de Endereço/Bairro apenas se houver produto físico (Pod ou Perfume) na sacola!
+    // Se tiver somente plano digital da UniTV 4K, esconde o campo de Bairro para ficar só Nome + WhatsApp + Pagamento!
+    const hasPhysicalProduct = CART.some(it => !it.title.toLowerCase().includes('unitv'));
+    const addrWrap = document.getElementById('cart-address-field-wrap');
+    const optDelivery = document.getElementById('opt-pay-delivery');
+    if (addrWrap) {
+        addrWrap.style.display = hasPhysicalProduct ? 'block' : 'none';
+    }
+    if (optDelivery) {
+        optDelivery.style.display = hasPhysicalProduct ? 'block' : 'none';
+        if (!hasPhysicalProduct && document.getElementById('cli-pay').value.includes('Entrega')) {
+            document.getElementById('cli-pay').selectedIndex = 0;
+            updatePaymentMethodHint();
+        }
+    }
+
     if (mobBar) {
         mobBar.style.display = 'flex';
         document.getElementById('mob-cart-count-txt').innerText = `${CART.length} ${CART.length === 1 ? 'ITEM' : 'ITENS'} NA SUA SACOLA`;
@@ -4293,20 +4314,25 @@ function finishOrderWhatsApp() {
         return;
     }
     const name = document.getElementById('cli-name').value || 'Cliente';
-    const cep = document.getElementById('cli-cep').value || 'Cascavel / A combinar';
+    const phone = document.getElementById('cli-phone')?.value || 'Enviado pelo meu WhatsApp';
+    const cep = document.getElementById('cli-cep')?.value || '';
     const pay = document.getElementById('cli-pay').value;
+    const hasPhysicalProduct = CART.some(it => !it.title.toLowerCase().includes('unitv'));
     let total = CART.reduce((acc, i) => acc + i.price, 0);
     let itemsTxt = CART.map((it, idx) => `${idx+1}. ${it.title} — R$ ${it.price.toFixed(2).replace('.', ',')}`).join('\n');
     const totStr = total.toFixed(2).replace('.', ',');
-    const fullMsg = `PEDIDO OFICIAL • RC IMPORTADOS\n\nCliente: ${name}\nLocal/Bairro: ${cep}\nPagamento: ${pay}\n\nItens do Pedido:\n${itemsTxt}\n\nValor Total: R$ ${totStr}`;
+    const localLine = hasPhysicalProduct ? `\nEndereço/Bairro: ${cep || 'Cascavel / A combinar'}` : '';
+    const fullMsg = `PEDIDO OFICIAL • RC IMPORTADOS\n\nCliente: ${name}\nWhatsApp/Celular: ${phone}${localLine}\nPagamento: ${pay}\n\nItens do Pedido:\n${itemsTxt}\n\nValor Total: R$ ${totStr}`;
 
+    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(fullMsg)}`;
     const previewEl = document.getElementById('order-preview-text');
     const waLink = document.getElementById('order-wa-direct-link');
     if (previewEl && waLink) {
         previewEl.innerText = fullMsg;
-        waLink.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(fullMsg)}`;
+        waLink.href = waUrl;
         document.getElementById('order-preview-modal').style.display = 'flex';
     }
+    window.open(waUrl, '_blank');
 }
 
 // ============================================================================
