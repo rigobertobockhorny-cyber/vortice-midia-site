@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>VÓRTICE MÍDIA — Portal Oficial — 10 Canais, Música, Séries 3D & Aplicativos</title>
+  <title>VÓRTICE MÍDIA — Portal Oficial — 9 Canais, Música, Séries 3D & Aplicativos</title>
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/ui/favicon.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=3">
   <link rel="shortcut icon" href="/favicon.ico?v=3">
@@ -14,7 +14,6 @@
   <link rel="preload" as="image" href="./assets/ui/vortice_midia_official_logo.png" fetchpriority="high">
   <link rel="preload" as="image" href="./assets/signs/sign_01_rock.png" fetchpriority="high">
   <link rel="preload" as="image" href="./assets/signs/sign_02_sacronia.png" fetchpriority="high">
-  <link rel="preload" as="image" href="./assets/signs/sign_03_neon.png" fetchpriority="high">
   <link rel="preload" as="image" href="./assets/signs/sign_04_iago.png" fetchpriority="high">
   <link rel="preload" as="image" href="./assets/signs/sign_05_patinhas.png" fetchpriority="high">
   <link rel="preload" as="image" href="./assets/signs/sign_06_aguas.png" fetchpriority="high">
@@ -717,7 +716,7 @@
 
     .momentos-photo-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
@@ -978,7 +977,7 @@
 
     .universos-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
 
@@ -3263,21 +3262,6 @@
             </div>
           </div>
 
-          <!-- Card 3: Neon Asher -->
-          <div class="momento-photo-card">
-            <div class="momento-img-wrap">
-              <img src="./assets/banners/neon_youtube_banner.jpg" alt="Neon Asher" loading="lazy">
-            </div>
-            <div class="momento-card-body">
-              <span class="momento-kicker">NEON ASHER</span>
-              <h3 class="momento-title">Rock Gótico</h3>
-              <div class="momento-btn-row">
-                <button type="button" class="momento-pill-btn sintonia-play-music-btn" data-sintonia-channel="neon-asher" onclick="playChannelMusicById('neon-asher')">▶ Ouvir Agora</button>
-                <button type="button" class="momento-page-btn" onclick="openChannelById('neon-asher')">Página</button>
-              </div>
-            </div>
-          </div>
-
           <!-- Card 4: Iago Cordeiro -->
           <div class="momento-photo-card">
             <div class="momento-img-wrap">
@@ -3372,21 +3356,6 @@
               <div class="momento-btn-row">
                 <a href="https://www.youtube.com/@SacroniaMusic/videos" target="_blank" rel="noopener" class="momento-pill-btn yt-auto-link">▶ Assistir</a>
                 <button type="button" class="momento-page-btn" onclick="openChannelById('sacronia')">Página</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. Neon Asher -->
-          <div class="universo-poster-card" data-yt-handle="NeonAsherDarkRock">
-            <div class="universo-thumb-box">
-              <img class="bg-art yt-auto-thumb" src="./assets/banners/neon_youtube_banner.jpg" alt="Neon Asher" loading="lazy">
-            </div>
-            <div class="universo-body">
-              <span class="universo-style-tag">Rock Gótico</span>
-              <h3 class="universo-channel-title">Neon Asher</h3>
-              <div class="momento-btn-row">
-                <a href="https://www.youtube.com/@NeonAsherDarkRock/videos" target="_blank" rel="noopener" class="momento-pill-btn yt-auto-link">▶ Assistir</a>
-                <button type="button" class="momento-page-btn" onclick="openChannelById('neon-asher')">Página</button>
               </div>
             </div>
           </div>
@@ -3508,11 +3477,11 @@
             </div>
           </a>
 
-          <!-- 3. Superando a Dor -> Neon Asher -->
-          <a href="#/neon-asher" onclick="event.preventDefault(); openChannelById('neon-asher');" class="social-road-sign" style="background-image:url('./assets/signs/sign_03_neon.png');--s-tilt:-6.8deg;--s-roty:19deg;--s-dx:17px;--s-delay:0.75s;">
+          <!-- 3. Verdade & Cidadania -> Incorruptível -->
+          <a href="#/incorruptivel" onclick="event.preventDefault(); openChannelById('incorruptivel');" class="social-road-sign" style="background-image:url('./assets/signs/sign_08_incorruptivel.png');--s-tilt:-6.8deg;--s-roty:19deg;--s-dx:17px;--s-delay:0.75s;">
             <div class="social-official-3d-badge badge-tk">
               <div class="social-badge-col" style="align-items:center;text-align:center;">
-                <span>SUPERANDO A DOR</span>
+                <span>VERDADE &amp; CIDADANIA</span>
               </div>
             </div>
           </a>
@@ -3578,7 +3547,7 @@
     <section class="section-vortice-store" id="loja-vortice">
       <div class="container-wide">
         <div class="editorial-header">
-          <h2 class="editorial-giant-title">Loja Oficial Vórtice Mídia</h2>
+          <h2 class="editorial-giant-title">Achadinhos da Vórtice</h2>
         </div>
 
         <!-- Botões diretos para a Loja Oficial de cada um dos 10 Canais -->
@@ -3618,10 +3587,9 @@
               <div class="ivory-field" style="grid-column: 1 / -1;">
                 <label>CANAL FAVORITO</label>
                 <select>
-                  <option>Todos os 10 Canais da Vórtice Mídia</option>
+                  <option>Todos os 9 Canais da Vórtice Mídia</option>
                   <option>Rock Incorruptível</option>
                   <option>Sacronia</option>
-                  <option>Neon Asher</option>
                   <option>Iago Cordeiro</option>
                   <option>Patinhas &amp; Canções</option>
                   <option>Águas de Descanso</option>
@@ -3767,7 +3735,7 @@
 
         <div class="story-chapter-box">
           <p class="story-chapter-p">
-            A Vórtice Mídia nasceu da convicção de que a arte digital, a música e o audiovisual não existem apenas para preencher o tempo, mas para despertar consciências, consolar corações e reunir gerações em torno daquilo que realmente importa. Em um cenário digital cada vez mais descartável e ruidoso, escolhemos o caminho do trabalho autoral cuidadoso: construir dez universos temáticos independentes que dialogam com os diferentes momentos da vida — da reflexão cidadã ao louvor congregacional, da emoção de quem ama os animais ao ensino bíblico para as crianças e ao descanso profundo no fim do dia.
+            A Vórtice Mídia nasceu da convicção de que a arte digital, a música e o audiovisual não existem apenas para preencher o tempo, mas para despertar consciências, consolar corações e reunir gerações em torno daquilo que realmente importa. Em um cenário digital cada vez mais descartável e ruidoso, escolhemos o caminho do trabalho autoral cuidadoso: construir nove universos temáticos independentes que dialogam com os diferentes momentos da vida — da reflexão cidadã ao louvor congregacional, da emoção de quem ama os animais ao ensino bíblico para as crianças e ao descanso profundo no fim do dia.
           </p>
         </div>
 
@@ -3777,7 +3745,7 @@
             <h3 class="mvv-title">Arte Com Propósito</h3>
             <p class="mvv-text">
               Cada canal da Vórtice Mídia possui identidade visual, direção musical e linha editorial próprias. Não produzimos conteúdo em série sem alma: cada letra é escrita para contar uma história verdadeira, cada arranjo sonoro é desenhado para transmitir emoção real e cada cenário visual é lapidado com estética cinematográfica.<br><br>
-              Do peso das guitarras de protesto no <strong>Rock Incorruptível</strong> e da solenidade épica do <strong>Sacronia</strong> à doçura acústica de <strong>Iago Cordeiro</strong>, da melancolia noturna de <strong>Neon Asher</strong> à ternura em 3D de <strong>Patinhas &amp; Canções</strong>, unimos tecnologia de ponta e sensibilidade humana para entregar obras que permanecem na memória.
+              Do peso das guitarras de protesto no <strong>Rock Incorruptível</strong> e da solenidade épica do <strong>Sacronia</strong> à doçura acústica de <strong>Iago Cordeiro</strong> e à ternura em 3D de <strong>Patinhas &amp; Canções</strong>, unimos tecnologia de ponta e sensibilidade humana para entregar obras que permanecem na memória.
             </p>
           </div>
           <div class="mvv-card-3d">
@@ -4150,65 +4118,6 @@
         }
       },
       {
-        id: 'neon-asher',
-        slug: 'vortice.media/neon-asher',
-        name: 'NEON ASHER',
-        bandFrontName: 'Neon Asher',
-        hasMusic: true,
-        hasApp: false,
-        sampleSongTitle: 'Neon Asher',
-        sampleAudioUrl: './assets/audio/neon_asher_theme.mp3',
-        bannerImg: './assets/banners/neon_youtube_banner.jpg',
-        coverImg: './assets/banners/neon_youtube_banner.jpg',
-        logoImg: './assets/logos_color/neon_color.jpg',
-        badgeText: 'Rock Gótico',
-        slogan: '"Às duas da manhã, no silêncio da noite, toda cicatriz vira melodia."',
-        description: 'Rock gótico melódico, violinos dramáticos e arranjos noturnos que contam histórias de amor partido, a dor da separação, despedidas, estradas solitárias e superação.',
-        playlist: [
-          {
-            title: 'What Remains When The Lights Go Out — Neon Asher',
-            style: 'MÚSICA & CLIPE NO AR • EPISÓDIO 01',
-            rawImg: './assets/episodes/neon_real_ep01.jpg',
-            audioUrl: './assets/audio/neon_asher_theme.mp3',
-            youtubeUrl: 'https://www.youtube.com/watch?v=GtTA4sO7X-g',
-            story: 'A faixa-assinatura de Neon Asher: guitarras intensas e violinos marcantes cortando a madrugada quando as luzes da cidade se apagam.'
-          },
-          {
-            title: 'The Last Time I Saw You — Em Processo de Validação & Reivindicação',
-            style: 'EM PROCESSO DE VALIDAÇÃO • EPISÓDIO 02',
-            rawImg: './assets/episodes/neon_real_ep02.jpg',
-            audioUrl: './assets/audio/neon_last_time_i_saw_you.mp3',
-            isValidationCard: true,
-            story: 'O último olhar na despedida antes que dois destinos tomassem estradas opostas — próximo lançamento oficial em validação nas plataformas. Aguarde mais músicas dentro desta seção!'
-          }
-        ],
-        storyHeading: 'Crônicas da Madrugada: A Dor da Separação, Violinos e Superação',
-        storyLead: 'Quem nunca atravessou a madrugada em silêncio tentando entender o fim de uma história? Neon Asher é o refúgio sonoro para as horas em que a cidade dorme e a memória acorda.',
-        storyParagraphs: [
-          'O universo de Neon Asher une a força dramática dos violinos ao peso do Rock Gótico Melódico. Suas músicas falam sem filtros sobre a dor da separação, amor partido, promessas quebradas, despedidas e a reconstrução da própria força.',
-          'Combinando violinos intensos, pianos noturnos e guitarras marcantes, cada faixa funciona tanto para momentos de reflexão profunda quanto para estradas noturnas, foco e superação.'
-        ],
-        personaTitle: 'NEON ASHER • ROCK GÓTICO MELÓDICO',
-        personaQuote: 'O tempo não apaga o que aconteceu, mas transforma cada cicatriz na força que te leva adiante pela estrada.',
-        personaDetails: 'Direção Sonora & Visual: Rock Gótico Melódico, Violinos Dramáticos e Estética Noturna.',
-        loreBoxes: [
-          { tag: 'CAPÍTULO 01 • A DESPEDIDA', title: 'A Dor da Separação', text: 'Canções intensas e honestas sobre o instante em que dois caminhos se dividem.' },
-          { tag: 'CAPÍTULO 02 • VIOLINOS & GUITARRAS', title: 'Melancolia Cinematográfica', text: 'O encontro entre o violino clássico emocionante e o peso do rock gótico melódico.' },
-          { tag: 'CAPÍTULO 03 • ESTRADA & FOCO', title: 'Estradas Solitárias', text: 'A trilha sonora ideal para dirigir à noite, focar nos projetos, estudar ou treinar.' },
-          { tag: 'CAPÍTULO 04 • AMOR PARTIDO', title: 'Cicatrizes que Viram Força', text: 'Transformando a decepção afetiva e as despedidas em coragem para recomeçar.' },
-          { tag: 'CAPÍTULO 05 • ESTÉTICA NOTURNA', title: 'Contraste & Profundidade', text: 'Identidade visual marcante inspirada no cinema noturno e na arquitetura clássica.' },
-          { tag: 'REPERTÓRIO GLOBAL', title: 'Vozes & Cordas Emotivas', text: 'Vozes profundas e arranjos de violino que conectam ouvintes no mundo inteiro.' }
-        ],
-        links: {
-          youtube: 'https://www.youtube.com/@NeonAsherDarkRock',
-          spotify: 'https://open.spotify.com',
-          deezer: 'https://www.deezer.com',
-          apple: 'https://music.apple.com/br/artist/neon-asher/6819336396',
-          amazon: 'https://music.amazon.com.br',
-          ytmusic: 'https://music.youtube.com/channel/UCiVaYR4-N9BBmS9ORhDP4qg'
-        }
-      },
-      {
         id: 'iago-cordeiro',
         slug: 'vortice.media/iago-cordeiro',
         name: 'IAGO CORDEIRO',
@@ -4570,11 +4479,6 @@
       'sacronia': {
         img: './assets/signs/sign_02_sacronia.png',
         lockupImg: './assets/sign_logos/lockup_02_sacronia.png',
-        padding: '12px 24px 8px'
-      },
-      'neon-asher': {
-        img: './assets/signs/sign_03_neon.png',
-        lockupImg: './assets/sign_logos/lockup_03_neon.png',
         padding: '12px 24px 8px'
       },
       'iago-cordeiro': {
@@ -5072,7 +4976,6 @@
       'AguasDeDescanso': 'UCQlciPfUTpLt5CLcHog56lA',
       'RockIncorruptivel': 'UCie7z4E8dXBRz46XfvuwH7Q',
       'SacroniaMusic': 'UCbpf2WHDz57FW3QCcftc_2A',
-      'NeonAsherDarkRock': 'UCiVaYR4-N9BBmS9ORhDP4qg',
       'iagocordeiromusic': 'UCK5Sgoev9Uvf_dexv77GftQ',
       'patinhasecancoes': 'UCBZPZYSwUmrEsWu4-E9OxPg',
       'TronoDaPromessa': 'UC8Xl0b3y4NAAfThZ9pbPiiw',
@@ -5708,104 +5611,6 @@
                   "title": "Quadro Decorativo Cristão 'Eu e Minha Casa Serviremos ao Senhor' Sala",
                   "img": "https://m.media-amazon.com/images/I/61dw4eVwhAL._AC_UL600_.jpg",
                   "url": "https://lista.mercadolivre.com.br/placa-quadro-versiculo-eu-e-minha-casa-serviremos-ao-senhor?matt_word=rigobertobockhorny&matt_tool=36221019"
-            }
-      ],
-      "neon-asher": [
-            {
-                  "asin": "B0B6P9J3J5",
-                  "category": "Luminária LED / Neon Gamer",
-                  "title": "Quntis Light Bar PRO+, Barra de Luz para Monitor com Controle Remoto, Compatível com Monitores Curvos e Planos, Proteção Ocular, Brilho Ajustável com Escurecimento Automático, Sem Reflexo",
-                  "img": "https://m.media-amazon.com/images/I/61ZPUe0nvkL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0B6P9J3J5?tag=vorticemidia-20",
-                  "store": "amazon"
-            },
-            {
-                  "asin": "SHP-1",
-                  "store": "shopee",
-                  "category": "Fita LED RGB 5 Metros com Controle",
-                  "title": "Rolo Fita LED RGB 5 Metros com Controle Remoto e Fonte Setup",
-                  "img": "https://m.media-amazon.com/images/I/71GI2-F+unL._AC_UL600_.jpg",
-                  "url": "https://shopee.com.br/search?keyword=fita%20led%20rgb%205050%205m%20controle%20remoto&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
-            },
-            {
-                  "asin": "ML-2",
-                  "store": "mercadolivre",
-                  "category": "Teclado Mecânico Gamer / Estúdio RGB Switch Silencioso",
-                  "title": "Teclado Mecânico RGB Iluminado para Edição, Produção e Setup Dark",
-                  "img": "https://m.media-amazon.com/images/I/81EEknaRvIL._AC_UL600_.jpg",
-                  "url": "https://lista.mercadolivre.com.br/teclado-mecanico-rgb-preto-abnt2?matt_word=rigobertobockhorny&matt_tool=36221019"
-            },
-            {
-                  "asin": "B0H7MR969P",
-                  "category": "Violino Acústico Clássico",
-                  "title": "VEDO Conjunto de Violino 4/4 Tamanho Normal Fosco | Adequado para Iniciantes e Adultos, Inclui Estoj...",
-                  "img": "https://m.media-amazon.com/images/I/712FpgIjTzL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H7MR969P?tag=vorticemidia-20",
-                  "store": "amazon"
-            },
-            {
-                  "asin": "SHP-2",
-                  "store": "shopee",
-                  "category": "Barra de Luz LED Rítmica RGB (Sensor de Som)",
-                  "title": "Barra de Luz LED RGB Rítmica Ativada por Som/Música para Setup",
-                  "img": "https://m.media-amazon.com/images/I/51Ynd09+JsL._AC_UL600_.jpg",
-                  "url": "https://shopee.com.br/search?keyword=barra%20led%20rgb%20ritmica%20sensor%20voz%20som&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
-            },
-            {
-                  "asin": "ML-3",
-                  "store": "mercadolivre",
-                  "category": "Par de Monitores de Áudio / Caixas Acústicas para Estúdio PC",
-                  "title": "Par de Caixas de Som Monitor de Áudio Multimídia para Estúdio e PC",
-                  "img": "https://m.media-amazon.com/images/I/71k5uyOvk8L._AC_UL600_.jpg",
-                  "url": "https://lista.mercadolivre.com.br/caixa-de-som-monitor-de-audio-estudio-pc?matt_word=rigobertobockhorny&matt_tool=36221019"
-            },
-            {
-                  "asin": "B0H5WQPQXR",
-                  "category": "Caneca Preta Fosca",
-                  "title": "Caneca Térmica 360ml Aço Inoxidável com Tampa Hermética Antivazamento Quente e Gelado (Preto)",
-                  "img": "https://m.media-amazon.com/images/I/61IrDWv-nfL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B0H5WQPQXR?tag=vorticemidia-20",
-                  "store": "amazon"
-            },
-            {
-                  "asin": "SHP-3",
-                  "store": "shopee",
-                  "category": "Suporte de Mesa para Headset / Fone",
-                  "title": "Suporte de Mesa para Fone de Ouvido Headphone Gamer/Estúdio",
-                  "img": "https://m.media-amazon.com/images/I/51TCume0IZL._AC_UL600_.jpg",
-                  "url": "https://shopee.com.br/search?keyword=suporte%20headphone%20fone%20ouvido%20mesa%20rgb&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
-            },
-            {
-                  "asin": "ML-5",
-                  "store": "mercadolivre",
-                  "category": "Headset Sem Fio Bluetooth Over-Ear Cancelamento de Ruído",
-                  "title": "Fone Headphone Bluetooth Sem Fio Over-Ear Bass Pro Bateria Longa",
-                  "img": "https://m.media-amazon.com/images/I/51n+edKvBPL._AC_UL600_.jpg",
-                  "url": "https://lista.mercadolivre.com.br/headphone-bluetooth-over-ear-cancelamento-ruido-preto?matt_word=rigobertobockhorny&matt_tool=36221019"
-            },
-            {
-                  "asin": "B09JG62KDJ",
-                  "category": "Microfone Condensador USB",
-                  "title": "FIFINE A6V Microfone USB Para Jogos Para PS5 PC Para Twitch Podcasts | Microfone Condensador Com Mud...",
-                  "img": "https://m.media-amazon.com/images/I/61ciiEJ7HRL._AC_UL600_.jpg",
-                  "url": "https://www.amazon.com.br/dp/B09JG62KDJ?tag=vorticemidia-20",
-                  "store": "amazon"
-            },
-            {
-                  "asin": "SHP-4",
-                  "store": "shopee",
-                  "category": "Relógio Digital LED de Mesa Espelhado",
-                  "title": "Relógio Digital de Mesa LED Moderno Minimalista Preto",
-                  "img": "https://m.media-amazon.com/images/I/61v98uPthvL._AC_UL600_.jpg",
-                  "url": "https://shopee.com.br/search?keyword=relogio%20digital%20led%20mesa%20despertador&utm_source=an_18304461301&utm_medium=affiliates&utm_campaign=-&utm_content=vorticemidia"
-            },
-            {
-                  "asin": "ML-6",
-                  "store": "mercadolivre",
-                  "category": "Suporte Articulado de Pistão a Gás para Monitor Estúdio",
-                  "title": "Suporte Articulado de Mesa com Pistão a Gás para Monitor 17 a 32 Pol",
-                  "img": "https://m.media-amazon.com/images/I/4113y24wxQL._AC_UL600_.jpg",
-                  "url": "https://lista.mercadolivre.com.br/suporte-monitor-articulado-pistao-a-gas-mesa?matt_word=rigobertobockhorny&matt_tool=36221019"
             }
       ],
       "iago-cordeiro": [
@@ -6890,7 +6695,8 @@
         const row = Math.floor(st.idx / cols);
         const floatX = Math.cos(timeTick * 1.7 + st.idx * 0.8) * 3.5;
         const floatY = Math.sin(timeTick * 2.1 + st.idx * 0.65) * 5.0;
-        const gridX = (W * 0.50) + (col - (cols - 1) * 0.5) * colStep + floatX;
+        const itemsInThisRow = Math.min(cols, cardStates.length - row * cols);
+        const gridX = (W * 0.50) + (col - (itemsInThisRow - 1) * 0.5) * colStep + floatX;
         const gridY = gridStartY + row * rowStep + floatY;
 
         const finalX = orbitX * (1.0 - gridBlend) + gridX * gridBlend;
